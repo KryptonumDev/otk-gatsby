@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --neutral-50: #EFF0F3;
     --neutral-100: #F5F6FA;
-    --neutral-200: #EFF0F3;
+    --neutral-200: #0E2428;
     --neutral-300: #E2E4EC;
     --neutral-400: #BFC1CA;
     --neutral-500: #A4A8B5;
@@ -19,11 +19,11 @@ const GlobalStyle = createGlobalStyle`
     --neutral-700: #9699A3;
     --neutral-800: #212123;
     --neutral-900: #161618;
-    --neutral-950: #010104;
+    --neutral-950: #fff;
     --primary-400: #2DD282;
     --error-400: #EE6470;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
-    --easing: cubic-bezier(0.23,1,0.32,1);
+    --easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --pageMargin: 40px;
     @media (max-width: 699px){
      --pageMargin: 16px;
@@ -65,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: var(--neutral-200);
+    color: inherit;
   }
   button {
     border: none;

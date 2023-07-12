@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { Clamp } from "../../utils/functions";
 
-const Button = ({ theme, variant, children, to, className, ...props }) => {
+const Button = ({ theme, variant, children, to, ...props }) => {
   const isExternal = to && to.startsWith('https://');
   return (
     <>
@@ -13,7 +14,7 @@ const Button = ({ theme, variant, children, to, className, ...props }) => {
             href={to}
             target="_blank"
             rel="noreferrer"
-            className={`${theme} ${variant}`}
+            className={`cta ${theme} ${variant}`}
             {...props}
           >
             <span>{children}</span>
@@ -23,7 +24,7 @@ const Button = ({ theme, variant, children, to, className, ...props }) => {
             as={Link}
             to={to}
             {...props}
-            className={`${theme} ${variant}`}
+            className={`cta ${theme} ${variant}`}
           >
             <span>{children}</span>
           </StyledAnchor>
@@ -33,7 +34,7 @@ const Button = ({ theme, variant, children, to, className, ...props }) => {
           as='button'
           type="submit"
           {...props}
-          className={`${theme} ${variant}`}
+          className={`cta ${theme} ${variant}`}
         >
           <span>{children}</span>
         </StyledAnchor>
@@ -43,6 +44,21 @@ const Button = ({ theme, variant, children, to, className, ...props }) => {
 }
 
 const StyledAnchor = styled.a`
+  font-size: ${Clamp(16, 20, 24)};
+  @media (max-width: 499px){
+    width: 100%;
+  }
+  border-radius: 12px;
+  background-color: #fff;
+  color: #00259C;
+  padding: 21px 48px;
+  transition: transform .3s, background-color .3s;
+  &:hover {
+    background-color: #fafafa;
+  }
+  &:active {
+    transform: scale(.95);
+  }
 
 `
  
