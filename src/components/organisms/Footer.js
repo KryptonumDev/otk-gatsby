@@ -101,7 +101,7 @@ const Wrapper = styled.footer`
     max-width: 1366px;
   }
   padding: 84px 0;
-  background-color: #00259C;
+  background-color: var(--primary-500);
   color: #fff;
   .logo {
     max-width: 90%;

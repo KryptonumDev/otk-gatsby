@@ -1,6 +1,8 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
+import { ChevronDown, Logo } from "../atoms/Icons";
+import { Clamp } from "../../utils/functions";
 
 const Nav = () => {
   const {
@@ -33,7 +35,61 @@ const Nav = () => {
       </WrapperTopBar>
       <WrapperNav>
         <div className="max-width">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi expedita maxime, ducimus eaque ullam nihil totam corrupti neque repudiandae beatae facilis quam optio voluptatum recusandae reiciendis, tenetur maiores est. Tempore, rerum animi. Commodi, quisquam ratione ducimus sed eveniet enim quos veritatis vero fugit aliquam ipsum at inventore ex atque obcaecati quaerat culpa saepe similique odit illum. Debitis deleniti officiis placeat animi fugiat laboriosam consequuntur voluptas odio, quisquam ad quas eius. Fuga autem aliquam modi nesciunt quibusdam voluptate itaque reprehenderit optio voluptatem tempore, porro laborum ea perspiciatis veniam explicabo cupiditate dignissimos repudiandae nemo tempora animi atque laudantium voluptatum. Unde temporibus quibusdam dicta, molestias omnis reprehenderit corporis sequi et nihil delectus possimus corrupti cumque doloribus in facere ipsa expedita neque aperiam suscipit molestiae dignissimos, numquam ipsam minus! Maiores atque dolores officia tenetur, laboriosam perspiciatis deleniti suscipit, culpa sed molestiae porro blanditiis animi sapiente eum corrupti minus iste molestias quibusdam ex recusandae voluptate. Eius corrupti minus laboriosam repellendus animi consectetur eveniet numquam esse quae. Nihil dolorum minima adipisci aspernatur delectus maxime suscipit officiis vero accusamus, mollitia esse eaque doloremque quas perferendis vel cum obcaecati sapiente nesciunt facilis vitae architecto sit corrupti dolores perspiciatis? Maxime eveniet quam officiis dignissimos rerum sint reiciendis asperiores porro!
+          <Link to="/" aria-label="Strona główna" className="logo">
+            <Logo />
+          </Link>
+          <ul className="list">
+            <li>
+              <Link to='/'>Strona główna</Link>
+            </li>
+            <li>
+              <Link to='/'>Poradnia rodzinna</Link>
+            </li>
+            <li>
+              <span>
+                <span>Dla pacjenta</span>
+                <ChevronDown />
+              </span>
+              <ul className="dropdown">
+                <li>
+                  <Link to='/'>Poznaj nas</Link>
+                </li>
+                <li>
+                  <Link to='/'>Pytania i odpowiedzi</Link>
+                </li>
+                <li>
+                  <Link to='/'>Darmowy ebook</Link>
+                </li>
+                <li>
+                  <Link to='/'>Profilaktyka</Link>
+                </li>
+                <li>
+                  <Link to='/'>Gdzie zrobić badania?</Link>
+                </li>
+                <li>
+                  <Link to='/'>Ankieta satysfakcji</Link>
+                </li>
+                <li>
+                  <Link to='/'>Regulamin</Link>
+                </li>
+                <li>
+                  <Link to='/'>Cennik</Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Link to='/'>Personel</Link>
+            </li>
+            <li>
+              <Link to='/'>Zapisz się</Link>
+            </li>
+            <li>
+              <Link to='/'>Kontakt</Link>
+            </li>
+            <li>
+              <Link to='/' className="nav-cta">Odwiedź nas!</Link>
+            </li>
+          </ul>
         </div>
       </WrapperNav>
     </>
@@ -41,27 +97,28 @@ const Nav = () => {
 }
 
 const WrapperTopBar = styled.div`
-  background-color: #00259C;
+  background-color: var(--primary-500);
   color: #fff;
   padding: 16px 0;
+  font-size: ${Clamp(14, 16, 16)};
   > .max-width {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 48px;
     justify-content: space-between;
   }
   .workingHours {
     text-transform: uppercase;
   }
   .contact {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px 48px;
     a {
       display: grid;
       grid-template-columns: auto 1fr;
       align-items: center;
       gap: 12px;
-      
     }
   }
 `
@@ -70,8 +127,60 @@ const WrapperNav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 99;
+  height: 123px;
+  background-color: var(--neutral-100);
+  > .max-width {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .list {
+    display: flex;
+    align-items: center;
+    gap: ${Clamp(16, 16, 48, 'px')};
+    font-size: ${Clamp(16, 16, 18)};
+    li {
+      list-style-type: none;
+      > span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 0;
+      }
+      &:hover,
+      &:focus-within {
+        .dropdown {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+      }
+    }
+    .dropdown {
+      transition: opacity .2s var(--easing), transform .4s var(--easing), visibility .4s;
+      opacity: 0;
+      transform: translateY(-8px);
+      visibility: hidden;
+      position: absolute;
+      background-color: var(--neutral-100);
+      padding: 20px 16px;
+      margin: 0 -16px;
+      border: 1px solid #0FE3AF;
+      li {
+        &:not(:last-child){
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #0FE3AF;
+        }
+      }
+    }
+  }
+  .nav-cta {
+    padding: 16px 34px;
+    background-color: var(--primary-500);
+    color: var(--neutral-100);
+  }
 `
-
 
 const Tel = () => (
   <svg

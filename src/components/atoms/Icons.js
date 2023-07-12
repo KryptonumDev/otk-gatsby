@@ -113,3 +113,20 @@ export const Twitter = () => (
     ></path>
   </svg>
 )
+
+export const ChevronDown = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='13'
+    height='9'
+    fill='none'
+    viewBox='0 0 13 9'
+  >
+    <path
+      stroke='#0152A8'
+      strokeLinecap='round'
+      strokeWidth='2'
+      d='M1 1.875l5.25 5.25 5.25-5.25'
+    ></path>
+  </svg>
+)

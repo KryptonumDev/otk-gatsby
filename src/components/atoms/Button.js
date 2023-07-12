@@ -52,7 +52,7 @@ const StyledAnchor = styled.a`
   }
   border-radius: 12px;
   background-color: #fff;
-  color: #00259C;
+  color: var(--primary-500);
   padding: 21px 48px;
   transition: transform .3s, background-color .3s;
   &:hover {
