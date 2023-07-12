@@ -48,6 +48,7 @@ const StyledAnchor = styled.a`
   font-size: ${Clamp(16, 20, 24)};
   @media (max-width: 499px){
     width: 100%;
+    text-align: center;
   }
   border-radius: 12px;
   background-color: #fff;

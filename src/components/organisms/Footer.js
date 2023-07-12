@@ -6,16 +6,17 @@ import Button from "../atoms/Button";
 import { Clamp } from "../../utils/functions";
 
 const Footer = () => {
-  const{
+  const {
+    global,
     global: {
       footer
     }
   } = useStaticQuery(graphql`
     query {
       global: sanityGlobal {
+        tel
+        email
         footer {
-          tel
-          email
           facebook
           instagram
           twitter
@@ -41,17 +42,17 @@ const Footer = () => {
             <Logo variant="light" />
           </Link>
           <div className="contact">
-            <a href={`tel:${footer.tel}`}>
+            <a href={`tel:${global.tel}`}>
               <div className="icon">
                 <Tel />
               </div>
-              <span>{footer.tel}</span>
+              <span>{global.tel}</span>
             </a>
-            <a href={`mailto:${footer.email}`}>
+            <a href={`mailto:${global.email}`}>
               <div className="icon">
                 <Mail />
               </div>
-              <span>{footer.email}</span>
+              <span>{global.email}</span>
             </a>
           </div>
           <div className="social">
@@ -105,7 +106,7 @@ const Wrapper = styled.footer`
   .logo {
     max-width: 90%;
     svg {
-      width: 100%;
+      max-width: 100%;
     }
   }
   .text {

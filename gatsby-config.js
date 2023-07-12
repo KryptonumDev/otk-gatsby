@@ -27,19 +27,19 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: ``,
-    //     short_name: `Ośrodek TK`,
-    //     lang: `pl`,
-    //     display: `standalone`,
-    //     icon: `src/resources/images/favicon.webp`,
-    //     start_url: `/`,
-    //     background_color: ``,
-    //     theme_color: ``,
-    //   },
-    // }
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: `Ośrodek zdrowia w Turośni Kościelnej`,
+        short_name: `Ośrodek Zdrowia`,
+        lang: `pl`,
+        display: `standalone`,
+        icon: `src/resources/images/logo.webp`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#00259C`,
+      },
+    }
   ],
   trailingSlash: "never"
 };
