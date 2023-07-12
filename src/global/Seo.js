@@ -1,6 +1,19 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
 
-export const SEO = ({ author, date, title, description, url, ogImage, children }) => {
+export const Seo = ({ title, description, url, children }) => {
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `)
+
+  const domain = site.siteMetadata.siteUrl;
+
   const seo = {
     title: title || 'Ośrodek TK',
     description: description || '',
@@ -21,11 +34,10 @@ export const SEO = ({ author, date, title, description, url, ogImage, children }
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
-      <meta property="twitter:domain" content={`${domain}/pl`} />
-      <meta property="twitter:image" content={og_Img.asset.url} />
+      <meta property="twitter:domain" content={`${domain}`} />
+      {/* <meta property="twitter:image" content={og_Img.asset.url} /> */}
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-
       <meta property="twitter:url" content={`${domain}${seo.url}`} />
       <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
