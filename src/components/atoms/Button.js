@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 
-const Button = ({ theme, variant, children, to, ...props }) => {
+const Button = ({ theme, variant='', children, to, ...props }) => {
   const isExternal = to && to.startsWith('https://');
   return (
     <>
@@ -44,6 +44,7 @@ const Button = ({ theme, variant, children, to, ...props }) => {
 }
 
 const StyledAnchor = styled.a`
+  display: inline-block;
   font-size: ${Clamp(16, 20, 24)};
   @media (max-width: 499px){
     width: 100%;

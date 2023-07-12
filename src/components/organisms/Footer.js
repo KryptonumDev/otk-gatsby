@@ -1,11 +1,36 @@
 import React from "react";
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import { Facebook, Instagram, Logo, Mail, Tel, Twitter } from "../atoms/Icons";
 import Button from "../atoms/Button";
 import { Clamp } from "../../utils/functions";
 
 const Footer = () => {
+  const{
+    global: {
+      footer
+    }
+  } = useStaticQuery(graphql`
+    query {
+      global: sanityGlobal {
+        footer {
+          tel
+          email
+          facebook
+          instagram
+          twitter
+          heading
+          paragraph
+          cta {
+            theme
+            text
+            href
+          }
+        }
+      }
+    }
+  `)
+  
   return (
     <Wrapper>
       <Shape1 className="shape1" />
@@ -16,36 +41,36 @@ const Footer = () => {
             <Logo variant="light" />
           </Link>
           <div className="contact">
-            <a href="tel:85 650 52 79">
+            <a href={`tel:${footer.tel}`}>
               <div className="icon">
                 <Tel />
               </div>
-              <span>85 650 52 79</span>
+              <span>{footer.tel}</span>
             </a>
-            <a href="mailto:rejestracja@osrodektk.pl">
+            <a href={`mailto:${footer.email}`}>
               <div className="icon">
                 <Mail />
               </div>
-              <span>rejestracja@osrodektk.pl</span>
+              <span>{footer.email}</span>
             </a>
           </div>
           <div className="social">
-            <a href="todo">
+            <a href={footer.instagram}>
               <Instagram />
             </a>
-            <a href="todo">
+            <a href={footer.facebook}>
               <Facebook />
             </a>
-            <a href="todo">
+            <a href={footer.twitter}>
               <Twitter />
             </a>
           </div>
         </div>
         <div className="text">
-          <h3>Chcesz umówić się do lekarza szybko i bez czekania w kolejce?</h3>
-          <p>Nasza przychodnia to nowoczesne podejście i przyjazna atmosfera!</p>
+          <h3>{footer.heading}</h3>
+          <p>{footer.paragraph}</p>
         </div>
-        <Button theme='primary'>Umów wizytę</Button>
+        <Button theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
         <p className="copyright">Copyrights by Ośrodek Zdrowia w Turośni Kościelnej {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
       </div>
     </Wrapper>
