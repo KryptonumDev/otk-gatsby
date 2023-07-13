@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import CtaSection from "../components/sections/CtaSection"
 import Hero from "../components/sections/Homepage/Hero"
 import Learn from "../components/sections/Homepage/Learn"
 import Services from "../components/sections/Homepage/Services"
@@ -19,6 +20,7 @@ const IndexPage = ({
     learn_Paragraph,
     learn_Cta,
     learn_Img,
+    ctaSection,
   }}
 }) => {
   return (
@@ -41,6 +43,7 @@ const IndexPage = ({
         learn_Cta,
         learn_Img,
       }} />
+      <CtaSection data={ctaSection} firstIconOnRight={true} />
     </>
   )
 }
@@ -86,6 +89,24 @@ export const query = graphql`
         asset {
           altText
           gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      # CTA Section
+      ctaSection {
+        heading
+        subheading
+        paragraph
+        claim
+        cta {
+          theme
+          text
+          href
+        }
+        icons {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
         }
       }
       seo {
