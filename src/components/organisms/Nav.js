@@ -191,12 +191,12 @@ const WrapperNav = styled.nav`
     cursor: pointer;
     display: none;
     grid-template-columns: 1fr;
-    gap: 5px;
+    gap: 6px;
     order: 2;
     span {
       display: block;
       width: 48px;
-      height: 5px;
+      height: 4px;
       background-color: var(--primary-500);
       &:nth-child(2) {
         background-color: var(--secondary-500);

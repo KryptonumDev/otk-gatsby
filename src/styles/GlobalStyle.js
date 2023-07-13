@@ -77,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
   hr {
     display: inline-block;
     width: 100%;
-    max-width: 220px;
+    max-width: 180px;
     height: 3px;
     background-color: var(--secondary-500);
     border: none;
@@ -85,6 +85,9 @@ const GlobalStyle = createGlobalStyle`
   }
   h1 {
     font-size: ${Clamp(32, 36, 82)};
+  }
+  h2 {
+    font-size: ${Clamp(24, 32, 48)};
   }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;

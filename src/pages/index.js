@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import * as React from "react"
 import Hero from "../components/sections/Homepage/Hero"
+import Services from "../components/sections/Homepage/Services"
 import { Seo } from "../global/Seo"
 
 const IndexPage = ({
@@ -10,6 +11,9 @@ const IndexPage = ({
     hero_Paragraph,
     hero_Cta,
     hero_Img,
+    services_Heading,
+    services_Paragraph,
+    services_List,
   }}
 }) => {
   return (
@@ -21,6 +25,11 @@ const IndexPage = ({
         hero_Cta,
         hero_Img,
       }} /> 
+      <Services data={{
+        services_Heading,
+        services_Paragraph,
+        services_List,
+      }} />
     </>
   )
 }
@@ -28,6 +37,7 @@ const IndexPage = ({
 export const query = graphql`
   query {
     page: sanityHomepage {
+      # Hero
       hero_Heading
       hero_Subheading
       hero_Paragraph
@@ -41,6 +51,17 @@ export const query = graphql`
           altText
           gatsbyImageData(placeholder: BLURRED)
         }
+      }
+      # Services
+      services_Heading
+      services_Paragraph
+      services_List {
+        img {
+          asset {
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        paragraph
       }
       seo {
         title

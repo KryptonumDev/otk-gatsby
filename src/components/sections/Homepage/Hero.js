@@ -52,7 +52,7 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr 1fr;
   }
   header {
-    padding: ${Clamp(120,80, 180, 'px')} 0;
+    padding: ${Clamp(64, 64, 144, 'px')} 0;
     .heading {
       margin-bottom: ${Clamp(8, 16, 24, 'px')};
     }
@@ -71,8 +71,8 @@ const Wrapper = styled.section`
   .decoration {
     position: absolute;
     width: 50%;
-    max-width: 800px;
-    max-height: 800px;
+    max-width: 750px;
+    max-height: 750px;
     right: 0;
     bottom: 0;
     height: auto;
