@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import { ChevronDown, Facebook, Instagram, Logo, Twitter } from "../atoms/Icons";
+import { ChevronDown, Logo } from "../atoms/Icons";
 import { Clamp } from "../../utils/functions";
 import Button from "../atoms/Button";
+import Social from "../moleculas/Social";
 
 const Nav = () => {
   const {
@@ -13,9 +14,6 @@ const Nav = () => {
       global: sanityGlobal {
         tel
         email
-        facebook
-        instagram
-        twitter
         nav {
           workingHours
         }
@@ -31,7 +29,6 @@ const Nav = () => {
 
   const handleLink = () => {
     setNavOpened(false);
-    console.log('hej')
   }
 
   return (
@@ -118,17 +115,7 @@ const Nav = () => {
             <li>
               <Link to='/kontakt' onClick={() => handleLink()}>Kontakt</Link>
             </li>
-            <li className="social">
-              <a href={global.instagram} target="_blank" rel="noreferrer">
-                <Instagram />
-              </a>
-              <a href={global.facebook} target="_blank" rel="noreferrer">
-                <Facebook />
-              </a>
-              <a href={global.twitter} target="_blank" rel="noreferrer">
-                <Twitter />
-              </a>
-            </li>
+            <Social as='li' />
             <li>
               <Button
                 theme="primary"
@@ -224,17 +211,6 @@ const WrapperNav = styled.nav`
   }
   .social {
     display: none;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-    a {
-      transition: opacity .4s, transform .4s;
-      &:hover {
-        opacity: .8;
-      }
-      &:active {
-        transform: scale(.95);
-      }
-    }
   }
 
   // ### MOBILE
@@ -283,6 +259,7 @@ const WrapperNav = styled.nav`
       align-items: start;
       background: linear-gradient(var(--neutral-100), rgba(255, 255, 255, 0.9));
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       gap: 16px;
       li {
         width: 100%;

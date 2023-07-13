@@ -1,9 +1,10 @@
 import React from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import { Facebook, Instagram, Logo, Mail, Tel, Twitter } from "../atoms/Icons";
+import { Logo, Mail, Tel } from "../atoms/Icons";
 import Button from "../atoms/Button";
 import { Clamp } from "../../utils/functions";
+import Social from "../moleculas/Social";
 
 const Footer = () => {
   const {
@@ -16,9 +17,6 @@ const Footer = () => {
       global: sanityGlobal {
         tel
         email
-        facebook
-        instagram
-        twitter
         footer {
           heading
           paragraph
@@ -55,17 +53,7 @@ const Footer = () => {
               <span>{global.email}</span>
             </a>
           </div>
-          <div className="social">
-            <a href={global.instagram}>
-              <Instagram />
-            </a>
-            <a href={global.facebook}>
-              <Facebook />
-            </a>
-            <a href={global.twitter}>
-              <Twitter />
-            </a>
-          </div>
+          <Social as="div" />
         </div>
         <div className="text">
           <h3>{footer.heading}</h3>
@@ -154,20 +142,6 @@ const Wrapper = styled.footer`
       }
       &:hover .icon::before {
         transform: scale(1.1);
-      }
-    }
-  }
-  .social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-    a {
-      transition: opacity .4s, transform .4s;
-      &:hover {
-        opacity: .8;
-      }
-      &:active {
-        transform: scale(.95);
       }
     }
   }
