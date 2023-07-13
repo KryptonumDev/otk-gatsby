@@ -28,7 +28,7 @@ const Services = ({
                 alt={item.img.asset.altText || ''}
                 className="img"
               />
-              <ReactMarkdown>{item.paragraph}</ReactMarkdown>
+              <ReactMarkdown>{item.title}</ReactMarkdown>
             </li>
           ))}
         </ul>

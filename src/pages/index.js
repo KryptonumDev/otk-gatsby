@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import * as React from "react"
 import CtaSection from "../components/sections/CtaSection"
+import Feautures from "../components/sections/Homepage/Feautures"
 import Hero from "../components/sections/Homepage/Hero"
 import Learn from "../components/sections/Homepage/Learn"
 import Services from "../components/sections/Homepage/Services"
@@ -21,6 +22,8 @@ const IndexPage = ({
     learn_Cta,
     learn_Img,
     ctaSection,
+    features_Heading,
+    features_List,
   }}
 }) => {
   return (
@@ -44,6 +47,10 @@ const IndexPage = ({
         learn_Img,
       }} />
       <CtaSection data={ctaSection} firstIconOnRight={true} />
+      <Feautures data={{
+        features_Heading,
+        features_List
+      }} />
     </>
   )
 }
@@ -75,7 +82,7 @@ export const query = graphql`
             gatsbyImageData(placeholder: BLURRED)
           }
         }
-        paragraph
+        title
       }
       # Learn more
       learn_List
@@ -108,6 +115,17 @@ export const query = graphql`
             gatsbyImageData(placeholder: BLURRED)
           }
         }
+      }
+      # Feautures 
+      features_Heading
+      features_List {
+        img {
+          asset {
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        title
+        description
       }
       seo {
         title
