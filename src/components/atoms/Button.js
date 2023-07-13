@@ -56,27 +56,40 @@ const StyledAnchor = styled.a`
     &.dark {
       background-color: var(--primary-500);
       color: var(--neutral-100);
+      &:hover {
+        background-color: var(--primary-400);
+      }
     }
     &.light {
-      background-color: #fff;
+      background-color: var(--neutral-100);
       color: var(--primary-500);
       &:hover {
-        background-color: #fafafa;
+        background-color: var(--neutral-200);
       }
     }
   }
   &.secondary {
-    padding: 17px 42px;
-    border: 2px solid var(--neutral-100);
-    color: var(--neutral-100);
-    &:hover {
-      background-color: #fafafa;
+    padding: 16px 42px;
+    &.dark {
+      border: 3px solid var(--primary-500);
       color: var(--primary-500);
+      &:hover {
+        color: var(--primary-300);
+        border-color: var(--primary-300);
+      }
     }
-    
+    &.light {
+      border: 3px solid var(--neutral-100);
+      color: var(--neutral-100);
+      &:hover {
+        color: var(--secondary-200);
+        border-color: var(--secondary-200);
+      }
+    }
   }
   border-radius: 12px;
-  transition: transform .3s, background-color .3s, color .3s;
+  transition: transform .3s, background-color .3s, color .3s, border-color .3s;
+  transition-timing-function: var(--easing);
   &:active {
     transform: scale(.95);
   }

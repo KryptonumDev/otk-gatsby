@@ -130,3 +130,22 @@ export const ChevronDown = () => (
     ></path>
   </svg>
 )
+
+export const Check = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='24'
+    height='24'
+    fill='none'
+    viewBox='0 0 30 30'
+  >
+    <circle cx='14.664' cy='15.37' r='14.5' fill='#4D77FF'></circle>
+    <path
+      stroke='#fff'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2.411'
+      d='M21.108 10.537l-8.861 8.86-4.028-4.027'
+    ></path>
+  </svg>
+)

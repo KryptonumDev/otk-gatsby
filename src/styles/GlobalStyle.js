@@ -10,7 +10,11 @@ const GlobalStyle = createGlobalStyle`
   }
   :root {
     --neutral-100: #fff;
+    --neutral-200: #F1F1F1;
+    --primary-300: #4D77FF;
+    --primary-400: #0152A8;
     --primary-500: #00259C;
+    --secondary-200: #57EBC7;
     --secondary-500: #0FE3AF;
     --error-400: #EE6470;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
@@ -98,7 +102,7 @@ const GlobalStyle = createGlobalStyle`
   .cta-wrapper {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 20px 32px;
+    gap: 16px 32px;
     @media (max-width: 499px){
       width: 100%;
     }

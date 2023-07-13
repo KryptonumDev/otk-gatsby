@@ -7,7 +7,6 @@ import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 
 const CtaSection = ({ data }) => {
-  console.log(data);
   return (
     <Wrapper>
       <div className="max-width">

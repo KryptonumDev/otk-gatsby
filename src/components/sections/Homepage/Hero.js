@@ -35,6 +35,7 @@ const Hero = ({
           objectFit="contain"
           objectPosition="bottom"
           className="img"
+          loading="eager"
         />
         <Decoration />
       </div>
