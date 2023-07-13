@@ -24,6 +24,8 @@ const IndexPage = ({
     ctaSection,
     features_Heading,
     features_List,
+    ctaSection2,
+    ctaSection3,
   }}
 }) => {
   return (
@@ -51,6 +53,8 @@ const IndexPage = ({
         features_Heading,
         features_List
       }} />
+      <CtaSection data={ctaSection2} />
+      <CtaSection data={ctaSection3} />
     </>
   )
 }
@@ -130,6 +134,42 @@ export const query = graphql`
       seo {
         title
         description
+      }
+      # CTA Section 2
+      ctaSection2 {
+        heading
+        subheading
+        paragraph
+        claim
+        cta {
+          theme
+          text
+          href
+        }
+        icons {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+      }
+      # CTA Section 3
+      ctaSection3 {
+        heading
+        subheading
+        paragraph
+        claim
+        cta {
+          theme
+          text
+          href
+        }
+        icons {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
       }
     }
   }

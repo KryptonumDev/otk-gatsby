@@ -15,7 +15,9 @@ const CtaSection = ({ data, firstIconOnRight=false }) => {
         {data.subheading && (
           <ReactMarkdown className="subheading">{data.subheading}</ReactMarkdown>
         )}
-        <ReactMarkdown className="paragraph">{data.paragraph}</ReactMarkdown>
+        {data.paragraph && (
+          <ReactMarkdown className="paragraph">{data.paragraph}</ReactMarkdown>
+        )}
         {data.claim && (
           <ReactMarkdown className="claim">{data.claim}</ReactMarkdown>
         )}
@@ -25,15 +27,17 @@ const CtaSection = ({ data, firstIconOnRight=false }) => {
           ))}
         </div>
       </div>
-      {data.icons.map((icon, i) => (
-        <GatsbyImage
-          image={icon.asset.gatsbyImageData}
-          alt={icon.asset.altText || ''}
-          objectFit="contain"
-          className={`icon icon-${i}`}
-          key={i}
-        />
-      ))}
+      {data.icons && (
+        data.icons.map((icon, i) => (
+          <GatsbyImage
+            image={icon.asset.gatsbyImageData}
+            alt={icon.asset.altText || ''}
+            objectFit="contain"
+            className={`icon icon-${i}`}
+            key={i}
+          />
+        ))
+      )}
     </Wrapper>
   );
 }
@@ -89,8 +93,21 @@ const Wrapper = styled.section`
       }
     }
   }
+  @media (max-width: 699px) {
+    .icon-0 {
+      display: none;
+    }
+    &.firstIconOnRight {
+      .icon-0 {
+        display: block;
+      }
+      .icon-1 {
+        display: none;
+      }
+    }
+  }
   .max-width {
-    max-width: 1080px;
+    max-width: 1024px;
   }
   .heading {
     h2 {
@@ -116,6 +133,11 @@ const Wrapper = styled.section`
   }
   .cta-wrapper {
     margin-top: ${Clamp(24, 32, 48, 'px')};
+  }
+  hr + .cta-wrapper {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
   }
   @media (min-width: 550px){
     text-align: center;
