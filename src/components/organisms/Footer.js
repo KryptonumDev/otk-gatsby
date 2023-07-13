@@ -16,10 +16,10 @@ const Footer = () => {
       global: sanityGlobal {
         tel
         email
+        facebook
+        instagram
+        twitter
         footer {
-          facebook
-          instagram
-          twitter
           heading
           paragraph
           cta {
@@ -56,13 +56,13 @@ const Footer = () => {
             </a>
           </div>
           <div className="social">
-            <a href={footer.instagram}>
+            <a href={global.instagram}>
               <Instagram />
             </a>
-            <a href={footer.facebook}>
+            <a href={global.facebook}>
               <Facebook />
             </a>
-            <a href={footer.twitter}>
+            <a href={global.twitter}>
               <Twitter />
             </a>
           </div>
@@ -71,7 +71,7 @@ const Footer = () => {
           <h3>{footer.heading}</h3>
           <p>{footer.paragraph}</p>
         </div>
-        <Button theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
+        <Button variant="light" theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
         <p className="copyright">Copyrights by Ośrodek Zdrowia w Turośni Kościelnej {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
       </div>
     </Wrapper>
@@ -103,12 +103,6 @@ const Wrapper = styled.footer`
   padding: 84px 0;
   background-color: var(--primary-500);
   color: #fff;
-  .logo {
-    max-width: 90%;
-    svg {
-      max-width: 100%;
-    }
-  }
   .text {
     font-size: ${Clamp(24, 24, 42)};
     h3 {
@@ -154,7 +148,7 @@ const Wrapper = styled.footer`
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background-color: #0FE3AF;
+          background-color: var(--secondary-500);
           transition: transform .4s var(--easing);
         }
       }

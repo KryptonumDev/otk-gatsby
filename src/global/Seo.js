@@ -15,7 +15,7 @@ export const Seo = ({ title, description, url, children }) => {
   const domain = site.siteMetadata.siteUrl;
 
   const seo = {
-    title: title || 'Ośrodek TK',
+    title: title || 'Ośrodek zdrowia w Turośni Kościelnej',
     description: description || '',
     url: url || '',
   }

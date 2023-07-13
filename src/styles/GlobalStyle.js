@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --neutral-100: #fff;
     --primary-500: #00259C;
+    --secondary-500: #0FE3AF;
     --error-400: #EE6470;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
     --easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -37,12 +38,12 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
   :focus-visible {
-    outline: 2px solid #26D9C3;
+    outline: 3px solid var(--secondary-500);
     outline-offset: 5px;
   }
-  main, .max-width {
+  .max-width {
     max-width: 1680px;
-    width: calc(100% - var(--pageMargin)*2);
+    width: calc(100% - var(--pageMargin) * 2);
     margin: 0 auto;
     height: 100%;
   }
@@ -50,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
     display: grid;
     grid-template-columns: 1fr;
     row-gap: ${Clamp(96, 144, 172, "px")};
+    margin-bottom: ${Clamp(96, 144, 172, "px")};
   }
   svg {
     vertical-align: top;
@@ -71,6 +73,32 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
     color: inherit;
     appearance: none;
+  }
+  hr {
+    display: inline-block;
+    width: 100%;
+    max-width: 220px;
+    height: 3px;
+    background-color: var(--secondary-500);
+    border: none;
+    margin: ${Clamp(24, 32, 48, 'px')} 0;
+  }
+  h1 {
+    font-size: ${Clamp(32, 36, 82)};
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    strong {
+      font-weight: 800;
+    }
+  }
+  .cta-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 20px 32px;
+    @media (max-width: 499px){
+      width: 100%;
+    }
   }
 `
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from "./src/global/Layout"
 import ManropeRegular from "./src/resources/fonts/Manrope-Regular.woff2"
+import ManropeSemiBold from "./src/resources/fonts/Manrope-SemiBold.woff2"
 import ManropeBold from "./src/resources/fonts/Manrope-Bold.woff2"
-import ManropeExtraBold from "./src/resources/fonts/Manrope-ExtraBold.woff2"
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   setHtmlAttributes({ lang: "pl" })
@@ -17,7 +17,7 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     />,
     <link
       rel="preload"
-      href={ManropeBold}
+      href={ManropeSemiBold}
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
@@ -25,7 +25,7 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     />,
     <link
       rel="preload"
-      href={ManropeExtraBold}
+      href={ManropeBold}
       as="font"
       type="font/woff2"
       crossOrigin="anonymous"
