@@ -4,6 +4,7 @@ import CtaSection from "../components/sections/CtaSection"
 import Feautures from "../components/sections/Homepage/Feautures"
 import Hero from "../components/sections/Homepage/Hero"
 import Learn from "../components/sections/Homepage/Learn"
+import Prevention from "../components/sections/Homepage/Prevention"
 import Services from "../components/sections/Homepage/Services"
 import { Seo } from "../global/Seo"
 
@@ -25,7 +26,12 @@ const IndexPage = ({
     features_Heading,
     features_List,
     ctaSection2,
-    ctaSection3,
+    prevention_Heading,
+    prevention_Paragraph,
+    prevention_ListTitle,
+    prevention_List,
+    prevention_CtaTitle,
+    prevention_Cta,
   }}
 }) => {
   return (
@@ -54,7 +60,14 @@ const IndexPage = ({
         features_List
       }} />
       <CtaSection data={ctaSection2} />
-      <CtaSection data={ctaSection3} />
+      <Prevention data={{
+        prevention_Heading,
+        prevention_Paragraph,
+        prevention_ListTitle,
+        prevention_List,
+        prevention_CtaTitle,
+        prevention_Cta,
+      }} />
     </>
   )
 }
@@ -153,23 +166,23 @@ export const query = graphql`
           }
         }
       }
-      # CTA Section 3
-      ctaSection3 {
-        heading
-        subheading
-        paragraph
-        claim
-        cta {
-          theme
-          text
-          href
-        }
-        icons {
+      # Prevention Section
+      prevention_Heading
+      prevention_Paragraph
+      prevention_ListTitle
+      prevention_List {
+        img {
           asset {
-            altText
             gatsbyImageData(placeholder: BLURRED)
           }
         }
+        title
+      }
+      prevention_CtaTitle
+      prevention_Cta {
+        theme
+        text
+        href
       }
     }
   }

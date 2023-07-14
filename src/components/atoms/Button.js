@@ -46,10 +46,6 @@ const Button = ({ theme, variant='dark', children, to, className, ...props }) =>
 const StyledAnchor = styled.a`
   display: inline-block;
   font-size: ${Clamp(16, 20, 24)};
-  @media (max-width: 499px){
-    width: 100%;
-    text-align: center;
-  }
   font-weight: 600;
   &.primary {
     padding: 19px 42px;
