@@ -85,8 +85,8 @@ const Wrapper = styled.section`
     li {
       max-width: 250px;
       .icon {
-        width: ${Clamp(48, 64, 100, 'px')};
-        height: ${Clamp(48, 64, 100, 'px')};
+        width: ${Clamp(64, 72, 100, 'px')};
+        height: ${Clamp(64, 72, 100, 'px')};
         background-color: var(--primary);
         display: grid;
         border-radius: 100%;
@@ -97,6 +97,7 @@ const Wrapper = styled.section`
         }
       }
       p {
+        font-weight: 600;
         margin-top: ${Clamp(16, 24, 24)};
         font-size: ${Clamp(16, 20, 20)};
       }

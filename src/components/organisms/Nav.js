@@ -72,7 +72,7 @@ const Nav = () => {
               <Link to='/' onClick={() => handleLink()}>Strona główna</Link>
             </li>
             <li>
-              <Link to='/poradnia' onClick={() => handleLink()}>Poradnia rodzinna</Link>
+              <Link to='/poradnia-medycyny-rodzinnej' onClick={() => handleLink()}>Poradnia rodzinna</Link>
             </li>
             <li tabIndex='0'>
               <span>
@@ -96,7 +96,7 @@ const Nav = () => {
                   <Link to='/' onClick={() => handleLink()}>Gdzie zrobić badania?</Link>
                 </li>
                 <li>
-                  <Link to='/' onClick={() => handleLink()}>Ankieta satysfakcji</Link>
+                  <a to='https://forms.gle/e7hEitYf1ioQ8gXc8' target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
                 </li>
                 <li>
                   <Link to='/' onClick={() => handleLink()}>Regulamin</Link>
@@ -107,10 +107,7 @@ const Nav = () => {
               </ul>
             </li>
             <li>
-              <Link to='/' onClick={() => handleLink()}>Personel</Link>
-            </li>
-            <li>
-              <Link to='/' onClick={() => handleLink()}>Zapisz się</Link>
+              <Link to='/personel-osrodka-zdrowia' onClick={() => handleLink()}>Personel</Link>
             </li>
             <li>
               <Link to='/kontakt' onClick={() => handleLink()}>Kontakt</Link>
@@ -119,10 +116,10 @@ const Nav = () => {
             <li>
               <Button
                 theme="primary"
-                to="/"
+                to="/osrodek-zdrowia-zapisy"
                 className="nav-cta"
                 onClick={() => handleLink()}
-              >Odwiedź nas!</Button>
+              >Zapisz się</Button>
             </li>
           </ul>
         </div>
@@ -154,10 +151,16 @@ const WrapperNav = styled.nav`
         align-items: center;
         gap: 10px;  
         padding: 16px 0;
+        svg {
+          transition: transform .3s;
+        }
       }
       @media (min-width: 1300px){
         &:hover,
         &:focus-within {
+          > span svg {
+            transform: rotateX(-180deg);
+          }
           .dropdown {
             opacity: 1;
             transform: translateY(0);
@@ -241,7 +244,7 @@ const WrapperNav = styled.nav`
     }
     .social {
       display: flex;
-      margin: 22px 0;
+      margin: 13px 0;
     }
     .list {
       opacity: 0;
@@ -273,6 +276,9 @@ const WrapperNav = styled.nav`
         &:focus,
         &:focus-within {
           pointer-events: none;
+          > span svg {
+            transform: rotateX(-180deg);
+          }
           a {
             pointer-events: all;
           }
@@ -294,7 +300,7 @@ const WrapperNav = styled.nav`
         border: none;
         li {
           &:first-child {
-            padding-top: 16px;
+            padding-top: 24px;
           }
           &:last-child {
             padding-bottom: 16px;
