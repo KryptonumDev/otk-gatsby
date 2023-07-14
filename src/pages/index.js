@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
 import * as React from "react"
 import CtaSection from "../components/sections/CtaSection"
+import Ebook from "../components/sections/Ebook"
 import Feautures from "../components/sections/Homepage/Feautures"
 import Hero from "../components/sections/Homepage/Hero"
 import Learn from "../components/sections/Homepage/Learn"
@@ -68,6 +69,7 @@ const IndexPage = ({
         prevention_CtaTitle,
         prevention_Cta,
       }} />
+      <Ebook />
     </>
   )
 }

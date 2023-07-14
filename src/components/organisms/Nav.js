@@ -258,6 +258,7 @@ const WrapperNav = styled.nav`
       width: 100%;
       left: 0;
       height: calc(100vh - 89px);
+      height: calc(100dvh - 89px);
       flex-direction: column;
       align-items: start;
       background: linear-gradient(var(--neutral-100), rgba(255, 255, 255, 0.9));

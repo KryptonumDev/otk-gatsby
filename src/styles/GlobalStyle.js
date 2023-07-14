@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
   :focus {
     outline: none;
   }
-  :focus-visible {
+  .tabbing :focus-visible {
     outline: 3px solid var(--secondary-500);
     outline-offset: 5px;
   }
@@ -78,6 +78,7 @@ const GlobalStyle = createGlobalStyle`
   input, textarea, button, select {
     font: inherit;
     color: inherit;
+    background-color: transparent;
     appearance: none;
   }
   hr {
@@ -96,9 +97,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${Clamp(24, 32, 48)};
   }
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-weight: 600;
     strong {
-      font-weight: 800;
+      font-weight: 700;
     }
   }
   .cta-wrapper {
