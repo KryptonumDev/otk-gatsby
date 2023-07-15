@@ -81,28 +81,25 @@ const Nav = () => {
               </span>
               <ul className="dropdown">
                 <li>
-                  <Link to='/poznaj-nas' onClick={() => handleLink()}>Poznaj nas</Link>
+                  <Link to='/pytania' onClick={() => handleLink()}>Pytania i odpowiedzi</Link>
                 </li>
                 <li>
-                  <Link to='/' onClick={() => handleLink()}>Pytania i odpowiedzi</Link>
+                  <Link to='/pierwszy-rok-zycia-dziecka-ebook' onClick={() => handleLink()}>Darmowy ebook</Link>
                 </li>
                 <li>
-                  <Link to='/' onClick={() => handleLink()}>Darmowy ebook</Link>
+                  <Link to='/profilaktyka-i-diagnostyka' onClick={() => handleLink()}>Profilaktyka</Link>
                 </li>
                 <li>
-                  <Link to='/' onClick={() => handleLink()}>Profilaktyka</Link>
-                </li>
-                <li>
-                  <Link to='/' onClick={() => handleLink()}>Gdzie zrobić badania?</Link>
+                  <Link to='/gdzie-zrobic-badania' onClick={() => handleLink()}>Gdzie zrobić badania?</Link>
                 </li>
                 <li>
                   <a to='https://forms.gle/e7hEitYf1ioQ8gXc8' target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
                 </li>
                 <li>
-                  <Link to='/' onClick={() => handleLink()}>Regulamin</Link>
+                  <Link to='/osrodek-zdrowia-regulamin' onClick={() => handleLink()}>Regulamin</Link>
                 </li>
                 <li>
-                  <Link to='/' onClick={() => handleLink()}>Cennik</Link>
+                  <Link to='/cennik' onClick={() => handleLink()}>Cennik</Link>
                 </li>
               </ul>
             </li>
