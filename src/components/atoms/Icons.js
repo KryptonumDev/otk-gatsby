@@ -102,3 +102,20 @@ export const Check = () => (
     ></path>
   </svg>
 )
+
+export const Error = () => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='17'
+    fill='none'
+    viewBox='0 0 16 17'
+  >
+    <path
+      fill='currentColor'
+      fillRule='evenodd'
+      d='M8 16.089a8 8 0 100-16 8 8 0 000 16zM6.839 3.634H9.16l-.212 6.56H7.05l-.212-6.56zm2.363 8.389a1.225 1.225 0 01-1.2 1.2c-.665 0-1.21-.536-1.2-1.2-.01-.656.535-1.187 1.2-1.187.633 0 1.191.53 1.2 1.187z'
+      clipRule='evenodd'
+    ></path>
+  </svg>
+)

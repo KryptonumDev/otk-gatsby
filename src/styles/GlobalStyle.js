@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --primary-500: #00259C;
     --secondary-200: #57EBC7;
     --secondary-500: #0FE3AF;
-    --error-400: #EE6470;
+    --error: #FF0;
     --dark-500: #0E2428;
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
     --easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -66,6 +66,9 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  label {
+    display: block;
+  }
   button {
     border: none;
     background-color: transparent;
@@ -94,7 +97,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${Clamp(32, 36, 82)};
   }
   h2 {
-    font-size: ${Clamp(24, 32, 48)};
+    font-size: ${Clamp(32, 32, 48)};
   }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;

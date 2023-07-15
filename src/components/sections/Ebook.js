@@ -1,13 +1,11 @@
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
-import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
-import FormCheckbox from "../moleculas/FormCheckbox";
-import FormInput from "../moleculas/FormInput";
+import EbookForm from "../organisms/EbookForm";
 
 const Ebook = () => {
   const {
@@ -43,21 +41,7 @@ const Ebook = () => {
           <hr />
           <Heading type="h3">{ebook.subheading}</Heading>
           <ReactMarkdown className="paragraph">{ebook.paragraph}</ReactMarkdown>
-          <form action="/api/ebook">
-            <FormInput
-              type="email"
-              placeholder="Email"
-              name="email"
-            />
-            <FormCheckbox
-              text={<>Akceptuję{' '}<Link to="polityka-prywatnosci">politykę prywatności</Link></>}
-              name="legal"
-            />
-            <div className="cta-wrapper">
-              <Button variant="light" theme="primary">{ebook.formCta}</Button>
-              <Button variant="light" theme={ebook.cta.theme} to={ebook.cta.href}>{ebook.cta.text}</Button>
-            </div>
-          </form>
+          <EbookForm data={ebook} />
         </div>
         <GatsbyImage
           image={ebook.icon.asset.gatsbyImageData}
@@ -98,6 +82,17 @@ const Wrapper = styled.section`
       margin-bottom: 16px;
     }
     margin: ${Clamp(16, 24, 24, 'px')} 0;
+  }
+  @media (max-width: 899px){
+    > .max-width {
+      grid-template-columns: 1fr;
+      .icon {
+        order: unset;
+        margin: 0 auto;
+        max-width: 80%;
+      }
+    }
+
   }
 `
 

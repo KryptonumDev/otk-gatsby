@@ -5,7 +5,6 @@ import Footer from "../components/organisms/Footer";
 
 const Layout = ({ children }) => {
   useEffect(() => {
-    console.log('hej');
     document.addEventListener('keydown', function(event) {
       event.key === 'Tab' && document.documentElement.classList.add('tabbing')
     });
