@@ -45,6 +45,7 @@ const CompanyInfo = () => {
 
 const Wrapper = styled.section`
   display: grid;
+  align-items: center;
   @media (min-width: 1099px){
     grid-template-columns: 1fr 1fr;
     .heading {

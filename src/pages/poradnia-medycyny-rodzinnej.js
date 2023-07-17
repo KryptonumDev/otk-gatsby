@@ -1,5 +1,5 @@
-import { graphql } from "gatsby"
 import * as React from "react"
+import { graphql } from "gatsby"
 import Ebook from "../components/sections/Ebook"
 import Appointment from "../components/sections/FamilyClinic/Appointment"
 import Benefits from "../components/sections/FamilyClinic/Benefits"
