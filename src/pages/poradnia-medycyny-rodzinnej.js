@@ -2,6 +2,7 @@ import { graphql } from "gatsby"
 import * as React from "react"
 import Benefits from "../components/sections/FamilyClinic/Benefits"
 import Mission from "../components/sections/FamilyClinic/Mission"
+import Office from "../components/sections/FamilyClinic/Office"
 import Hero from "../components/sections/Hero"
 import { Seo } from "../global/Seo"
 
@@ -36,6 +37,11 @@ const FamilyClinicPage = ({
         mission_Subheading,
         mission_Paragraph,
         mission_Cta,
+      }} />
+      <Office data={{
+        office_Heading,
+        office_Cta,
+        office_Icon,
       }} />
     </>
   )

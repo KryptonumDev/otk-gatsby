@@ -37,7 +37,6 @@ const CompanyInfo = () => {
         height='500'
         loading="lazy"
         title="Położenie Ośrodka Zdrowia w Turośni Kościelnej na mapie"
-        style={{border: 0}}
         className="map"
       ></iframe>
     </Wrapper>

@@ -92,7 +92,6 @@ const Wrapper = styled.section`
         max-width: 80%;
       }
     }
-
   }
 `
 

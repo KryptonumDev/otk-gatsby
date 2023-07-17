@@ -83,6 +83,11 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     appearance: none;
   }
+  iframe {
+    border: none;
+    border-radius: 8px;
+    display: block;
+  }
   hr {
     display: inline-block;
     width: 100%;
