@@ -93,7 +93,7 @@ const Nav = () => {
                   <Link to='/gdzie-zrobic-badania' onClick={() => handleLink()}>Gdzie zrobić badania?</Link>
                 </li>
                 <li>
-                  <a to='https://forms.gle/e7hEitYf1ioQ8gXc8' target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
+                  <a href='https://forms.gle/e7hEitYf1ioQ8gXc8' target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
                 </li>
                 <li>
                   <Link to='/osrodek-zdrowia-regulamin' onClick={() => handleLink()}>Regulamin</Link>
