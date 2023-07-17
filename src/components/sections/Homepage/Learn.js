@@ -3,8 +3,8 @@ import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
 import Button from "../../atoms/Button";
-import { Check } from "../../atoms/Icons";
 import ImageDecorative from "../../atoms/ImageDecorative";
+import UnorderedList from "../../organisms/UnorderedList";
 
 const Learn = ({
   data: {
@@ -18,14 +18,7 @@ const Learn = ({
     <Wrapper className="max-width">
       <div>
         <ReactMarkdown className="paragraph">{learn_Paragraph}</ReactMarkdown>
-        <ul>
-          {learn_List.map((item, i) => (
-            <li key={i}>
-              <Check />
-              <ReactMarkdown>{item}</ReactMarkdown>
-            </li>
-          ))}
-        </ul>
+       <UnorderedList data={learn_List} />
         <div className="cta-wrapper">
           {learn_Cta.map((cta, i) => (
             <Button theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>
@@ -44,15 +37,6 @@ const Wrapper = styled.section`
   align-items: center;
   ul {
     margin: ${Clamp(24, 24, 32, 'px')} 0 ${Clamp(32, 32, 48, 'px')};
-    li {
-      display: grid;
-      grid-template-columns: 25px 1fr;
-      font-size: ${Clamp(16, 22, 22)};
-      gap: 12px;
-      &:not(:last-child){
-        margin-bottom: 16px;
-      }
-    }
   }
   .paragraph {
     font-size: ${Clamp(24, 24, 32)};

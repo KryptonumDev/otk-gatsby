@@ -99,6 +99,9 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: ${Clamp(32, 32, 48)};
   }
+  h3 {
+    font-size: ${Clamp(24, 24, 32)};
+  }
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     strong {

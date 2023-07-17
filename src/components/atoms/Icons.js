@@ -84,7 +84,7 @@ export const ChevronDown = () => (
   </svg>
 )
 
-export const Check = () => (
+export const ListBullet = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width='24'
