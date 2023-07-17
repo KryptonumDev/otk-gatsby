@@ -1,7 +1,9 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import CompanyInfo from "../components/sections/CompanyInfo"
 import CtaSection from "../components/sections/CtaSection"
 import Ebook from "../components/sections/Ebook"
+import Faq from "../components/sections/Faq"
 import Feautures from "../components/sections/Homepage/Feautures"
 import Hero from "../components/sections/Homepage/Hero"
 import Learn from "../components/sections/Homepage/Learn"
@@ -33,6 +35,7 @@ const IndexPage = ({
     prevention_List,
     prevention_CtaTitle,
     prevention_Cta,
+    faqSection,
   }}
 }) => {
   return (
@@ -70,6 +73,8 @@ const IndexPage = ({
         prevention_Cta,
       }} />
       <Ebook />
+      {/* <Faq data={faqSection} /> */}
+      <CompanyInfo />
     </>
   )
 }
@@ -185,6 +190,26 @@ export const query = graphql`
         theme
         text
         href
+      }
+      # FAQ Section
+      faqSection {
+        heading
+        paragraph
+        # list {
+        #   question
+        #   answer
+        # }
+        cta {
+          theme
+          text
+          href
+        }
+        icon {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
       }
     }
   }
