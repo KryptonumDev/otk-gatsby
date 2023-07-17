@@ -6,7 +6,6 @@ import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 
 const Faq = ({ data }) => {
-  console.log(data);
   return (
     <Wrapper className="max-width">
       <div className="copy">
@@ -14,7 +13,7 @@ const Faq = ({ data }) => {
         <hr />
         <ReactMarkdown>{data.paragraph}</ReactMarkdown>
         <div className="wrapper">
-          {data.array.map((item, i) => (
+          {data.list.map((item, i) => (
             <p key={i}>{item.question}</p>
           ))}
         </div>

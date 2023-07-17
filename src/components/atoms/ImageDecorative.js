@@ -2,13 +2,14 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
 
-const ImageDecorative = ({ data }) => {
+const ImageDecorative = ({ data, loading="lazy" }) => {
   return (
     <Wrapper className="imageDecorative">
       <Shape />
       <GatsbyImage
         image={data.asset.gatsbyImageData}
         alt={data.asset.altText || ''}
+        loading={loading}
       />
     </Wrapper>
   );
@@ -16,15 +17,15 @@ const ImageDecorative = ({ data }) => {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-left: 34px;
-  margin-bottom: 55px;
+  margin-left: 10%;
+  margin-bottom: 15%;
   width: fit-content;
   .shape {
     position: absolute;
     width: 100%;
     height: 100%;
-    left: -34px;
-    bottom: -55px;
+    left: -10%;
+    bottom: -15%;
   }
 `
 

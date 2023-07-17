@@ -151,10 +151,6 @@ export const query = graphql`
         title
         description
       }
-      seo {
-        title
-        description
-      }
       # CTA Section 2
       ctaSection2 {
         heading
@@ -195,10 +191,10 @@ export const query = graphql`
       faqSection {
         heading
         paragraph
-        # list {
-        #   question
-        #   answer
-        # }
+        list {
+          question
+          answer
+        }
         cta {
           theme
           text
@@ -210,6 +206,11 @@ export const query = graphql`
             gatsbyImageData(placeholder: BLURRED)
           }
         }
+      }
+      # SEO
+      seo {
+        title
+        description
       }
     }
   }

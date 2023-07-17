@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
     color: var(--dark-500);
     font-size: 16px;
     font-family: 'Manrope', sans-serif;
-    font-feature-settings: 'pnum' on, 'onum' on, 'ss03' on, 'ss04' on;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
@@ -91,7 +90,7 @@ const GlobalStyle = createGlobalStyle`
     height: 3px;
     background-color: var(--secondary-500);
     border: none;
-    margin: ${Clamp(24, 32, 48, 'px')} 0;
+    margin: ${Clamp(24, 24, 48, 'px')} 0;
   }
   h1 {
     font-size: ${Clamp(32, 36, 82)};
