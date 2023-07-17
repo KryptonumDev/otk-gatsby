@@ -1,5 +1,7 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import Ebook from "../components/sections/Ebook"
+import Appointment from "../components/sections/FamilyClinic/Appointment"
 import Benefits from "../components/sections/FamilyClinic/Benefits"
 import Mission from "../components/sections/FamilyClinic/Mission"
 import Office from "../components/sections/FamilyClinic/Office"
@@ -19,6 +21,10 @@ const FamilyClinicPage = ({
     office_Heading,
     office_Cta,
     office_Icon,
+    appointment_Heading,
+    appointment_Subheading,
+    appointment_Cta,
+    appointment_Img,
   }}
 }) => {
   return (
@@ -43,6 +49,13 @@ const FamilyClinicPage = ({
         office_Cta,
         office_Icon,
       }} />
+      <Appointment data={{
+        appointment_Heading,
+        appointment_Subheading,
+        appointment_Cta,
+        appointment_Img,
+      }} />
+      <Ebook />
     </>
   )
 }
@@ -86,6 +99,20 @@ export const query = graphql`
         href
       }
       office_Icon {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      # Appointment
+      appointment_Heading
+      appointment_Subheading
+      appointment_Cta {
+        theme
+        text
+        href
+      }
+      appointment_Img {
         asset {
           altText
           gatsbyImageData(placeholder: BLURRED)
