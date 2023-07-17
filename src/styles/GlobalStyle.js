@@ -116,12 +116,14 @@ const GlobalStyle = createGlobalStyle`
     display: inline-flex;
     flex-wrap: wrap;
     gap: 16px 32px;
-    @media (max-width: 549px){
+  }
+  @media (max-width: 549px){
+    .cta-wrapper {
       width: 100%;
-      .cta {
-        width: 100%;
-        text-align: center;
-      }
+    }
+    .cta {
+      width: 100%;
+      text-align: center;
     }
   }
 `

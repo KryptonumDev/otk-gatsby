@@ -7,6 +7,7 @@ import Mission from "../components/sections/FamilyClinic/Mission"
 import Office from "../components/sections/FamilyClinic/Office"
 import Hero from "../components/sections/Hero"
 import { Seo } from "../global/Seo"
+import Staff from "../components/sections/Staff"
 
 const FamilyClinicPage = ({
   data: { page: {
@@ -21,6 +22,7 @@ const FamilyClinicPage = ({
     office_Heading,
     office_Cta,
     office_Icon,
+    staffSection,
     appointment_Heading,
     appointment_Subheading,
     appointment_Cta,
@@ -49,6 +51,7 @@ const FamilyClinicPage = ({
         office_Cta,
         office_Icon,
       }} />
+      <Staff data={staffSection} />
       <Appointment data={{
         appointment_Heading,
         appointment_Subheading,
@@ -69,7 +72,7 @@ export const query = graphql`
       hero_Img {
         asset {
           altText
-          gatsbyImageData(placeholder: BLURRED)
+          gatsbyImageData(placeholder: NONE)
         }
       }
       # Benefits
@@ -102,6 +105,16 @@ export const query = graphql`
         asset {
           altText
           gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      # Staff
+      staffSection {
+        heading
+        subheading
+        cta {
+          theme
+          text
+          href
         }
       }
       # Appointment

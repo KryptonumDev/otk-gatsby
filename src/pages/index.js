@@ -94,7 +94,7 @@ export const query = graphql`
       hero_Img {
         asset {
           altText
-          gatsbyImageData(placeholder: BLURRED)
+          gatsbyImageData(placeholder: NONE)
         }
       }
       # Services
