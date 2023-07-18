@@ -4,7 +4,7 @@ import { Clamp } from "../../utils/functions";
 import FormError from "./FormError";
 
 const FormInput = ({ register, errors, ...props }) => (
-  <Wrapper className="formItem">
+  <Wrapper className='formItem'>
     <label>
       <input name={register.name} {...props} {...register} className={errors[register.name] ? 'error' : ''} />
     </label>
@@ -15,11 +15,11 @@ const FormInput = ({ register, errors, ...props }) => (
 const Wrapper = styled.div`
   input {
     height: 54px;
-    border: 2px solid var(--neutral-100);
+    border: 2px solid var(--form-input);
     padding: 16px;
     font-size: ${Clamp(16, 16, 20)};
     &::placeholder {
-      color: var(--neutral-100);
+      color: var(--form-input);
     }
     width: 100%;
     border-radius: 10px;

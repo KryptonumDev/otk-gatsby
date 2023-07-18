@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import BenefitsSection from "../components/sections/BenefitsSection"
 import CompanyInfo from "../components/sections/CompanyInfo"
 import CtaSection from "../components/sections/CtaSection"
 import Ebook from "../components/sections/Ebook"
@@ -8,7 +9,6 @@ import Feautures from "../components/sections/Homepage/Feautures"
 import Hero from "../components/sections/Homepage/Hero"
 import Learn from "../components/sections/Homepage/Learn"
 import Prevention from "../components/sections/Homepage/Prevention"
-import Services from "../components/sections/Homepage/Services"
 import { Seo } from "../global/Seo"
 
 const IndexPage = ({
@@ -47,11 +47,11 @@ const IndexPage = ({
         hero_Cta,
         hero_Img,
       }} /> 
-      <Services data={{
-        services_Heading,
-        services_Paragraph,
-        services_List,
-      }} />
+      <BenefitsSection
+        heading={services_Heading}
+        paragraph={services_Paragraph}
+        list={services_List}
+      />
       <Learn data={{
         learn_List,
         learn_Paragraph,

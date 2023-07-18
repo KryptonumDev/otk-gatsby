@@ -131,6 +131,7 @@ const WrapperNav = styled.nav`
   z-index: 99;
   height: 123px;
   background-color: var(--neutral-100);
+  box-shadow: 0px -5px 13px 0px rgb(14 36 40 / 10%);
   > .max-width {
     display: flex;
     justify-content: space-between;

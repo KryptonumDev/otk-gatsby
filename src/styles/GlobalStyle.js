@@ -18,7 +18,13 @@ const GlobalStyle = createGlobalStyle`
     --secondary-200: #57EBC7;
     --secondary-500: #0FE3AF;
     --error: #FF0;
+    --dark-300: #3E5053;
     --dark-500: #0E2428;
+
+
+    --form-input: var(--neutral-100);
+    --form-tick: var(--primary-500);
+    --form-link: var(--secondary-500);
     --gradient: linear-gradient(90deg, #90F4E8, #2DD282);
     --easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --pageMargin: 40px;

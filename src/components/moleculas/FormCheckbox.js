@@ -23,17 +23,17 @@ const Wrapper = styled.div`
     gap: 8px;
     .tick {
       position: relative;
-      color: var(--primary-500);
+      color: var(--form-tick);
       input {
         display: block;
         width: 32px;
         height: 32px;
         border-radius: 5px;
-        border: 2px solid var(--neutral-100);
+        border: 2px solid var(--form-input);
         cursor: pointer;
         transition: background-color .3s;
         &:checked {
-          background-color: var(--neutral-100);
+          background-color: var(--form-input);
           & + svg {
             transform: translate(-50%, -50%) scale(1);
           }
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
       margin-top: .2em;
       font-size: ${Clamp(16, 16, 20)};
       a {
-        color: var(--secondary-500);
+        color: var(--form-link);
         &:hover {
           text-decoration: underline;
         }

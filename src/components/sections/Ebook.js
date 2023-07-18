@@ -81,7 +81,7 @@ const Wrapper = styled.section`
     p:not(:last-child){
       margin-bottom: 16px;
     }
-    margin: ${Clamp(16, 24, 24, 'px')} 0;
+    margin: ${Clamp(16, 24, 24, 'px')} 0 ${Clamp(24, 24, 32, 'px')};
   }
   @media (max-width: 899px){
     > .max-width {

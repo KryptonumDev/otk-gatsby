@@ -48,7 +48,10 @@ const Wrapper = styled.div`
     margin-bottom: 32px;
   }
   a {
-    text-decoration: underline;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   ul, ol {
     list-style-type: none;
