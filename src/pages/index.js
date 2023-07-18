@@ -73,7 +73,7 @@ const IndexPage = ({
         prevention_Cta,
       }} />
       <Ebook />
-      {/* <Faq data={faqSection} /> */}
+      <Faq data={faqSection} />
       <CompanyInfo />
     </>
   )
