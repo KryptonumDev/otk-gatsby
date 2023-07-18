@@ -7,7 +7,7 @@ const FormCheckbox = ({ text, register, errors, ...props }) => (
   <Wrapper className="formItem">
     <label>
       <div className="tick">
-        <input name={register.name} type="checkbox" {...props} {...register} />
+        <input name={register.name} type="checkbox" aria-invalid={errors[register.name] ? true : false} {...props} {...register} />
         <Check />
       </div>
       <p>{text}</p>
@@ -30,6 +30,9 @@ const Wrapper = styled.div`
         height: 32px;
         border-radius: 5px;
         border: 2px solid var(--form-input);
+        &[aria-invalid="true"]{
+          border-color: var(--error);
+        } 
         cursor: pointer;
         transition: background-color .3s;
         &:checked {

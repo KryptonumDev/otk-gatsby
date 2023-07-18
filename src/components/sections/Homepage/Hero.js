@@ -46,8 +46,8 @@ const Hero = ({
 const Wrapper = styled.section`
   background-color: var(--primary-500);
   color: var(--neutral-100);
-  position: relative;
   overflow: hidden;
+  position: relative;
   > .max-width {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -67,13 +67,15 @@ const Wrapper = styled.section`
   }
   .img {
     z-index: 2;
+    align-self: end;
+    max-height: calc(100% - ${Clamp(64, 64, 144, 'px')});
     margin-right: calc(var(--pageMargin) * -1);
   }
   .decoration {
     position: absolute;
     width: 50%;
     max-width: 750px;
-    max-height: 750px;
+    max-height: calc(100% - 64px);
     right: 0;
     bottom: 0;
     height: auto;
@@ -86,11 +88,13 @@ const Wrapper = styled.section`
       padding: ${Clamp(34, 48, 62, 'px')} 0;
     }
     .img {
-      margin: 0 calc(var(--pageMargin) * -1);
+      margin: 0 auto;
+      max-height: 100%;
+      max-width: 768px;
     }
     .decoration {
-      width: 80%;
-      bottom: -10%;
+      width: 90%;
+      max-height: 60%;
     }
   }
 `

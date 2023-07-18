@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { EbookGroupID, NewsletterGroupID } from "../../constants/data";
+import { NEWSLETTER_GROUPID } from "../../constants/data";
 import { emailRegex } from "../../constants/regex";
 import Button from "../atoms/Button";
 import FormCheckbox from "../moleculas/FormCheckbox";
@@ -24,7 +24,7 @@ const NewsletterForm = ({ cta, variant }) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({id: NewsletterGroupID, ...data})
+      body: JSON.stringify({id: NEWSLETTER_GROUPID, ...data})
     })
     .then(response => response.json())
     .then(response => {

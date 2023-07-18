@@ -1,2 +1,2 @@
-export const EbookGroupID = 111042698
-export const NewsletterGroupID = 111004442
+export const EBOOK_GROUPID = 111042698
+export const NEWSLETTER_GROUPID = 111004442

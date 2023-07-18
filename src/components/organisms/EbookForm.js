@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { EbookGroupID } from "../../constants/data";
+import { EBOOK_GROUPID } from "../../constants/data";
 import { emailRegex } from "../../constants/regex";
 import Button from "../atoms/Button";
 import FormCheckbox from "../moleculas/FormCheckbox";
@@ -24,7 +24,7 @@ const EbookForm = ({ data }) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({id: EbookGroupID, ...data})
+      body: JSON.stringify({id: EBOOK_GROUPID, ...data})
     })
     .then(response => response.json())
     .then(response => {

@@ -6,7 +6,7 @@ import FormError from "./FormError";
 const FormInput = ({ register, errors, ...props }) => (
   <Wrapper className='formItem'>
     <label>
-      <input name={register.name} {...props} {...register} className={errors[register.name] ? 'error' : ''} />
+      <input name={register.name} {...props} {...register} aria-invalid={errors[register.name] ? true : false} />
     </label>
     <FormError error={errors[register.name]} />
   </Wrapper>
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     }
     width: 100%;
     border-radius: 10px;
-    &.error {
+    &[aria-invalid="true"] {
       border-color: var(--error);
     }
   }
