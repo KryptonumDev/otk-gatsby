@@ -71,8 +71,8 @@ const Wrapper = styled.section`
         svg {
           transition: .4s var(--easing);
         }
-        list-style: none;
-        ::-webkit-details-marker {
+        &::marker,
+        &::-webkit-details-marker {
           display: none;
         }
         font-size: ${Clamp(20, 20, 24)};

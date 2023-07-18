@@ -8,6 +8,7 @@ import Office from "../components/sections/FamilyClinic/Office"
 import Hero from "../components/sections/Hero"
 import { Seo } from "../global/Seo"
 import Staff from "../components/sections/Staff"
+import Faq from "../components/sections/Faq"
 
 const FamilyClinicPage = ({
   data: { page: {
@@ -27,6 +28,7 @@ const FamilyClinicPage = ({
     appointment_Subheading,
     appointment_Cta,
     appointment_Img,
+    faqSection,
   }}
 }) => {
   return (
@@ -59,6 +61,7 @@ const FamilyClinicPage = ({
         appointment_Img,
       }} />
       <Ebook />
+      <Faq data={faqSection} />
     </>
   )
 }
@@ -129,6 +132,26 @@ export const query = graphql`
         asset {
           altText
           gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+      # FAQ Section
+      faqSection {
+        heading
+        paragraph
+        list {
+          question
+          answer
+        }
+        cta {
+          theme
+          text
+          href
+        }
+        icon {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
         }
       }
       # SEO

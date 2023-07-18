@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { EbookGroupID } from "../../constants/data";
 import { emailRegex } from "../../constants/regex";
 import Button from "../atoms/Button";
 import FormCheckbox from "../moleculas/FormCheckbox";
@@ -18,7 +19,24 @@ const EbookForm = ({ data }) => {
   const [ isEmailSent, setIsEmailSent ] = useState(false)
 
   const onSubmit = (data) => {
-    console.log(data);
+    fetch('/api/newsletter', {
+      method: 'POST', 
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({id: EbookGroupID, ...data})
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.success){
+        setIsEmailSent(true);
+      } else {
+        setIsEmailSent(false);
+      }
+    })
+    .catch(() => {
+      setIsEmailSent(false);
+    })
     reset()
   }
 
@@ -32,7 +50,7 @@ const EbookForm = ({ data }) => {
         errors={errors}
       />
       <FormCheckbox
-        text={<>Akceptuję{' '}<Link to="polityka-prywatnosci">politykę prywatności</Link></>}
+        text={<>Akceptuję{' '}<Link to="/polityka-prywatnosci">politykę prywatności</Link></>}
         register={register('legal', { required: true })}
         errors={errors}
       />
