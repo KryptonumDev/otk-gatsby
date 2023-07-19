@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 
-const Button = ({ theme, variant='dark', children, to, className, ...props }) => {
+const Button = ({ theme, variant='dark', children, to, ...props }) => {
   const isExternal = to && to.startsWith('https://');
   return (
     <>
@@ -14,7 +14,7 @@ const Button = ({ theme, variant='dark', children, to, className, ...props }) =>
             href={to}
             target="_blank"
             rel="noreferrer"
-            className={`cta ${theme} ${variant} ${className}`}
+            className={`cta ${theme} ${variant}`}
             {...props}
           >
             <span>{children}</span>
@@ -23,8 +23,8 @@ const Button = ({ theme, variant='dark', children, to, className, ...props }) =>
           <StyledAnchor
             as={Link}
             to={to}
+            className={`cta ${theme} ${variant}`}
             {...props}
-            className={`cta ${theme} ${variant} ${className}`}
           >
             <span>{children}</span>
           </StyledAnchor>
@@ -33,8 +33,8 @@ const Button = ({ theme, variant='dark', children, to, className, ...props }) =>
         <StyledAnchor
           as='button'
           type="submit"
+          className={`cta ${theme} ${variant}`}
           {...props}
-          className={`cta ${theme} ${variant} ${className}`}
         >
           <span>{children}</span>
         </StyledAnchor>

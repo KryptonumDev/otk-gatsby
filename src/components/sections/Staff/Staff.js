@@ -2,10 +2,11 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 import ImageDecorative from "../../atoms/ImageDecorative";
 
-const Staff = ({ data }) => {
+const Staff = ({ data, cta }) => {
   return (
     <Wrapper className="max-width">
       {data.nodes.map((person, i) => (
@@ -17,15 +18,18 @@ const Staff = ({ data }) => {
           <ImageDecorative data={person.img} />
         </div>
       ))}
+      <div className="cta-wrapper">
+        {cta.map((cta, i) => (
+          <Button theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>
+        ))}
+      </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
   .person {
-    &:not(:last-child){
-      margin-bottom: ${Clamp(64, 64, 98)};
-    }
+    margin-bottom: ${Clamp(64, 64, 98)};
     .imageDecorative {
       max-width: 700px;
       order: -1;
@@ -40,7 +44,7 @@ const Wrapper = styled.section`
       }
     }
     align-items: start;
-    gap: ${Clamp(24, 32, 48)} ${Clamp(82, 82, 144)};
+    gap: ${Clamp(24, 24, 32)} ${Clamp(82, 82, 144)};
     h2 {
       margin-bottom: ${Clamp(24, 32, 48, 'px')};
     }
@@ -50,6 +54,10 @@ const Wrapper = styled.section`
         margin-bottom: 16px;
       }
     }
+  }
+  .cta-wrapper {
+    width: 100%;
+    justify-content: center;
   }
 `
 

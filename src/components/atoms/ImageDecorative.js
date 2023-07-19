@@ -19,7 +19,7 @@ const ImageDecorative = ({ data, loading="lazy" }) => {
 const Wrapper = styled.div`
   position: relative;
   margin-left: 10%;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
   width: fit-content;
   .imageDecorativeImg {
     filter: drop-shadow(8px -3px 8px rgb(14 36 40 / 3%));

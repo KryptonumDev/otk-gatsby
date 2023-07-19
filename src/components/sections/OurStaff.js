@@ -44,7 +44,7 @@ const OurStaff = ({
           </div>
         ))}
       </div>
-      <Button theme={cta.theme}>{cta.text}</Button>
+      <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
     </Wrapper>
   );
 }
