@@ -7,8 +7,8 @@ import Mission from "../components/sections/FamilyClinic/Mission"
 import Office from "../components/sections/FamilyClinic/Office"
 import Hero from "../components/sections/Hero"
 import { Seo } from "../global/Seo"
-import Staff from "../components/sections/Staff"
 import Faq from "../components/sections/Faq"
+import OurStaff from "../components/sections/OurStaff"
 
 const FamilyClinicPage = ({
   data: { page: {
@@ -53,7 +53,7 @@ const FamilyClinicPage = ({
         office_Cta,
         office_Icon,
       }} />
-      <Staff data={staffSection} />
+      <OurStaff data={staffSection} />
       <Appointment data={{
         appointment_Heading,
         appointment_Subheading,

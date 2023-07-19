@@ -5,17 +5,21 @@ import { Seo } from "../global/Seo"
 import Ebook from "../components/sections/Ebook"
 import BenefitsSection from "../components/sections/BenefitsSection"
 import Newsletter from "../components/sections/Newsletter"
+import Staff from "../components/sections/Staff/Staff"
 
 const StaffPage = ({
-  data: { page: {
-    hero_Heading,
-    hero_Subheading,
-    hero_Img,
-    services_Heading,
-    services_Paragraph,
-    services_List,
-    services_Cta,
-  }}
+  data: {
+    page: {
+      hero_Heading,
+      hero_Subheading,
+      hero_Img,
+      services_Heading,
+      services_Paragraph,
+      services_List,
+      services_Cta,
+    },
+    staff,
+  }
 }) => {
   return (
     <>
@@ -26,6 +30,7 @@ const StaffPage = ({
           hero_Img,
         }}
       />
+      <Staff data={staff} />
       <BenefitsSection
         heading={services_Heading}
         paragraph={services_Paragraph}
@@ -70,6 +75,18 @@ export const query = graphql`
       seo {
         title
         description
+      }
+    }
+    staff: allSanityStaff {
+      nodes {
+        name
+        bio
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: NONE)
+          }
+        }
       }
     }
   }

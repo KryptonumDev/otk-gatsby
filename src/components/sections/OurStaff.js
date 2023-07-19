@@ -7,7 +7,7 @@ import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 import ImageDecorative from "../atoms/ImageDecorative";
 
-const Staff = ({
+const OurStaff = ({
   data: {
     heading,
     subheading,
@@ -23,7 +23,7 @@ const Staff = ({
           img {
             asset {
               altText
-              gatsbyImageData(placeholder: BLURRED)
+              gatsbyImageData(placeholder: NONE)
             }
           }
         }
@@ -79,4 +79,4 @@ const Wrapper = styled.section`
   }
 `
 
-export default Staff;
+export default OurStaff;

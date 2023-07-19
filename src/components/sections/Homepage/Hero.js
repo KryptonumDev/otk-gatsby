@@ -93,7 +93,7 @@ const Wrapper = styled.section`
       max-width: 768px;
     }
     .decoration {
-      width: 90%;
+      width: 88%;
       max-height: 60%;
     }
   }

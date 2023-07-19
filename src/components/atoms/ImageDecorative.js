@@ -10,6 +10,7 @@ const ImageDecorative = ({ data, loading="lazy" }) => {
         image={data.asset.gatsbyImageData}
         alt={data.asset.altText || ''}
         loading={loading}
+        className="imageDecorativeImg"
       />
     </Wrapper>
   );
@@ -20,12 +21,15 @@ const Wrapper = styled.div`
   margin-left: 10%;
   margin-bottom: 15%;
   width: fit-content;
+  .imageDecorativeImg {
+    filter: drop-shadow(8px -3px 8px rgb(14 36 40 / 3%));
+  }
   .shape {
     position: absolute;
     width: 100%;
     height: 100%;
     left: -10%;
-    bottom: -15%;
+    bottom: -5%;
   }
 `
 

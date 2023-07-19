@@ -21,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
     --dark-300: #3E5053;
     --dark-500: #0E2428;
 
-
     --form-input: var(--neutral-100);
     --form-tick: var(--primary-500);
     --form-link: var(--secondary-500);
