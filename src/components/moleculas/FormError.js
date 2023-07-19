@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Error } from "../atoms/Icons";
 
-const FormError = ({ error, errorText = 'To pole jest wymagane' }) => {
+const FormError = ({ isError, error }) => {
   return (
     <Wrapper>
-      {error && (
+      {isError && (
         <>
           <Error />
-          <span>{errorText}</span>
+          <span>{error || 'To pole jest wymagane'}</span>
         </>
       )}
     </Wrapper>

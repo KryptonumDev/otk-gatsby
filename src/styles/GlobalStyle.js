@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary-200: #57EBC7;
     --secondary-500: #0FE3AF;
     --error: #FF0;
+    --dark-200: #566669;
     --dark-300: #3E5053;
     --dark-500: #0E2428;
 

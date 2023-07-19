@@ -4,7 +4,7 @@ import { Clamp } from "../../utils/functions";
 import FormError from "./FormError";
 
 const FormCheckbox = ({ text, register, errors, ...props }) => (
-  <Wrapper className="formItem">
+  <Wrapper className="formItem formItem-legal">
     <label>
       <div className="tick">
         <input name={register.name} type="checkbox" aria-invalid={errors[register.name] ? true : false} {...props} {...register} />
@@ -12,7 +12,7 @@ const FormCheckbox = ({ text, register, errors, ...props }) => (
       </div>
       <p>{text}</p>
     </label>
-    <FormError error={errors[register.name]} />
+    <FormError isError={errors[register.name]} />
   </Wrapper>
 )
 
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
         width: 32px;
         height: 32px;
         border-radius: 5px;
-        border: 2px solid var(--form-input);
+        border: 1px solid var(--form-input);
         &[aria-invalid="true"]{
           border-color: var(--error);
         } 
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
       }
     }
     p {
-      margin-top: .2em;
+      margin-top: .1em;
       font-size: ${Clamp(16, 16, 20)};
       a {
         color: var(--form-link);
