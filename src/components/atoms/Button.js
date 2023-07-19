@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 
-const Button = ({ theme, variant='dark', children, to, ...props }) => {
+const Button = ({ theme='primary', variant='dark', children, to, className, ...props }) => {
   const isExternal = to && to.startsWith('https://');
   return (
     <>
@@ -14,7 +14,9 @@ const Button = ({ theme, variant='dark', children, to, ...props }) => {
             href={to}
             target="_blank"
             rel="noreferrer"
-            className={`cta ${theme} ${variant}`}
+            className={`cta ${className}`}
+            data-theme={theme}
+            data-variant={variant}
             {...props}
           >
             <span>{children}</span>
@@ -23,7 +25,9 @@ const Button = ({ theme, variant='dark', children, to, ...props }) => {
           <StyledAnchor
             as={Link}
             to={to}
-            className={`cta ${theme} ${variant}`}
+            className={`cta ${className}`}
+            data-theme={theme}
+            data-variant={variant}
             {...props}
           >
             <span>{children}</span>
@@ -33,7 +37,9 @@ const Button = ({ theme, variant='dark', children, to, ...props }) => {
         <StyledAnchor
           as='button'
           type="submit"
-          className={`cta ${theme} ${variant}`}
+          className={`cta ${className}`}
+          data-theme={theme}
+          data-variant={variant}
           {...props}
         >
           <span>{children}</span>
@@ -47,16 +53,16 @@ const StyledAnchor = styled.a`
   display: inline-block;
   font-size: ${Clamp(16, 20, 24)};
   font-weight: 600;
-  &.primary {
+  &[data-theme="primary"] {
     padding: 19px 42px;
-    &.dark {
+    &[data-variant="dark"] {
       background-color: var(--primary-500);
       color: var(--neutral-100);
       &:hover {
         background-color: var(--primary-400);
       }
     }
-    &.light {
+     &[data-variant="light"] {
       background-color: var(--neutral-100);
       color: var(--primary-500);
       &:hover {
@@ -64,9 +70,9 @@ const StyledAnchor = styled.a`
       }
     }
   }
-  &.secondary {
+  &[data-theme="secondary"] {
     padding: 16px 42px;
-    &.dark {
+    &[data-variant="dark"]{
       border: 3px solid var(--primary-500);
       color: var(--primary-500);
       &:hover {
@@ -74,7 +80,7 @@ const StyledAnchor = styled.a`
         border-color: var(--primary-300);
       }
     }
-    &.light {
+     &[data-variant="light"] {
       border: 3px solid var(--neutral-100);
       color: var(--neutral-100);
       &:hover {

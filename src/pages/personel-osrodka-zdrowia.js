@@ -6,7 +6,6 @@ import Ebook from "../components/sections/Ebook"
 import BenefitsSection from "../components/sections/BenefitsSection"
 import Newsletter from "../components/sections/Newsletter"
 import Staff from "../components/sections/Staff/Staff"
-import CtaSection from "../components/sections/CtaSection"
 
 const StaffPage = ({
   data: {
@@ -19,7 +18,6 @@ const StaffPage = ({
       services_Paragraph,
       services_List,
       services_Cta,
-      ctaSection,
     },
     staff,
   }
@@ -42,7 +40,6 @@ const StaffPage = ({
       />
       <Ebook />
       <Newsletter />
-      <CtaSection data={ctaSection} />
     </>
   )
 }
@@ -80,24 +77,6 @@ export const query = graphql`
         theme
         href
         text
-      }
-      # CTA Section
-      ctaSection {
-        heading
-        subheading
-        paragraph
-        claim
-        cta {
-          theme
-          text
-          href
-        }
-        icons {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
       }
       # SEO
       seo {
