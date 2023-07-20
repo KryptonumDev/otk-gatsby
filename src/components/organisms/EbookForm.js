@@ -51,7 +51,7 @@ const EbookForm = ({ data }) => {
         sentStatus.success ? (
           <div className="status">
             <h3>Dziękujemy za pobranie naszego e-booka!</h3>
-            <p>Mamy nadzieję, że wiedza w nim zawarta będzie przydatna.</p>
+            <p>Potwierdź swój adres mailowy, klikając w przycisk w mailu, który od nas niebawem otrzymasz. Mamy nadzieję, że wiedza w nim zawarta będzie przydatna.</p>
           </div>
         ) : (
           <div className="status status-error">

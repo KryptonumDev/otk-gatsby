@@ -119,7 +119,7 @@ export const query = graphql`
       learn_Img {
         asset {
           altText
-          gatsbyImageData(placeholder: BLURRED)
+          gatsbyImageData(placeholder: NONE)
         }
       }
       # CTA Section
@@ -222,6 +222,5 @@ export const Head = ({ data: { page: { seo } } }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
-    url=''
   />
 )

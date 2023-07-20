@@ -100,7 +100,7 @@ const Wrapper = styled.footer`
     p {
       font-size: .8em;
     }
-    margin: ${Clamp(48, 48, 62)} 0 ${Clamp(24, 24, 48)};
+    margin: ${Clamp(48, 48, 62, 'px')} 0 ${Clamp(24, 24, 48, 'px')};
   }
   .column {
     display: grid;
@@ -146,7 +146,7 @@ const Wrapper = styled.footer`
     }
   }
   .copyright {
-    margin-top: ${Clamp(48, 48, 62)};
+    margin-top: ${Clamp(48, 48, 62, 'px')};
   }
   @media (max-width: 999px){
     .column {

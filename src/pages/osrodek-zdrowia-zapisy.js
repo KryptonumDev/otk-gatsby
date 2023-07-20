@@ -1,25 +1,25 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Hero from "../components/sections/Hero"
 import { Seo } from "../global/Seo"
+import Hero from "../components/sections/Hero"
 import Ebook from "../components/sections/Ebook"
+import Faq from "../components/sections/Faq"
+import CtaSection from "../components/sections/CtaSection"
 import BenefitsSection from "../components/sections/BenefitsSection"
-import Newsletter from "../components/sections/Newsletter"
-import Staff from "../components/sections/Staff/Staff"
 
-const StaffPage = ({
+const RegistrationPage = ({
   data: {
     page: {
       hero_Heading,
       hero_Subheading,
       hero_Img,
-      staff_Cta,
       services_Heading,
       services_Paragraph,
       services_List,
       services_Cta,
+      ctaSection,
+      faqSection,
     },
-    staff,
   }
 }) => {
   return (
@@ -31,22 +31,22 @@ const StaffPage = ({
           hero_Img,
         }}
       />
-      <Staff data={staff} cta={staff_Cta} />
       <BenefitsSection
         heading={services_Heading}
         paragraph={services_Paragraph}
         list={services_List}
         cta={services_Cta}
       />
+      <CtaSection data={ctaSection} firstIconOnRight={true} />
+      <Faq data={faqSection} />
       <Ebook />
-      <Newsletter />
     </>
   )
 }
 
 export const query = graphql`
   query {
-    page: sanityStaffPage {
+    page: sanityRegistration {
       # Hero
       hero_Heading
       hero_Subheading
@@ -55,12 +55,6 @@ export const query = graphql`
           altText
           gatsbyImageData(placeholder: NONE)
         }
-      }
-      # Staff
-      staff_Cta {
-        theme
-        href
-        text
       }
       # Services
       services_Heading
@@ -77,6 +71,44 @@ export const query = graphql`
         theme
         href
         text
+      }
+      # CTA Section
+      ctaSection {
+        heading
+        subheading
+        paragraph
+        claim
+        cta {
+          theme
+          text
+          href
+        }
+        icons {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+      }
+      # FAQ Section
+      faqSection {
+        heading
+        paragraph
+        list {
+          question
+          answer
+        }
+        cta {
+          theme
+          text
+          href
+        }
+        icon {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
       }
       # SEO
       seo {
@@ -99,7 +131,7 @@ export const query = graphql`
   }
 `
 
-export default StaffPage
+export default RegistrationPage
 
 export const Head = ({ data: { page: { seo } }, location: { pathname } }) => (
   <Seo

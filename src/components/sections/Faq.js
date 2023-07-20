@@ -42,7 +42,7 @@ const Faq = ({ data }) => {
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 48px;
   align-items: start;
   h2 {

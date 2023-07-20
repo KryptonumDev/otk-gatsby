@@ -50,7 +50,7 @@ const NewsletterForm = ({ cta, variant }) => {
         sentStatus.success ? (
           <div className="status">
             <h3>Dziękujemy za zapis do newslettera!</h3>
-            <p>Jesteś teraz na bieżąco z aktualnościami z Naszej Przychodni.</p>
+            <p>Potwierdź swój adres mailowy, klikając w przycisk w mailu, który od nas niebawem otrzymasz. Będziesz na bieżąco z aktualnościami z Naszej Przychodni.</p>
           </div>
         ) : (
           <div className="status status-error">

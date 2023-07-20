@@ -29,7 +29,7 @@ const Staff = ({ data, cta }) => {
 
 const Wrapper = styled.section`
   .person {
-    margin-bottom: ${Clamp(64, 64, 98)};
+    margin-bottom: ${Clamp(64, 64, 98, 'px')};
     .imageDecorative {
       max-width: 700px;
       order: -1;
@@ -44,7 +44,7 @@ const Wrapper = styled.section`
       }
     }
     align-items: start;
-    gap: ${Clamp(24, 24, 32)} ${Clamp(82, 82, 144)};
+    gap: ${Clamp(24, 24, 32, 'px')} ${Clamp(82, 82, 144, 'px')};
     h2 {
       margin-bottom: ${Clamp(24, 32, 48, 'px')};
     }

@@ -101,7 +101,7 @@ const Wrapper = styled.section`
       }
       p {
         font-weight: 600;
-        margin-top: ${Clamp(16, 24, 24)};
+        margin-top: ${Clamp(16, 24, 24, 'px')};
         font-size: ${Clamp(16, 20, 20)};
       }
     }

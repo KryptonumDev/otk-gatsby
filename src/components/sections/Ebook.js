@@ -62,7 +62,7 @@ const Wrapper = styled.section`
   > .max-width {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: ${Clamp(48, 48, 64)} ${Clamp(48, 64, 82)};
+    gap: ${Clamp(48, 48, 64, 'px')} ${Clamp(48, 64, 82, 'px')};
     .icon {
       order: -1;
       margin-left: -80%;

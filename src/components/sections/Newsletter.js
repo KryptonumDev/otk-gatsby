@@ -47,7 +47,7 @@ const Newsletter = () => {
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: ${Clamp(48, 48, 64)} ${Clamp(48, 64, 82)};
+  gap: ${Clamp(48, 48, 64, 'px')} ${Clamp(48, 64, 82, 'px')};
   .copy {
     > h2 {
       color: var(--primary-500);

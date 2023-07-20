@@ -165,10 +165,10 @@ export const query = graphql`
 
 export default FamilyClinicPage
 
-export const Head = ({ data: { page: { seo } } }) => (
+export const Head = ({ data: { page: { seo } }, location: { pathname } }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
-    url='/poradnia-medycyny-rodzinnej'
+    url={pathname}
   />
 )
