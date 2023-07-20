@@ -2,96 +2,76 @@
   {
     "fromPath": "/ankieta",
     "toPath":	"/",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/ankieta/",
-    "toPath":	"/",
-    "isPermament": true
-  },
-  {
-    "fromPath": "/badania/",
+    "fromPath": "/badania",
     "toPath":	"/gdzie-zrobic-badania",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/cennik/",
-    "toPath":	"/cennik",
-    "isPermament": true
-  },
-  {
-    "fromPath": "/e-book/",
+    "fromPath": "/e-book",
     "toPath":	"/pierwszy-rok-zycia-dziecka-ebook",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/faq/",
+    "fromPath": "/faq",
     "toPath":	"/pytania",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/kontakt",
-    "toPath":	"/kontakt",
-    "isPermament": true
-  },
-  {
-    "fromPath": "/kontakt/",
-    "toPath":	"/kontakt",
-    "isPermament": true
-  },
-  {
-    "fromPath": "/personel/",
+    "fromPath": "/personel",
     "toPath":	"/personel-osrodka-zdrowia",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/poradnia-rodzinna/",
+    "fromPath": "/poradnia-rodzinna",
     "toPath":	"/poradnia-medycyny-rodzinnej",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/poznaj-nas/",
+    "fromPath": "/poznaj-nas",
     "toPath":	"/personel-osrodka-zdrowia",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/profilaktyka/",
+    "fromPath": "/profilaktyka",
     "toPath":	"/profilaktyka-i-diagnostyka",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/regulamin/",
+    "fromPath": "/regulamin",
     "toPath":	"/osrodek-zdrowia-regulamin",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/zapisy/",
+    "fromPath": "/zapisy",
     "toPath":	"/osrodek-zdrowia-zapisy",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/author/admin/",
+    "fromPath": "/author/admin",
     "toPath":	"/",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/category/bez-kategorii/",
+    "fromPath": "/category/bez-kategorii",
     "toPath":	"/",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/strona-glowna/",
+    "fromPath": "/strona-glowna",
     "toPath":	"/",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/uslugi/",
+    "fromPath": "/uslugi",
     "toPath":	"/",
-    "isPermament": true
+    "isPermanent": true
   },
   {
-    "fromPath": "/witaj-swiecie/",
+    "fromPath": "/witaj-swiecie",
     "toPath":	"/",
-    "isPermament": true
+    "isPermanent": true
   }
 ]
