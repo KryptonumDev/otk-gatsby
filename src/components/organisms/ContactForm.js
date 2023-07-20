@@ -19,12 +19,12 @@ const ContactForm = ({ data }) => {
   const [ isEmailSent, setIsEmailSent ] = useState(false)
 
   const onSubmit = (data) => {
-    fetch('/api/newsletter', {
+    fetch('/api/contact', {
       method: 'POST', 
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({id: EBOOK_GROUPID, ...data})
+      body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(response => {

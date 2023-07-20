@@ -22,6 +22,10 @@ export const removeMarkdown = (markdown) => {
   return markdown?.replace(/\*\*(.*?)\*\*/g, '$1');
 }
 
+export const removeHtmlTags = (data) => {
+  return data.replace(/<[^>]*>/g, '');
+}
+
 export const portableTextToMarkdown = (node) => {
   if (node._type === 'span') {
     let text = node.text;
