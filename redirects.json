@@ -5,7 +5,17 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/ankieta/",
+    "toPath":	"/",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/badania",
+    "toPath":	"/gdzie-zrobic-badania",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/badania/",
     "toPath":	"/gdzie-zrobic-badania",
     "isPermanent": true
   },
@@ -15,7 +25,17 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/e-book/",
+    "toPath":	"/pierwszy-rok-zycia-dziecka-ebook",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/faq",
+    "toPath":	"/pytania",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/faq/",
     "toPath":	"/pytania",
     "isPermanent": true
   },
@@ -25,7 +45,17 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/personel/",
+    "toPath":	"/personel-osrodka-zdrowia",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/poradnia-rodzinna",
+    "toPath":	"/poradnia-medycyny-rodzinnej",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/poradnia-rodzinna/",
     "toPath":	"/poradnia-medycyny-rodzinnej",
     "isPermanent": true
   },
@@ -35,7 +65,17 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/poznaj-nas/",
+    "toPath":	"/personel-osrodka-zdrowia",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/profilaktyka",
+    "toPath":	"/profilaktyka-i-diagnostyka",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/profilaktyka/",
     "toPath":	"/profilaktyka-i-diagnostyka",
     "isPermanent": true
   },
@@ -45,7 +85,17 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/regulamin/",
+    "toPath":	"/osrodek-zdrowia-regulamin",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/zapisy",
+    "toPath":	"/osrodek-zdrowia-zapisy",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/zapisy/",
     "toPath":	"/osrodek-zdrowia-zapisy",
     "isPermanent": true
   },
@@ -55,7 +105,17 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/author/admin/",
+    "toPath":	"/",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/category/bez-kategorii",
+    "toPath":	"/",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/category/bez-kategorii/",
     "toPath":	"/",
     "isPermanent": true
   },
@@ -65,12 +125,27 @@
     "isPermanent": true
   },
   {
+    "fromPath": "/strona-glowna/",
+    "toPath":	"/",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/uslugi",
     "toPath":	"/",
     "isPermanent": true
   },
   {
+    "fromPath": "/uslugi/",
+    "toPath":	"/",
+    "isPermanent": true
+  },
+  {
     "fromPath": "/witaj-swiecie",
+    "toPath":	"/",
+    "isPermanent": true
+  },
+  {
+    "fromPath": "/witaj-swiecie/",
     "toPath":	"/",
     "isPermanent": true
   }
