@@ -1,0 +1,97 @@
+[
+  {
+    "fromPath": "/ankieta",
+    "toPath":	"/",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/ankieta/",
+    "toPath":	"/",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/badania/",
+    "toPath":	"/gdzie-zrobic-badania",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/cennik/",
+    "toPath":	"/cennik",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/e-book/",
+    "toPath":	"/pierwszy-rok-zycia-dziecka-ebook",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/faq/",
+    "toPath":	"/pytania",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/kontakt",
+    "toPath":	"/kontakt",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/kontakt/",
+    "toPath":	"/kontakt",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/personel/",
+    "toPath":	"/personel-osrodka-zdrowia",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/poradnia-rodzinna/",
+    "toPath":	"/poradnia-medycyny-rodzinnej",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/poznaj-nas/",
+    "toPath":	"/personel-osrodka-zdrowia",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/profilaktyka/",
+    "toPath":	"/profilaktyka-i-diagnostyka",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/regulamin/",
+    "toPath":	"/osrodek-zdrowia-regulamin",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/zapisy/",
+    "toPath":	"/osrodek-zdrowia-zapisy",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/author/admin/",
+    "toPath":	"/",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/category/bez-kategorii/",
+    "toPath":	"/",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/strona-glowna/",
+    "toPath":	"/",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/uslugi/",
+    "toPath":	"/",
+    "isPermament": true
+  },
+  {
+    "fromPath": "/witaj-swiecie/",
+    "toPath":	"/",
+    "isPermament": true
+  }
+]
