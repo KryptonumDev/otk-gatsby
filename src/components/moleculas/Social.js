@@ -58,8 +58,8 @@ const Wrapper = styled.div`
 const Facebook = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='26'
-    height='26'
+    width='28'
+    height='28'
     fill='none'
     viewBox='0 0 25 26'
   >
@@ -75,8 +75,8 @@ const Facebook = () => (
 const Youtube = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='26'
-    height='26'
+    width='28'
+    height='28'
     fill='none'
     viewBox='0 0 54 39'
   >

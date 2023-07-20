@@ -50,6 +50,9 @@ const Prevention = ({
 }
 
 const Wrapper = styled.section`
+  &.max-width {
+    max-width: 1024px;
+  }
   h2 {
     color: var(--primary-500);
   }

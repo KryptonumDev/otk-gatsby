@@ -2,7 +2,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import { Clamp } from "../../../utils/functions";
+import { Clamp, removeMarkdown } from "../../../utils/functions";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 
@@ -19,8 +19,7 @@ const Hero = ({
     <Wrapper>
       <div className="max-width">
         <header>
-          <Heading className="heading">{hero_Heading}</Heading>
-          <ReactMarkdown className="subheading">{hero_Subheading}</ReactMarkdown>
+          <Heading className="heading">{`${hero_Heading} *${removeMarkdown(hero_Subheading)}*`}</Heading>
           <hr />
           <ReactMarkdown className="paragraph">{hero_Paragraph}</ReactMarkdown>
           <div className="cta-wrapper">
@@ -54,10 +53,11 @@ const Wrapper = styled.section`
   }
   header {
     padding: ${Clamp(64, 64, 144, 'px')} 0;
-    .heading {
-      margin-bottom: ${Clamp(8, 16, 24, 'px')};
-    }
-    .subheading {
+    .heading em {
+      margin-top: ${Clamp(8, 16, 24, 'px')};
+      display: block;
+      font-style: normal;
+      font-weight: 400;
       font-size: ${Clamp(24, 16, 38)};
     }
     .paragraph {

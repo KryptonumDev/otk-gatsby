@@ -53,8 +53,11 @@ const StyledAnchor = styled.a`
   display: inline-block;
   font-size: ${Clamp(16, 20, 24)};
   font-weight: 600;
+  padding: 19px 42px;
+  @media (max-width: 349px){
+    padding: 19px 24px;
+  }
   &[data-theme="primary"] {
-    padding: 19px 42px;
     &[data-variant="dark"] {
       background-color: var(--primary-500);
       color: var(--neutral-100);
@@ -71,9 +74,8 @@ const StyledAnchor = styled.a`
     }
   }
   &[data-theme="secondary"] {
-    padding: 16px 42px;
     &[data-variant="dark"]{
-      border: 3px solid var(--primary-500);
+      box-shadow: inset 0 0 0 3px;
       color: var(--primary-500);
       &:hover {
         color: var(--primary-300);
@@ -81,7 +83,7 @@ const StyledAnchor = styled.a`
       }
     }
      &[data-variant="light"] {
-      border: 3px solid var(--neutral-100);
+      box-shadow: inset 0 0 0 3px;
       color: var(--neutral-100);
       &:hover {
         color: var(--secondary-200);

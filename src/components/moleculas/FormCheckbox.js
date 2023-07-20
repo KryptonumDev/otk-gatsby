@@ -21,6 +21,7 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 8px;
+    cursor: pointer;
     .tick {
       position: relative;
       color: var(--form-tick);
@@ -32,8 +33,7 @@ const Wrapper = styled.div`
         border: 1px solid var(--form-input);
         &[aria-invalid="true"]{
           border-color: var(--error);
-        } 
-        cursor: pointer;
+        }
         transition: background-color .3s;
         &:checked {
           background-color: var(--form-input);

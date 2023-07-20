@@ -5,6 +5,7 @@ import { ChevronDown, Logo } from "../atoms/Icons";
 import { Clamp } from "../../utils/functions";
 import Button from "../atoms/Button";
 import Social from "../moleculas/Social";
+import { useEffect } from "react";
 
 const Nav = () => {
   const {
@@ -21,7 +22,20 @@ const Nav = () => {
     }
   `)
 
-  const [ navOpened, setNavOpened ] = useState(false)
+  const [ navOpened, setNavOpened ] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey)
+    }
+  }, []);
+
+  const handleEscapeKey = (e) => {
+    if (e.key === "Escape"){
+      setNavOpened(false);
+    }
+  }
 
   const handleNavToggle = () => {
     setNavOpened(!navOpened);
@@ -142,6 +156,16 @@ const WrapperNav = styled.nav`
     align-items: center;
     gap: ${Clamp(16, 16, 48, 'px')};
     font-size: ${Clamp(16, 8, 18)};
+    color: var(--primary-200);
+    a:not(.nav-cta) {
+      &[aria-current="page"]{
+        font-weight: 600;
+      }
+      transition: opacity .3s;
+      &:hover {
+        opacity: .8;
+      }
+    }
     li {
       list-style-type: none;
       > span {
@@ -153,7 +177,7 @@ const WrapperNav = styled.nav`
           transition: transform .3s;
         }
       }
-      @media (min-width: 1300px){
+      @media (min-width: 1200px){
         &:hover,
         &:focus-within {
           > span svg {
@@ -215,7 +239,7 @@ const WrapperNav = styled.nav`
   }
 
   // ### MOBILE
-  @media (max-width: 1299px){
+  @media (max-width: 1199px){
     &[aria-expanded="true"] {
       .list {
         opacity: 1;
@@ -242,7 +266,7 @@ const WrapperNav = styled.nav`
     }
     .social {
       display: flex;
-      margin: 13px 0;
+      margin: 13px -10px;
     }
     .list {
       opacity: 0;
@@ -333,7 +357,7 @@ const WrapperTopBar = styled.div`
   > .max-width {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 48px;
+    gap: 12px 48px;
     justify-content: space-between;
   }
   .workingHours {
@@ -342,12 +366,18 @@ const WrapperTopBar = styled.div`
   .contact {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 48px;
+    gap: 12px ${Clamp(24, 24, 48, 'px')};
     a {
+      span {
+        transition: opacity .3s;
+      }
+      &:hover span {
+        opacity: .8;
+      }
       display: grid;
       grid-template-columns: auto 1fr;
       align-items: center;
-      gap: 12px;
+      gap: ${Clamp(8, 8, 12, 'px')};
     }
   }
 `
