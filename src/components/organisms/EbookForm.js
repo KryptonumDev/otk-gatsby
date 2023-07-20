@@ -4,7 +4,10 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { EBOOK_GROUPID } from "../../constants/data";
 import { emailRegex } from "../../constants/regex";
+import { Clamp } from "../../utils/functions";
 import Button from "../atoms/Button";
+import { Error } from "../atoms/Icons";
+import Loader from "../atoms/Loader";
 import FormCheckbox from "../moleculas/FormCheckbox";
 import FormInput from "../moleculas/FormInput";
 
@@ -16,9 +19,10 @@ const EbookForm = ({ data }) => {
     formState: { errors },
   } = useForm({ mode: 'onSubmit' })
 
-  const [ isEmailSent, setIsEmailSent ] = useState(false)
+  const [ sentStatus, setSentStatus ] = useState({ sent: false })
 
   const onSubmit = (data) => {
+    setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
     fetch('/api/newsletter', {
       method: 'POST', 
       headers: {
@@ -29,20 +33,37 @@ const EbookForm = ({ data }) => {
     .then(response => response.json())
     .then(response => {
       if(response.success){
-        setIsEmailSent(true);
+        setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
+        reset()
       } else {
-        setIsEmailSent(false);
+        setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+        reset()
       }
     })
     .catch(() => {
-      setIsEmailSent(false);
+      setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+      reset()
     })
-    reset()
   }
-
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
+       {sentStatus.success !== undefined && (
+        sentStatus.success ? (
+          <div className="status">
+            <h3>Dziękujemy za kontakt.</h3>
+            <p>Odpowiemy najszybciej, jak to możliwe!</p>
+            <Button variant="dark" theme={data.cta.theme} to={data.cta.href}>{data.cta.text}</Button>
+          </div>
+        ) : (
+          <div className="status status-error">
+            <Error />
+            <h3>Coś poszło nie tak.</h3>
+            <p>Prosimy o ponowne wypełnienie formularza.</p>
+            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
+          </div>
+        )
+      )}
       <FormInput
         type="email"
         placeholder="Email"
@@ -55,7 +76,12 @@ const EbookForm = ({ data }) => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button variant="light" theme="primary">{data.formCta}</Button>
+        <Button variant="light" theme="primary" disabled={sentStatus.sent}>
+          {sentStatus.sent && (
+            <Loader />
+          )}
+          <span>{data.formCta}</span>
+        </Button>
         <Button variant="light" theme={data.cta.theme} to={data.cta.href}>{data.cta.text}</Button>
       </div>
     </Wrapper>
@@ -63,16 +89,57 @@ const EbookForm = ({ data }) => {
 }
 
 const Wrapper = styled.form`
+  position: relative;
+  .status {
+    animation: statusShow .3s forwards;
+    color: var(--dark-500);
+    @keyframes statusShow {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    p {
+      font-size: ${Clamp(16, 18, 20)};
+      margin: 12px 0 32px;
+    }
+    button {
+      max-width: 400px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    inset: -2px;
+    @media (max-width: 599px){
+      inset: 0 calc(var(--pageMargin) * -1);
+    }
+    padding: var(--pageMargin);
+    background-color: var(--secondary-500);
+    border-radius: 10px;
+    z-index: 2;
+    &.status-error {
+      background-color: var(--neutral-100);
+      svg {
+        color: var(--error);
+        width: 32px;
+        height: 32px;
+        margin-bottom: 12px;
+      }
+    }
+  }
   .formItem {
     &:not(:last-child){
-      margin-bottom: 13px;
+      margin-bottom: 21px;
     }
   }
   .formItem {
     max-width: 500px;
   }
   .cta-wrapper {
-    margin-top: 21px;
+    margin-top: 34px;
   }
 `
 

@@ -18,10 +18,10 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm({ mode: 'onSubmit' })
 
-  const [ emailStatus, setEmailStatus ] = useState({ sent: false })
+  const [ sentStatus, setSentStatus ] = useState({ sent: false })
 
   const onSubmit = (data) => {
-    setEmailStatus({ sent: true });
+    setSentStatus({ sent: true });
     fetch('/api/contact', {
       method: 'POST', 
       headers: {
@@ -32,32 +32,33 @@ const ContactForm = () => {
     .then(response => response.json())
     .then(response => {
       if(response.success){
-        setEmailStatus(prevStatus => ({ ...prevStatus, success: true }));
+        setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
       } else {
-        setEmailStatus(prevStatus => ({ ...prevStatus, success: false }));
+        setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
       }
+      reset();
     })
     .catch(() => {
-      setEmailStatus(prevStatus => ({ ...prevStatus, success: false }));
+      setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+      reset();
     })
-    reset()
   }
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)} data-variant="dark">
-      {(emailStatus.success || emailStatus.success === false) && (
-        emailStatus.success ? (
+      {sentStatus.success !== undefined && (
+        sentStatus.success ? (
           <div className="status">
             <h3>Dziękujemy za kontakt.</h3>
             <p>Odpowiemy najszybciej, jak to możliwe!</p>
-            <Button theme="secondary" onClick={() => setEmailStatus({ sent: false })}>Wypełnij ponownie</Button>
+            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
           </div>
         ) : (
           <div className="status status-error">
             <Error />
             <h3>Coś poszło nie tak.</h3>
             <p>Prosimy o ponowne wypełnienie formularza.</p>
-            <Button theme="secondary" onClick={() => setEmailStatus({ sent: false })}>Wypełnij ponownie</Button>
+            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
           </div>
         )
       )}
@@ -98,8 +99,8 @@ const ContactForm = () => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button disabled={emailStatus.sent}>
-          {emailStatus.sent && (
+        <Button disabled={sentStatus.sent}>
+          {sentStatus.sent && (
             <Loader />
           )}
           <span>Wyślij</span>

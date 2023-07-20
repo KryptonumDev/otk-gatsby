@@ -68,12 +68,14 @@ const Wrapper = styled.section`
       margin-left: -80%;
     }
   }
-  h3 {
-    font-weight: 600;
-    font-size: ${Clamp(16, 16, 32)};
-    strong {
+  .copy {
+    > h3 {
       font-weight: 600;
-      color: var(--secondary-500);
+      font-size: ${Clamp(16, 16, 32)};
+      strong {
+        font-weight: 600;
+        color: var(--secondary-500);
+      }
     }
   }
   .paragraph {
