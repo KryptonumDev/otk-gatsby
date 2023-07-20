@@ -45,18 +45,19 @@ const Newsletter = () => {
 }
 
 const Wrapper = styled.section`
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${Clamp(48, 48, 64)} ${Clamp(48, 64, 82)};
-  h2 {
-    color: var(--primary-500);
-  }
-  h3 {
-    font-weight: 400;
-    color: var(--primary-500);
-    font-size: ${Clamp(20, 20, 24)};
-    margin-bottom: ${Clamp(24, 24, 32, 'px')};
+  .copy {
+    > h2 {
+      color: var(--primary-500);
+    }
+    > h3 {
+      font-weight: 400;
+      color: var(--primary-500);
+      font-size: ${Clamp(20, 20, 24)};
+      margin-bottom: ${Clamp(24, 24, 32, 'px')};
+    }
   }
   .img {
     margin: 0 auto;

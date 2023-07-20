@@ -55,8 +55,10 @@ const ContactForm = () => {
           </div>
         ) : (
           <div className="status status-error">
-            <Error />
-            <h3>Coś poszło nie tak.</h3>
+            <h3>
+              <Error />
+              <span>Coś poszło nie tak.</span>
+            </h3>
             <p>Prosimy o ponowne wypełnienie formularza.</p>
             <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
           </div>
@@ -143,11 +145,15 @@ const Wrapper = styled.form`
     z-index: 2;
     &.status-error {
       background-color: var(--neutral-100);
-      svg {
+      h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         color: var(--error);
-        width: 32px;
-        height: 32px;
-        margin-bottom: 12px;
+        svg {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }

@@ -22,7 +22,6 @@ const EbookForm = ({ data }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
 
   const onSubmit = (data) => {
-    setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
     fetch('/api/newsletter', {
       method: 'POST', 
       headers: {
@@ -48,17 +47,18 @@ const EbookForm = ({ data }) => {
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
-       {sentStatus.success !== undefined && (
+      {sentStatus.success !== undefined && (
         sentStatus.success ? (
           <div className="status">
-            <h3>Dziękujemy za kontakt.</h3>
-            <p>Odpowiemy najszybciej, jak to możliwe!</p>
-            <Button variant="dark" theme={data.cta.theme} to={data.cta.href}>{data.cta.text}</Button>
+            <h3>Dziękujemy za pobranie naszego e-booka!</h3>
+            <p>Mamy nadzieję, że wiedza w nim zawarta będzie przydatna.</p>
           </div>
         ) : (
           <div className="status status-error">
-            <Error />
-            <h3>Coś poszło nie tak.</h3>
+            <h3>
+              <Error />
+              <span>Coś poszło nie tak.</span>
+            </h3>
             <p>Prosimy o ponowne wypełnienie formularza.</p>
             <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
           </div>
@@ -103,9 +103,10 @@ const Wrapper = styled.form`
     }
     p {
       font-size: ${Clamp(16, 18, 20)};
-      margin: 12px 0 32px;
+      margin-top: 12px;
     }
     button {
+      margin-top: 32px;
       max-width: 400px;
     }
     display: flex;
@@ -121,12 +122,17 @@ const Wrapper = styled.form`
     border-radius: 10px;
     z-index: 2;
     &.status-error {
+      --error: #CB3C1D;
       background-color: var(--neutral-100);
-      svg {
+      h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         color: var(--error);
-        width: 32px;
-        height: 32px;
-        margin-bottom: 12px;
+        svg {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }

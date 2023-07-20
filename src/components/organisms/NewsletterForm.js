@@ -4,7 +4,10 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { NEWSLETTER_GROUPID } from "../../constants/data";
 import { emailRegex } from "../../constants/regex";
+import { Clamp } from "../../utils/functions";
 import Button from "../atoms/Button";
+import { Error } from "../atoms/Icons";
+import Loader from "../atoms/Loader";
 import FormCheckbox from "../moleculas/FormCheckbox";
 import FormInput from "../moleculas/FormInput";
 
@@ -16,7 +19,7 @@ const NewsletterForm = ({ cta, variant }) => {
     formState: { errors },
   } = useForm({ mode: 'onSubmit' })
 
-  const [ isEmailSent, setIsEmailSent ] = useState(false)
+  const [ sentStatus, setSentStatus ] = useState({ sent: false })
 
   const onSubmit = (data) => {
     fetch('/api/newsletter', {
@@ -29,20 +32,37 @@ const NewsletterForm = ({ cta, variant }) => {
     .then(response => response.json())
     .then(response => {
       if(response.success){
-        setIsEmailSent(true);
+        setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
       } else {
-        setIsEmailSent(false);
+        setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+        reset()
       }
     })
     .catch(() => {
-      setIsEmailSent(false);
+      setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+      reset()
     })
-    reset()
   }
-
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)} data-variant={variant}>
+      {sentStatus.success !== undefined && (
+        sentStatus.success ? (
+          <div className="status">
+            <h3>Dziękujemy za zapis do newslettera!</h3>
+            <p>Jesteś teraz na bieżąco z aktualnościami z Naszej Przychodni.</p>
+          </div>
+        ) : (
+          <div className="status status-error">
+            <h3>
+              <Error />
+              <span>Coś poszło nie tak.</span>
+            </h3>
+            <p>Prosimy o ponowne wypełnienie formularza.</p>
+            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
+          </div>
+        )
+      )}
       <FormInput
         type="email"
         placeholder="Email"
@@ -55,13 +75,64 @@ const NewsletterForm = ({ cta, variant }) => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button theme="primary">{cta}</Button>
+        <Button theme="primary" disabled={sentStatus.sent}>
+          {sentStatus.sent && (
+            <Loader />
+          )}
+          <span>{cta}</span>
+        </Button>
       </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.form`
+  position: relative;
+  .status {
+    animation: statusShow .3s forwards;
+    color: var(--dark-500);
+    @keyframes statusShow {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    p {
+      font-size: ${Clamp(16, 18, 20)};
+      margin-top: 12px;
+    }
+    button {
+      margin-top: 32px;
+      max-width: 400px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    inset: -2px;
+    @media (max-width: 599px){
+      inset: 0 calc(var(--pageMargin) * -1);
+    }
+    padding: var(--pageMargin);
+    background-color: var(--secondary-500);
+    border-radius: 10px;
+    z-index: 2;
+    &.status-error {
+      background-color: var(--neutral-100);
+      h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--error);
+        svg {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+  }
   &[data-variant="dark"] {
     --error: #CB3C1D;
     --form-tick: var(--neutral-100);
