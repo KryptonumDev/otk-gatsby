@@ -19,7 +19,7 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
             data-variant={variant}
             {...props}
           >
-            <span>{children}</span>
+            {children}
           </StyledAnchor>
         ) : (
           <StyledAnchor
@@ -30,7 +30,7 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
             data-variant={variant}
             {...props}
           >
-            <span>{children}</span>
+            {children}
           </StyledAnchor>
         )
       ) : (
@@ -42,7 +42,7 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
           data-variant={variant}
           {...props}
         >
-          <span>{children}</span>
+          {children}
         </StyledAnchor>
       )}
     </>
@@ -50,7 +50,10 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
 }
 
 const StyledAnchor = styled.a`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-size: ${Clamp(16, 20, 24)};
   font-weight: 600;
   padding: 19px 42px;
@@ -96,6 +99,9 @@ const StyledAnchor = styled.a`
   transition-timing-function: var(--easing);
   &:active {
     transform: scale(.95);
+  }
+  &:disabled {
+    pointer-events: none;
   }
 `
  

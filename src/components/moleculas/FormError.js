@@ -20,7 +20,7 @@ const Wrapper = styled.p`
   align-items: center;
   color: var(--error);
   gap: 8px;
-  margin-top: 5px;
+  margin-top: 3px;
   max-height: 40px;
   transition: max-height .4s;
   &:empty {

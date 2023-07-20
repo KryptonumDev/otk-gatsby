@@ -152,6 +152,9 @@ const Wrapper = styled.footer`
     .column {
       grid-template-columns: 1fr;
     }
+    .social {
+      margin-left: -10px;
+    }
     .contact {
       grid-template-columns: 1fr;
       a {

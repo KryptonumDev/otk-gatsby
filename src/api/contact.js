@@ -42,7 +42,7 @@ export default function handler(req, res) {
 
   const emailMessage = {
     from: { email: fromEmail, name: 'Ośrodek Zdrowia w Turośni Koscielnej' },
-    to: 'bogumil1818@gmail.com',
+    to: 'kryptonumstudio@gmail.com',
     replyTo: email,
     subject: `Formularz kontaktowy - ${name} przesyła wiadomość`,
     text: removeHtmlTags(messageBody),
