@@ -12,9 +12,10 @@ const OurStaff = ({
     heading,
     subheading,
     cta,
+    list,
   }
 }) => {
-  const { staff } = useStaticQuery(graphql`
+  let { staff } = useStaticQuery(graphql`
     query {
       staff: allSanityStaff {
         nodes {
@@ -30,13 +31,18 @@ const OurStaff = ({
       }
     }
   `)
+
+  staff = list ? list : staff.nodes;
+
   return (
     <Wrapper className="max-width">
       <Heading type="h2">{heading}</Heading>
       <hr />
-      <Heading type="h3">{subheading}</Heading>
+      {subheading && (
+        <Heading type="h3">{subheading}</Heading>
+      )}
       <div className="wrapper">
-        {staff.nodes.map((person, i) => (
+        {staff.map((person, i) => (
           <div className="item" key={i}>
             <ImageDecorative data={person.img} />
             <Heading type="h3">{person.name}</Heading>
@@ -44,7 +50,11 @@ const OurStaff = ({
           </div>
         ))}
       </div>
-      <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+      {cta && (
+        <div className="cta-wrapper">
+          <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>
+        </div>
+      )}
     </Wrapper>
   );
 }
@@ -58,9 +68,9 @@ const Wrapper = styled.section`
   }
   h3 {
     font-weight: 400;
+    margin-bottom: ${Clamp(42, 62, 82, 'px')};
   }
   .wrapper {
-    margin: ${Clamp(42, 62, 82, 'px')} 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     @media (max-width: 1049px){
@@ -76,6 +86,9 @@ const Wrapper = styled.section`
     .position {
       font-size: ${Clamp(16, 20, 24)};
     }
+  }
+  .cta-wrapper {
+    margin-top: ${Clamp(42, 62, 82, 'px')};
   }
 `
 

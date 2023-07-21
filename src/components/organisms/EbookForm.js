@@ -11,7 +11,7 @@ import Loader from "../atoms/Loader";
 import FormCheckbox from "../moleculas/FormCheckbox";
 import FormInput from "../moleculas/FormInput";
 
-const EbookForm = ({ data }) => {
+const EbookForm = ({ data, variant='light' }) => {
   const {
     register,
     handleSubmit,
@@ -47,7 +47,7 @@ const EbookForm = ({ data }) => {
   }
 
   return (
-    <Wrapper onSubmit={handleSubmit(onSubmit)}>
+    <Wrapper onSubmit={handleSubmit(onSubmit)} data-variant={variant}>
       {sentStatus.success !== undefined && (
         sentStatus.success ? (
           <div className="status">
@@ -77,13 +77,15 @@ const EbookForm = ({ data }) => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button variant="light" theme="primary" disabled={sentStatus.sent}>
+        <Button variant={variant} theme="primary" disabled={sentStatus.sent}>
           {sentStatus.sent && (
             <Loader />
           )}
           <span>{data.formCta}</span>
         </Button>
-        <Button variant="light" theme={data.cta.theme} to={data.cta.href}>{data.cta.text}</Button>
+        {data.cta && (
+          <Button variant={variant} theme={data.cta.theme} to={data.cta.href}>{data.cta.text}</Button>
+        )}
       </div>
     </Wrapper>
   );
@@ -136,6 +138,12 @@ const Wrapper = styled.form`
         }
       }
     }
+  }
+  &[data-variant="dark"] {
+    --error: #CB3C1D;
+    --form-tick: var(--neutral-100);
+    --form-input: var(--dark-300);
+    --form-link: var(--primary-500);
   }
   .formItem {
     &:not(:last-child){
