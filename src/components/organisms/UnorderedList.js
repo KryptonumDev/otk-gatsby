@@ -26,12 +26,6 @@ const Wrapper = styled.ul`
     &:not(:last-child){
       margin-bottom: 16px;
     }
-    a {
-      font-weight: 600;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 `
 

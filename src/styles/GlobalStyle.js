@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     &.link {
       font-weight: 600;
-      color: var(--primary-300);
+      color: var(--primary-500);
       &:hover {
         text-decoration: underline;
       }
