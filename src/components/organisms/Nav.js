@@ -47,6 +47,7 @@ const Nav = () => {
 
   return (
     <>
+      <WrapperSkipToMainContent href="#main">Przejdź do głównej treści</WrapperSkipToMainContent>
       <WrapperTopBar>
         <div className="max-width">
           <p className="workingHours">{global.nav.workingHours}</p>
@@ -379,6 +380,20 @@ const WrapperTopBar = styled.div`
       align-items: center;
       gap: ${Clamp(8, 8, 12, 'px')};
     }
+  }
+`
+
+const WrapperSkipToMainContent = styled.a`
+  background-color: var(--neutral-100);
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  left: 0%;
+  top: 0;
+  padding: 13px;
+  &:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 `
 
