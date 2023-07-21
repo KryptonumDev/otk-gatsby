@@ -47,6 +47,7 @@ const Wrapper = styled.section`
   color: var(--neutral-100);
   padding: ${Clamp(48, 48, 82, 'px')} 0;
   position: relative;
+  overflow: hidden;
   z-index: 1;
   .icon {
     position: absolute;

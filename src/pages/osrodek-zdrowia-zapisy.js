@@ -6,6 +6,8 @@ import Ebook from "../components/sections/Ebook"
 import Faq from "../components/sections/Faq"
 import CtaSection from "../components/sections/CtaSection"
 import BenefitsSection from "../components/sections/BenefitsSection"
+import Newsletter from "../components/sections/Newsletter"
+import Registration from "../components/sections/Registration/Registration"
 
 const RegistrationPage = ({
   data: {
@@ -17,6 +19,16 @@ const RegistrationPage = ({
       services_Paragraph,
       services_List,
       services_Cta,
+      registration_Heading,
+      registration_Paragraph,
+      registration_Has_Title,
+      registration_Has_Paragraph,
+      registration_Has_Cta,
+      registration_HasNot_Title,
+      registration_HasNot_Heading,
+      registration_HasNot_Subheading,
+      registration_HasNot_Paragraph,
+      registration_HasNot_List,
       ctaSection,
       faqSection,
     },
@@ -37,9 +49,22 @@ const RegistrationPage = ({
         list={services_List}
         cta={services_Cta}
       />
+      <Registration data={{
+        registration_Heading,
+        registration_Paragraph,
+        registration_Has_Title,
+        registration_Has_Paragraph,
+        registration_Has_Cta,
+        registration_HasNot_Title,
+        registration_HasNot_Heading,
+        registration_HasNot_Subheading,
+        registration_HasNot_Paragraph,
+        registration_HasNot_List,
+      }} />
       <CtaSection data={ctaSection} firstIconOnRight={true} />
       <Faq data={faqSection} />
       <Ebook />
+      <Newsletter />
     </>
   )
 }
@@ -71,6 +96,30 @@ export const query = graphql`
         theme
         href
         text
+      }
+      # Registration 
+      registration_Heading
+      registration_Paragraph
+      registration_Has_Title
+      registration_Has_Paragraph
+      registration_Has_Cta {
+        theme
+        text
+        href
+      }
+      registration_HasNot_Title
+      registration_HasNot_Heading
+      registration_HasNot_Subheading
+      registration_HasNot_Paragraph
+      registration_HasNot_List {
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        title
+        description
       }
       # CTA Section
       ctaSection {
