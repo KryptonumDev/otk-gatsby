@@ -293,6 +293,12 @@ const WrapperNav = styled.nav`
         &:not(:nth-last-child(-n+3)){
           border-bottom: 1px solid var(--secondary-500);
           padding-bottom: 16px;
+          &[tabIndex] {
+            padding-bottom: 0;
+            > span {
+              padding-bottom: 16px;
+            }
+          }
         }
         > span {
           padding: 0;
@@ -324,10 +330,10 @@ const WrapperNav = styled.nav`
         border: none;
         li {
           &:first-child {
-            padding-top: 24px;
+            padding-top: 8px;
           }
           &:last-child {
-            padding-bottom: 16px;
+            padding-bottom: 32px;
           }
           &:not(:last-child){
             margin-bottom: 10px;
