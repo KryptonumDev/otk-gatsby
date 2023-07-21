@@ -22,6 +22,7 @@ const NewsletterForm = ({ cta, variant }) => {
   const [ sentStatus, setSentStatus ] = useState({ sent: false })
 
   const onSubmit = (data) => {
+    setSentStatus({ sent: true });
     fetch('/api/newsletter', {
       method: 'POST', 
       headers: {
