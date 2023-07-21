@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp, removeMarkdown } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 
@@ -21,7 +21,7 @@ const Hero = ({
         <header>
           <Heading className="heading">{`${hero_Heading} *${removeMarkdown(hero_Subheading)}*`}</Heading>
           <hr />
-          <ReactMarkdown className="paragraph">{hero_Paragraph}</ReactMarkdown>
+          <Markdown className="paragraph">{hero_Paragraph}</Markdown>
           <div className="cta-wrapper">
             {hero_Cta.map((cta, i) => (
               <Button variant="light" theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>

@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 
@@ -24,15 +24,15 @@ const Registration = ({
     <Wrapper className="max-width">
       <header>
         <Heading type="h2">{registration_Heading}</Heading>
-        <ReactMarkdown className="paragraph">{registration_Paragraph}</ReactMarkdown>
+        <Markdown className="paragraph">{registration_Paragraph}</Markdown>
       </header>
       <div className="option">
         <div className="title">
           <Has />
-          <ReactMarkdown>{registration_Has_Title}</ReactMarkdown>
+          <Markdown>{registration_Has_Title}</Markdown>
           <hr />
         </div>
-        <ReactMarkdown className="list">{registration_Has_Paragraph}</ReactMarkdown>
+        <Markdown className="list">{registration_Has_Paragraph}</Markdown>
         <div className="cta-wrapper">
           {registration_Has_Cta.map((cta, i) => (
             <Button theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>
@@ -42,12 +42,12 @@ const Registration = ({
       <div className="option">
         <div className="title">
           <HasNot />
-          <ReactMarkdown>{registration_HasNot_Title}</ReactMarkdown>
+          <Markdown>{registration_HasNot_Title}</Markdown>
           <hr />
         </div>
         <Heading type="h3">{registration_HasNot_Heading}</Heading>
-        <ReactMarkdown className="subheading">{registration_HasNot_Subheading}</ReactMarkdown>
-        <ReactMarkdown className="paragraph">{registration_HasNot_Paragraph}</ReactMarkdown>
+        <Markdown className="subheading">{registration_HasNot_Subheading}</Markdown>
+        <Markdown className="paragraph">{registration_HasNot_Paragraph}</Markdown>
         <div className="wrapper">
           {registration_HasNot_List.map((item, i) => (
             <div className="item" key={i}>
@@ -56,8 +56,8 @@ const Registration = ({
                 alt={item.img.asset.altText || ''}
                 className="img"
               />
-              <ReactMarkdown className="title">{item.title}</ReactMarkdown>
-              <ReactMarkdown className="description">{item.description}</ReactMarkdown>
+              <Markdown className="title">{item.title}</Markdown>
+              <Markdown className="description">{item.description}</Markdown>
             </div>
           ))}
         </div>
@@ -133,13 +133,6 @@ const Wrapper = styled.section`
       grid-template-columns: auto 1fr;
       column-gap: ${Clamp(24, 32, 48, 'px')};
       grid-template-rows: auto 1fr;
-      a {
-        font-weight: 600;
-        color: var(--primary-300);
-        &:hover {
-          text-decoration: underline;
-        }
-      }
       .title {
         margin-bottom: 12px;
         font-size: ${Clamp(24, 24, 32)};

@@ -11,7 +11,7 @@ const components = {
   marks: {
     link: ({value, children}) => {
       const { href } = value
-      return <a href={href} target="_blank" rel="noreferrer">{children}</a>
+      return <a href={href} target="_blank" rel="noreferrer" className="link">{children}</a>
     }
   }
 }
@@ -46,12 +46,6 @@ const Wrapper = styled.div`
       margin-top: ${Clamp(48, 72, 96, 'px')};
     }
     margin-bottom: 32px;
-  }
-  a {
-    font-weight: 600;
-    &:hover {
-      text-decoration: underline;
-    }
   }
   ul, ol {
     list-style-type: none;

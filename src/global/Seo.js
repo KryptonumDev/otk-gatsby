@@ -2,11 +2,20 @@ import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
 
 export const Seo = ({ title, description, url, children }) => {
-  const { site } = useStaticQuery(graphql`
+  const { site, global } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
           siteUrl
+        }
+      }
+      global: sanityGlobal {
+        seo {
+          og_Img {
+            asset {
+              url
+            }
+          }
         }
       }
     }
@@ -29,15 +38,14 @@ export const Seo = ({ title, description, url, children }) => {
       <meta property="og:description" content={seo.description} />
       <meta property="og:locale" content={locale} />
       <meta property="og:type" content="website" />
-
-      {/* <meta property="og:image" content={ogImage || og_Img.asset.url} /> */}
+      <meta property="og:image" content={global.seo.og_Img.asset.url} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta property="twitter:domain" content={`${domain}`} />
-      {/* <meta property="twitter:image" content={og_Img.asset.url} /> */}
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="twitter:image" content={global.seo.og_Img.asset.url} />
       <meta property="twitter:url" content={`${domain}${seo.url}`} />
       <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />

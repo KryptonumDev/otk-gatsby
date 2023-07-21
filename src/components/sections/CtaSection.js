@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
+import Markdown from "../../utils/Markdown";
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 
@@ -13,13 +13,13 @@ const CtaSection = ({ data, firstIconOnRight=false }) => {
         <Heading type="h2" className="heading">{data.heading}</Heading>
         <hr />
         {data.subheading && (
-          <ReactMarkdown className="subheading">{data.subheading}</ReactMarkdown>
+          <Markdown className="subheading">{data.subheading}</Markdown>
         )}
         {data.paragraph && (
-          <ReactMarkdown className="paragraph">{data.paragraph}</ReactMarkdown>
+          <Markdown className="paragraph">{data.paragraph}</Markdown>
         )}
         {data.claim && (
-          <ReactMarkdown className="claim">{data.claim}</ReactMarkdown>
+          <Markdown className="claim">{data.claim}</Markdown>
         )}
         <div className="cta-wrapper">
           {data.cta.map((cta, i) => (

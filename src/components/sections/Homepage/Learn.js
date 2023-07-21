@@ -1,7 +1,7 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import ImageDecorative from "../../atoms/ImageDecorative";
 import UnorderedList from "../../organisms/UnorderedList";
@@ -17,7 +17,7 @@ const Learn = ({
   return (
     <Wrapper className="max-width">
       <div>
-        <ReactMarkdown className="paragraph">{learn_Paragraph}</ReactMarkdown>
+        <Markdown className="paragraph">{learn_Paragraph}</Markdown>
        <UnorderedList data={learn_List} />
         <div className="cta-wrapper">
           {learn_Cta.map((cta, i) => (

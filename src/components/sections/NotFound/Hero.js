@@ -1,7 +1,7 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 
@@ -16,7 +16,7 @@ const Hero = ({
     <Wrapper>
       <div className="max-width">
         <Heading className="heading">{hero_Heading}</Heading>
-        <ReactMarkdown className="subheading">{hero_Subheading}</ReactMarkdown>
+        <Markdown className="subheading">{hero_Subheading}</Markdown>
         <Button theme={hero_Cta.theme} to={hero_Cta.href}>{hero_Cta.text}</Button>
         <Heart />
       </div>

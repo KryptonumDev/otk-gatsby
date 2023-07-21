@@ -1,7 +1,7 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
+import Markdown from "../../utils/Markdown";
 import { ListBullet } from "../atoms/Icons";
 
 const UnorderedList = ({ data }) => {
@@ -10,7 +10,7 @@ const UnorderedList = ({ data }) => {
       {data.map((item, i) => (
         <li key={i}>
           <ListBullet />
-          <ReactMarkdown>{item}</ReactMarkdown>
+          <Markdown>{item}</Markdown>
         </li>
       ))}
     </Wrapper>

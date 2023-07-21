@@ -71,6 +71,13 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+    &.link {
+      font-weight: 600;
+      color: var(--primary-300);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   label {
     display: block;

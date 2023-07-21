@@ -1,16 +1,16 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
+import Markdown from "../../utils/Markdown";
 
 const Heading = ({ type='h1', children, ...props }) => {
   return (
-    <ReactMarkdown
+    <Markdown
       components={{
         'p': type,
       }}
       {...props}
     >
       {children}
-    </ReactMarkdown>
+    </Markdown>
   );
 }
 

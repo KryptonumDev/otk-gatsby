@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 
 const Benefits = ({ data }) => {
   return (
@@ -16,7 +16,7 @@ const Benefits = ({ data }) => {
               objectFit="contain"
             />
           </div>
-          <ReactMarkdown className="title">{benefit.title}</ReactMarkdown>
+          <Markdown className="title">{benefit.title}</Markdown>
           <hr />
         </div>
       ))}

@@ -1,9 +1,9 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import Heading from "../../atoms/Heading";
 import Button from '../../atoms/Button';
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 
 const Mission = ({
   data: {
@@ -19,7 +19,7 @@ const Mission = ({
         <Heading type="h2">{mission_Heading}</Heading>
         <hr />
         <Heading type="h3">{mission_Subheading}</Heading>
-        <ReactMarkdown className="paragraph">{mission_Paragraph}</ReactMarkdown>
+        <Markdown className="paragraph">{mission_Paragraph}</Markdown>
         <div className="cta-wrapper">
           {mission_Cta.map((cta, i) => (
             <Button theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>

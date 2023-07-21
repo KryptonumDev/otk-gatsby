@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
+import Markdown from "../../utils/Markdown";
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 
@@ -12,15 +12,15 @@ const Faq = ({ data }) => {
       <div className="copy">
         <Heading type="h2">{data.heading}</Heading>
         <hr />
-        <ReactMarkdown className="paragraph">{data.paragraph}</ReactMarkdown>
+        <Markdown className="paragraph">{data.paragraph}</Markdown>
         <div className="wrapper">
           {data.list.map((item, i) => (
           <details key={i}>
             <summary>
               <ChevronDown />
-              <ReactMarkdown>{item.question}</ReactMarkdown>
+              <Markdown>{item.question}</Markdown>
             </summary>
-            <ReactMarkdown className="answer">{item.answer}</ReactMarkdown>
+            <Markdown className="answer">{item.answer}</Markdown>
           </details>
           ))}
         </div>

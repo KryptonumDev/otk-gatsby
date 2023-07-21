@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
+import Markdown from "../../utils/Markdown";
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 import ImageDecorative from "../atoms/ImageDecorative";
@@ -40,7 +40,7 @@ const OurStaff = ({
           <div className="item" key={i}>
             <ImageDecorative data={person.img} />
             <Heading type="h3">{person.name}</Heading>
-            <ReactMarkdown className="position">{person.position}</ReactMarkdown>
+            <Markdown className="position">{person.position}</Markdown>
           </div>
         ))}
       </div>

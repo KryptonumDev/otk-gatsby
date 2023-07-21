@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Heading from "../../atoms/Heading";
 
 const Feautures = ({
@@ -22,8 +22,8 @@ const Feautures = ({
               alt={item.img.asset.altText || ''}
               className="img"
             />
-            <ReactMarkdown className="title">{item.title}</ReactMarkdown>
-            <ReactMarkdown className="description">{item.description}</ReactMarkdown>
+            <Markdown className="title">{item.title}</Markdown>
+            <Markdown className="description">{item.description}</Markdown>
           </div>
         ))}
       </div>

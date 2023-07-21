@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
+import Markdown from "../../utils/Markdown";
 import Heading from "../atoms/Heading";
 import EbookForm from "../organisms/EbookForm";
 
@@ -40,7 +40,7 @@ const Ebook = () => {
           <Heading type="h2">{ebook.heading}</Heading>
           <hr />
           <Heading type="h3">{ebook.subheading}</Heading>
-          <ReactMarkdown className="paragraph">{ebook.paragraph}</ReactMarkdown>
+          <Markdown className="paragraph">{ebook.paragraph}</Markdown>
           <EbookForm data={ebook} />
         </div>
         <GatsbyImage

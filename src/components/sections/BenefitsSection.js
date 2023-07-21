@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from '../../utils/functions';
+import Markdown from "../../utils/Markdown";
 import Button from "../atoms/Button";
 import Heading from '../atoms/Heading';
 
@@ -17,7 +17,7 @@ const BenefitsSection = ({
       <header>
         <Heading type="h2">{heading}</Heading>
         <hr />
-        <ReactMarkdown className="paragraph">{paragraph}</ReactMarkdown>
+        <Markdown className="paragraph">{paragraph}</Markdown>
       </header>
       <ul className="wrapper">
         {list.map((item, i) => (
@@ -27,7 +27,7 @@ const BenefitsSection = ({
               alt={item.img.asset.altText || ''}
               className="img"
             />
-            <ReactMarkdown>{item.title}</ReactMarkdown>
+            <Markdown>{item.title}</Markdown>
           </li>
         ))}
       </ul>

@@ -1,8 +1,8 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 
@@ -21,9 +21,9 @@ const Prevention = ({
       <header>
         <Heading type="h2">{prevention_Heading}</Heading>
         <hr />
-        <ReactMarkdown className="paragraph">{prevention_Paragraph}</ReactMarkdown>
+        <Markdown className="paragraph">{prevention_Paragraph}</Markdown>
       </header>
-      <ReactMarkdown className="title">{prevention_ListTitle}</ReactMarkdown>
+      <Markdown className="title">{prevention_ListTitle}</Markdown>
        <ul className="wrapper">
           {prevention_List.map((item, i) => (
             <li key={i}>
@@ -35,11 +35,11 @@ const Prevention = ({
                   objectFit="contain"
                 />
               </div>
-              <ReactMarkdown>{item.title}</ReactMarkdown>
+              <Markdown>{item.title}</Markdown>
             </li>
           ))}
         </ul>
-      <ReactMarkdown className="title">{prevention_CtaTitle}</ReactMarkdown>
+      <Markdown className="title">{prevention_CtaTitle}</Markdown>
       <div className="cta-wrapper">
           {prevention_Cta.map((cta, i) => (
             <Button theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>

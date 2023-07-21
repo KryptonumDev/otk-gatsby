@@ -1,7 +1,7 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
+import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 import ImageDecorative from "../../atoms/ImageDecorative";
@@ -13,7 +13,7 @@ const Staff = ({ data, cta }) => {
         <div className="person" key={i}>
           <div className="copy">
             <Heading type="h2">{person.name}</Heading>
-            <ReactMarkdown className="bio">{person.bio}</ReactMarkdown>
+            <Markdown className="bio">{person.bio}</Markdown>
           </div>
           <ImageDecorative data={person.img} />
         </div>
