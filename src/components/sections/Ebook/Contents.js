@@ -1,3 +1,4 @@
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 import { Clamp } from '../../../utils/functions';
@@ -9,10 +10,18 @@ const Contents = ({
     contents_Heading,
     contents_Title,
     contents_List,
+    contents_Icon,
   }
 }) => {
   return (
     <Wrapper className='max-width'>
+      <GatsbyImage
+        image={contents_Icon.asset.gatsbyImageData}
+        alt={contents_Icon.asset.altText || ''}
+        className="icon"
+        objectFit='contain'
+        objectPosition='right'
+      />
       <div className="max-width">
         <Heading type="h2">{contents_Heading}</Heading>
         <hr />
@@ -35,6 +44,24 @@ const Contents = ({
 };
 
 const Wrapper = styled.section`
+  position: relative;
+  .icon {
+    position: absolute;
+    overflow: hidden;
+    img {
+      transform: translateX(20%);
+    }
+    right: calc(var(--pageMargin) * -1);
+    top: 0;
+    transform: translateY(-50%);
+    height: 300px;
+  }
+  @media (max-width: 1149px){
+    padding-top: 250px;
+    .icon {
+      transform: translateY(-25%);
+    }
+  }
   > .max-width {
     max-width: 768px;
     margin-left: 0;

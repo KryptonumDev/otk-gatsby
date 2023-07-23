@@ -18,6 +18,7 @@ const EbookPage = ({
     contents_Heading,
     contents_Title,
     contents_List,
+    contents_Icon,
     authors_Heading,
     authors_List,
   }}
@@ -37,7 +38,8 @@ const EbookPage = ({
       <Contents data={{
         contents_Heading,
         contents_Title,
-        contents_List
+        contents_List,
+        contents_Icon,
       }} />
       <OurStaff data={{ heading: authors_Heading, list: authors_List }} />
       <Ebook />
@@ -68,6 +70,12 @@ export const query = graphql`
         part
         title
         page
+      }
+      contents_Icon {
+        asset {
+          altText
+          gatsbyImageData(placeholder: BLURRED)
+        }
       }
       # Authors
       authors_Heading
