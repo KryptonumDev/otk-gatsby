@@ -118,7 +118,7 @@ const Wrapper = styled.form`
     position: absolute;
     inset: -2px;
     @media (max-width: 599px){
-      inset: 0 calc(var(--pageMargin) * -1);
+      inset: -1px calc(var(--pageMargin) * -1);
     }
     padding: var(--pageMargin);
     background-color: var(--secondary-500);

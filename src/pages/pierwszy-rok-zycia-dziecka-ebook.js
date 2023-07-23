@@ -6,6 +6,7 @@ import Ebook from "../components/sections/Ebook"
 import Newsletter from "../components/sections/Newsletter"
 import Why from "../components/sections/Ebook/Why"
 import OurStaff from "../components/sections/OurStaff"
+import Contents from "../components/sections/Ebook/Contents"
 
 const EbookPage = ({
   data: { page: {
@@ -14,6 +15,9 @@ const EbookPage = ({
     hero_Img,
     why_Heading,
     why_Paragraph,
+    contents_Heading,
+    contents_Title,
+    contents_List,
     authors_Heading,
     authors_List,
   }}
@@ -30,7 +34,13 @@ const EbookPage = ({
       />
       <Ebook />
       <Why heading={why_Heading} paragraph={why_Paragraph} />
+      <Contents data={{
+        contents_Heading,
+        contents_Title,
+        contents_List
+      }} />
       <OurStaff data={{ heading: authors_Heading, list: authors_List }} />
+      <Ebook />
       <Newsletter />
     </>
   )
@@ -51,6 +61,14 @@ export const query = graphql`
       # Why
       why_Heading
       why_Paragraph
+      # Contents
+      contents_Heading
+      contents_Title
+      contents_List {
+        part
+        title
+        page
+      }
       # Authors
       authors_Heading
       authors_List {
