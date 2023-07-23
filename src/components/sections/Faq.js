@@ -92,26 +92,6 @@ const Wrapper = styled.section`
         > *:not(:last-child) {
           margin-bottom: 16px;
         }
-        ul {
-          list-style-type: none;
-          li {
-            position: relative;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            align-items: baseline;
-            gap: 8px;
-            &:not(:last-child){
-              margin-bottom: 12px;
-            }
-            &::before {
-              content: '';
-              width: 8px;
-              height: 8px;
-              background-color: var(--secondary-500);
-              border-radius: 50%;
-            }
-          }
-        }
       }
       &[open] {
         summary {

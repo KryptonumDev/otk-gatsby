@@ -15,11 +15,18 @@ const LinkRenderer = ({ href, children }) => {
   );
 };
 
+const ListRenderer = ({ children }) => (
+  <li><span>{children}</span></li>
+)
+
 const Markdown = ({ children, components, ...props }) => {
   return (
     <ReactMarkdown
       components={{
         a: LinkRenderer,
+        li: ListRenderer,
+        ol: ({ children }) => <ol className="orderedList">{children}</ol>,
+        ul: ({ children }) => <ul className="unorderedList">{children}</ul>,
         ...components
       }}
       {...props}

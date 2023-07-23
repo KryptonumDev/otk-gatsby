@@ -63,6 +63,7 @@ const Wrapper = styled.section`
     }
   }
   > .max-width {
+    width: 100%;
     max-width: 768px;
     margin-left: 0;
   }

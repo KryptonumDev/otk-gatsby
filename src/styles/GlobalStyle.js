@@ -131,6 +131,35 @@ const GlobalStyle = createGlobalStyle`
     flex-wrap: wrap;
     gap: 16px 32px;
   }
+  ol.orderedList {
+    padding-left: 1em;
+    li {
+      &:not(:last-child){
+        margin-bottom: 12px;
+      }
+    }
+  }
+  ul.unorderedList {
+    list-style-type: none;
+    li {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      &:not(:last-child){
+        margin-bottom: 12px;
+      }
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-top: calc(1em - 10px);
+        background-color: var(--secondary-500);
+        border-radius: 50%;
+      }
+    }
+  }
   @media (max-width: 549px){
     .cta-wrapper {
       width: 100%;
