@@ -94,6 +94,10 @@ export const query = graphql`
             gatsbyImageData(placeholder: NONE)
           }
         }
+        embed {
+          id
+          alt
+        }
       }
     }
   }

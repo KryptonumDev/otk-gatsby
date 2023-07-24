@@ -4,7 +4,18 @@ import { Clamp } from "../../../utils/functions";
 import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
+import { ChevronDown } from "../../atoms/Icons";
 import ImageDecorative from "../../atoms/ImageDecorative";
+import YoutubeEmbed from "../../organisms/YoutubeEmbed";
+
+const handleShowEmbed = (e) => {
+  const target = e.currentTarget;
+  if(target.getAttribute('aria-hidden') == 'true') {
+    target.setAttribute('aria-hidden', false)
+  } else {
+    target.setAttribute('aria-hidden', true)
+  }
+}
 
 const Staff = ({ data, cta }) => {
   return (
@@ -14,6 +25,15 @@ const Staff = ({ data, cta }) => {
           <div className="copy">
             <Heading type="h2">{person.name}</Heading>
             <Markdown className="bio">{person.bio}</Markdown>
+            {person.embed?.id && (
+              <div className="embedElement">
+                <button className="embedElement_Btn" aria-hidden="true" onClick={(e) => handleShowEmbed(e)}>
+                  <ChevronDown />
+                  <span>WIDEO</span>
+                </button>
+                <YoutubeEmbed id={person.embed.id} alt={person.embed?.alt} /> 
+              </div>
+            )}
           </div>
           <ImageDecorative data={person.img} />
         </div>
@@ -52,6 +72,32 @@ const Wrapper = styled.section`
       font-size: ${Clamp(16, 18, 20)};
       p:not(:last-child){
         margin-bottom: 16px;
+      }
+    }
+    .embedElement {
+      margin-top: ${Clamp(32, 32, 48, 'px')};
+      .embedElement_Btn {
+        padding: 13px 48px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        border-bottom: 3px solid var(--secondary-500);
+        svg {
+          transition: transform .5s var(--easing);
+        }
+        &[aria-hidden="true"] {
+          + .yt-embed {
+            display: none;
+          }
+        }
+        &[aria-hidden="false"] {
+          svg {
+            transform: rotateX(180deg);
+          }
+        }
+      }
+      .yt-embed {
+        margin-top: 16px;
       }
     }
   }
