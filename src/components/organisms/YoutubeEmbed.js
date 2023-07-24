@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const YoutubeEmbed = ({ id, alt }) => {
+const YoutubeEmbed = ({ id, alt, ...props }) => {
   return (
-    <Wrapper className='yt-embed'>
+    <Wrapper className='yt-embed' {...props}>
       <iframe
         width="1280"
         height="720"

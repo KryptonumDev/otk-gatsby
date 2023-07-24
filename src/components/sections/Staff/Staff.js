@@ -10,10 +10,12 @@ import YoutubeEmbed from "../../organisms/YoutubeEmbed";
 
 const handleShowEmbed = (e) => {
   const target = e.currentTarget;
-  if(target.getAttribute('aria-hidden') == 'true') {
-    target.setAttribute('aria-hidden', false)
+  const targetNextSibling = target.nextElementSibling;
+  target.classList.toggle('expanded');
+  if(targetNextSibling.getAttribute('aria-hidden') == 'true') {
+    targetNextSibling.setAttribute('aria-hidden', false)
   } else {
-    target.setAttribute('aria-hidden', true)
+    targetNextSibling.setAttribute('aria-hidden', true)
   }
 }
 
@@ -27,11 +29,11 @@ const Staff = ({ data, cta }) => {
             <Markdown className="bio">{person.bio}</Markdown>
             {person.embed?.id && (
               <div className="embedElement">
-                <button className="embedElement_Btn" aria-hidden="true" onClick={(e) => handleShowEmbed(e)}>
+                <button className="embedElement_Btn" onClick={(e) => handleShowEmbed(e)}>
                   <ChevronDown />
                   <span>WIDEO</span>
                 </button>
-                <YoutubeEmbed id={person.embed.id} alt={person.embed?.alt} /> 
+                <YoutubeEmbed id={person.embed.id} alt={person.embed?.alt} aria-hidden="true" /> 
               </div>
             )}
           </div>
@@ -85,12 +87,7 @@ const Wrapper = styled.section`
         svg {
           transition: transform .5s var(--easing);
         }
-        &[aria-hidden="true"] {
-          + .yt-embed {
-            display: none;
-          }
-        }
-        &[aria-hidden="false"] {
+        &.expanded {
           svg {
             transform: rotateX(180deg);
           }
@@ -98,6 +95,9 @@ const Wrapper = styled.section`
       }
       .yt-embed {
         margin-top: 16px;
+        &[aria-hidden="true"] {
+          display: none;
+        }
       }
     }
   }
