@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import { ChevronDown, Logo } from "../atoms/Icons";
+import { ChevronDown, External, Logo } from "../atoms/Icons";
 import { Clamp } from "../../utils/functions";
 import Button from "../atoms/Button";
 import Social from "../moleculas/Social";
@@ -111,7 +111,10 @@ const Nav = () => {
                 </li>
                 {global.nav.questionnaire && (
                   <li>
-                    <a href={global.nav.questionnaire} target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
+                    <a href={global.nav.questionnaire} target="_blank" rel="noreferrer" onClick={() => handleLink()}>
+                      <span>Ankieta satysfakcji</span>
+                      <External />
+                    </a>
                   </li>
                 )}
                 <li>
@@ -173,6 +176,11 @@ const WrapperNav = styled.nav`
     }
     li {
       list-style-type: none;
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
       > span {
         display: flex;
         align-items: center;
@@ -206,6 +214,7 @@ const WrapperNav = styled.nav`
       padding: 20px 16px;
       margin: 0 -16px;
       border: 1px solid var(--secondary-500);
+      min-width: 250px;
       li {
         &:not(:last-child){
           margin-bottom: 10px;
