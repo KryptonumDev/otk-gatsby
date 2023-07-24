@@ -6,6 +6,7 @@ import Faq from "../components/sections/Faq"
 import Newsletter from "../components/sections/Newsletter"
 import Ebook from "../components/sections/Ebook"
 import OurStaff from "../components/sections/OurStaff"
+import Rules from "../components/sections/Regulations/Rules"
 
 const RegulationsPage = ({
   data: {
@@ -13,6 +14,9 @@ const RegulationsPage = ({
       hero_Heading,
       hero_Subheading,
       hero_Img,
+      rules_Heading,
+      rules_Subheading,
+      rules_List,
       staffSection,
       faqSection,
     },
@@ -27,6 +31,11 @@ const RegulationsPage = ({
           hero_Img,
         }}
       />
+      <Rules data={{
+        rules_Heading,
+        rules_Subheading,
+        rules_List,
+      }} />
       <OurStaff data={staffSection} />
       <Faq data={faqSection} />
       <Ebook />
@@ -45,6 +54,22 @@ export const query = graphql`
         asset {
           altText
           gatsbyImageData(placeholder: NONE)
+        }
+      }
+      # Rules
+      rules_Heading
+      rules_Subheading
+      rules_List {
+        string
+        extended
+        grid {
+          title
+          description
+        }
+        cta {
+          theme
+          text
+          href
         }
       }
       # Staff
