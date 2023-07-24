@@ -17,10 +17,12 @@ const Nav = () => {
         email
         nav {
           workingHours
+          questionnaire
         }
       }
     }
   `)
+
 
   const [ navOpened, setNavOpened ] = useState(false);
 
@@ -107,9 +109,11 @@ const Nav = () => {
                 <li>
                   <Link to='/gdzie-zrobic-badania' onClick={() => handleLink()}>Gdzie zrobić badania?</Link>
                 </li>
-                <li>
-                  <a href='https://forms.gle/e7hEitYf1ioQ8gXc8' target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
-                </li>
+                {global.nav.questionnaire && (
+                  <li>
+                    <a href={global.nav.questionnaire} target="_blank" rel="noreferrer" onClick={() => handleLink()}>Ankieta satysfakcji</a>
+                  </li>
+                )}
                 <li>
                   <Link to='/osrodek-zdrowia-regulamin' onClick={() => handleLink()}>Regulamin</Link>
                 </li>
