@@ -55,7 +55,7 @@ const Wrapper = styled.section`
     .paragraph {
       font-size: ${Clamp(20, 22, 32)};
       p:not(:last-child){
-        margin-bottom: ${Clamp(16, 16, 24, 'px')};
+        margin-bottom: 16px;
       }
     }
   }

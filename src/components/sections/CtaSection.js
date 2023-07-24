@@ -128,9 +128,6 @@ const Wrapper = styled.section`
   }
   .paragraph {
     font-size: ${Clamp(16, 16, 22)};
-    p:not(:last-child){
-      margin-bottom: 16px;
-    }
   }
   .cta-wrapper {
     margin-top: ${Clamp(24, 32, 48, 'px')};
