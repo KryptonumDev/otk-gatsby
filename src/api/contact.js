@@ -8,7 +8,7 @@ const isValidEmail = (email) => {
   return emailRegex.test(email.toLowerCase());
 }
 const isValidPhone = (phone) => {
-  return phoneRegex.test(phone.replaceAll(' ', ''));
+  return phoneRegex.test(phone);
 }
 
 function constructMessage(data) {
