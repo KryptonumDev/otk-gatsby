@@ -39,7 +39,9 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#00259C`,
       },
-    }
+    },
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`
   ],
   trailingSlash: "never"
 };
