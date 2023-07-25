@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 import { emailRegex } from '../constants/regex';
 
 export default function handler(req, res) {
