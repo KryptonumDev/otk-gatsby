@@ -54,7 +54,9 @@ const Wrapper = styled.section`
   position: relative;
   .icon {
     position: absolute;
-    overflow: hidden;
+    @media (min-width: 1760px){
+      overflow: visible;
+    }
     img {
       transform: translateX(20%);
     }
