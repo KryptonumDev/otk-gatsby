@@ -10,6 +10,9 @@ module.exports = {
     title: `osrodek-tk`,
     siteUrl: `https://osrodektk.pl`
   },
+  partytownProxiedURLs: [
+    `https://www.googletagmanager.com/gtag/js?id=${process.env.GATSBY_GA_KEY}`
+  ],
   plugins: [
     {
       resolve: `gatsby-source-sanity`,
