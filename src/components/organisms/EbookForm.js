@@ -13,7 +13,7 @@ import FormInput from "../moleculas/FormInput";
 
 const statusAnimationDuration = 300;
 
-const EbookForm = ({ data, variant='light' }) => {
+const EbookForm = ({ data, variant='light', isEbookPage }) => {
   const {
     register,
     handleSubmit,
@@ -92,7 +92,7 @@ const EbookForm = ({ data, variant='light' }) => {
           )}
           <span>{data.formCta}</span>
         </Button>
-        {data.cta && (
+        {(data.cta && !isEbookPage) && (
           <Button variant={variant} theme={data.cta.theme} to={data.cta.href}>{data.cta.text}</Button>
         )}
       </div>

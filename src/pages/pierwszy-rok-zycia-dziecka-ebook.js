@@ -33,7 +33,7 @@ const EbookPage = ({
         }}
         version="light"
       />
-      <Ebook />
+      <Ebook isEbookPage={true} />
       <Why heading={why_Heading} paragraph={why_Paragraph} />
       <Contents data={{
         contents_Heading,
@@ -42,7 +42,7 @@ const EbookPage = ({
         contents_Icon,
       }} />
       <OurStaff data={{ heading: authors_Heading, list: authors_List }} />
-      <Ebook />
+      <Ebook isEbookPage={true} />
       <Newsletter />
     </>
   )

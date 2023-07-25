@@ -7,7 +7,7 @@ import Markdown from "../../utils/Markdown";
 import Heading from "../atoms/Heading";
 import EbookForm from "../organisms/EbookForm";
 
-const Ebook = () => {
+const Ebook = ({ isEbookPage }) => {
   const {
     global: { ebook }
   } = useStaticQuery(graphql`
@@ -41,7 +41,7 @@ const Ebook = () => {
           <hr />
           <Heading type="h3">{ebook.subheading}</Heading>
           <Markdown className="paragraph">{ebook.paragraph}</Markdown>
-          <EbookForm data={ebook} />
+          <EbookForm data={ebook} isEbookPage={isEbookPage} />
         </div>
         <GatsbyImage
           image={ebook.icon.asset.gatsbyImageData}
