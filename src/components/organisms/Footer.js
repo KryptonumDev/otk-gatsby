@@ -60,7 +60,7 @@ const Footer = () => {
           <p>{footer.paragraph}</p>
         </div>
         <Button variant="light" theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
-        <p className="copyright">Copyrights by Ośrodek Zdrowia w Turośni Kościelnej {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
+        <p className="copyright">Ośrodek Zdrowia w Turośni Kościelnej ©️ {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
       </div>
     </Wrapper>
   );

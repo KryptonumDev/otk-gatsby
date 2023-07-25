@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
   :root {
     --neutral-100: #fff;
-    --neutral-200: #F1F1F1;
+    --neutral-200: #dfdfdf;
     --primary: #4D77FF;
     --primary-200: #095FBA;
     --primary-300: #4D77FF;

@@ -10,6 +10,8 @@ import { Clamp } from "../../utils/functions";
 import { Error } from "../atoms/Icons";
 import Loader from "../atoms/Loader";
 
+const statusAnimationDuration = 300;
+
 const ContactForm = () => {
   const {
     register,
@@ -44,6 +46,13 @@ const ContactForm = () => {
     })
   }
 
+  const handleSentAgain = (e) => {
+    e.target.closest('.status').classList.add('hide');
+    setTimeout(() => {
+      setSentStatus({ sent: false })
+    }, statusAnimationDuration);
+  }
+
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)} data-variant="dark">
       {sentStatus.success !== undefined && (
@@ -51,7 +60,7 @@ const ContactForm = () => {
           <div className="status">
             <h3>Dziękujemy za kontakt.</h3>
             <p>Odpowiemy najszybciej, jak to możliwe!</p>
-            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
+            <Button type="button" theme="secondary" onClick={(e) => handleSentAgain(e)}>Wypełnij ponownie</Button>
           </div>
         ) : (
           <div className="status status-error">
@@ -60,7 +69,7 @@ const ContactForm = () => {
               <span>Coś poszło nie tak.</span>
             </h3>
             <p>Prosimy o ponowne wypełnienie formularza.</p>
-            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
+            <Button type="button" theme="secondary" onClick={(e) => handleSentAgain(e)}>Wypełnij ponownie</Button>
           </div>
         )
       )}
@@ -101,8 +110,8 @@ const ContactForm = () => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button disabled={sentStatus.sent}>
-          {sentStatus.sent && (
+        <Button disabled={sentStatus.sent && sentStatus.success === undefined}>
+          {(sentStatus.sent && sentStatus.success === undefined) && (
             <Loader />
           )}
           <span>Wyślij</span>
@@ -115,15 +124,12 @@ const ContactForm = () => {
 const Wrapper = styled.form`
   position: relative;
   .status {
-    animation: statusShow .3s forwards;
-    @keyframes statusShow {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+    animation: statusShow ${statusAnimationDuration}ms forwards;
+    &.hide {
+      animation: statusHide ${statusAnimationDuration}ms forwards;
     }
+    @keyframes statusShow { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes statusHide { to { opacity: 0 } }
     p {
       font-size: ${Clamp(16, 18, 20)};
       margin: 12px 0 32px;

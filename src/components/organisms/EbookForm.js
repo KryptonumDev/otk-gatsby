@@ -11,6 +11,8 @@ import Loader from "../atoms/Loader";
 import FormCheckbox from "../moleculas/FormCheckbox";
 import FormInput from "../moleculas/FormInput";
 
+const statusAnimationDuration = 300;
+
 const EbookForm = ({ data, variant='light' }) => {
   const {
     register,
@@ -46,6 +48,13 @@ const EbookForm = ({ data, variant='light' }) => {
     })
   }
 
+  const handleSentAgain = (e) => {
+    e.target.closest('.status').classList.add('hide');
+    setTimeout(() => {
+      setSentStatus({ sent: false })
+    }, statusAnimationDuration);
+  }
+
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)} data-variant={variant}>
       {sentStatus.success !== undefined && (
@@ -61,7 +70,7 @@ const EbookForm = ({ data, variant='light' }) => {
               <span>Coś poszło nie tak.</span>
             </h3>
             <p>Prosimy o ponowne wypełnienie formularza.</p>
-            <Button theme="secondary" onClick={() => setSentStatus({ sent: false })}>Wypełnij ponownie</Button>
+            <Button type="button" theme="secondary" onClick={(e) => handleSentAgain(e)}>Wypełnij ponownie</Button>
           </div>
         )
       )}
@@ -77,8 +86,8 @@ const EbookForm = ({ data, variant='light' }) => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button variant={variant} theme="primary" disabled={sentStatus.sent}>
-          {sentStatus.sent && (
+        <Button variant={variant} theme="primary" disabled={sentStatus.sent && sentStatus.success === undefined}>
+          {(sentStatus.sent && sentStatus.success === undefined) && (
             <Loader />
           )}
           <span>{data.formCta}</span>
@@ -94,16 +103,13 @@ const EbookForm = ({ data, variant='light' }) => {
 const Wrapper = styled.form`
   position: relative;
   .status {
-    animation: statusShow .3s forwards;
-    color: var(--dark-500);
-    @keyframes statusShow {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+    animation: statusShow ${statusAnimationDuration}ms forwards;
+    &.hide {
+      animation: statusHide ${statusAnimationDuration}ms forwards;
     }
+    @keyframes statusShow { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes statusHide { to { opacity: 0 } }
+    color: var(--dark-500);
     p {
       font-size: ${Clamp(16, 18, 20)};
       margin-top: 12px;
