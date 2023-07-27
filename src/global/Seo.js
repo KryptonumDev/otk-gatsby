@@ -1,8 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
+import BreadcrumbsSchema from "./BreadcrumbsSchema";
 import OrganizationSchema from "./OrganizationSchema";
 
-export const Seo = ({ title, description, url, children }) => {
+export const Seo = ({ title, description, url, children, breadcrumbs }) => {
   const { site, global } = useStaticQuery(graphql`
     query {
       site {
@@ -50,6 +51,7 @@ export const Seo = ({ title, description, url, children }) => {
       <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
       <OrganizationSchema />
+      <BreadcrumbsSchema domain={domain} breadcrumbs={breadcrumbs} />
       {children}
     </>
   )

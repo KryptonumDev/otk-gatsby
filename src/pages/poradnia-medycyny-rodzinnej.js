@@ -172,5 +172,9 @@ export const Head = ({ data: { page: { seo } }, location: { pathname } }) => (
     title={seo?.title}
     description={seo?.description}
     url={pathname}
+    breadcrumbs={[
+      { name: "Strona główna", item: '' },
+      { name: "Poradnia medycyny rodzinnej", item: pathname }
+    ]}
   />
 )

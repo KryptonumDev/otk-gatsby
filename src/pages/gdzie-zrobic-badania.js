@@ -112,10 +112,19 @@ export const query = graphql`
 
 export default WherePage
 
-export const Head = ({ data: { page: { seo } }, location: { pathname } }) => (
+export const Head = ({
+  data: {
+    page: { seo },
+  },
+  location: { pathname }
+}) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
     url={pathname}
+    breadcrumbs={[
+      { name: "Strona główna", item: '' },
+      { name: "Gdzie zrobić badania", item: pathname }
+    ]}
   />
 )
