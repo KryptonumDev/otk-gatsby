@@ -239,6 +239,7 @@ const WrapperNav = styled.nav`
       background-color: var(--primary-500);
       &:nth-child(2) {
         background-color: var(--secondary-500);
+        z-index: -1;
       }
       border-radius: 5px;
       transition: transform .4s var(--easing);
