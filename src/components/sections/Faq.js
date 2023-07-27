@@ -5,9 +5,12 @@ import { Clamp } from "../../utils/functions";
 import Markdown from "../../utils/Markdown";
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
+import FaqSchema from "../../global/FaqSchema";
 
 const Faq = ({ data }) => {
   return (
+    <>
+    <FaqSchema data={data.list} />
     <Wrapper className="max-width">
       <div className="copy">
         <Heading type="h2">{data.heading}</Heading>
@@ -37,6 +40,7 @@ const Faq = ({ data }) => {
         objectFit="contain"
       />
     </Wrapper>
+    </>
   );
 }
 
