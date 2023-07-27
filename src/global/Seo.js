@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
+import OrganizationSchema from "./OrganizationSchema";
 
 export const Seo = ({ title, description, url, children }) => {
   const { site, global } = useStaticQuery(graphql`
@@ -49,6 +50,7 @@ export const Seo = ({ title, description, url, children }) => {
       <meta property="twitter:url" content={`${domain}${seo.url}`} />
       <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
+      <OrganizationSchema />
       {children}
     </>
   )
