@@ -44,7 +44,16 @@ module.exports = {
       },
     },
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-sitemap`
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-gatsby-cloud`,
+      options: {
+        allPageHeaders: [
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: nosniff"
+        ],
+      }
+    },
   ],
   trailingSlash: "never"
 };
