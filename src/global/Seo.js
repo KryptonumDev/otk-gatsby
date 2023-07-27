@@ -51,7 +51,9 @@ export const Seo = ({ title, description, url, children, breadcrumbs }) => {
       <link rel="canonical" href={`${domain}${seo.url}`} />
       <meta property="og:url" content={`${domain}${seo.url}`} />
       <OrganizationSchema />
-      <BreadcrumbsSchema domain={domain} breadcrumbs={breadcrumbs} />
+      {breadcrumbs && (
+        <BreadcrumbsSchema domain={domain} breadcrumbs={breadcrumbs} />
+      )}
       {children}
     </>
   )
