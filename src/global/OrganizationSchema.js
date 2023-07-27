@@ -17,7 +17,7 @@ const OrganizationSchema = () => {
     <script type="application/ld+json">
       {JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "MedicalClinic",
         "name": "Ośrodek Zdrowia w Turośni Kościelnej",
         "url": "https://osrodektk.pl",
         "telephone": "+48 85 650 52 79",
@@ -30,6 +30,18 @@ const OrganizationSchema = () => {
           "addressLocality": "Turośń Kościelna",
           "postalCode": "18-106",
           "addressCountry": "PL"
+        },
+        "hoursOfOperation": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
         },
         "contactPoint": [
           {
