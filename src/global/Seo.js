@@ -31,6 +31,7 @@ export const Seo = ({ title, description, url, children, breadcrumbs }) => {
     url: url || '',
   }
   const locale = "pl_PL";
+  
   return (
     <>
       <title>{seo.title}</title>
