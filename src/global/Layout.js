@@ -5,14 +5,22 @@ import Footer from "../components/organisms/Footer";
 import { Script } from "gatsby";
 
 const Layout = ({ children }) => {
+
+  const handleTabKey = (e) => {
+    (e.key === 'Tab') && document.documentElement.classList.add('tabbing')
+  };
+  const handleMouseDown = () => {
+    document.documentElement.classList.remove('tabbing');
+  };
+  
   useEffect(() => {
-    document.addEventListener('keydown', function(event) {
-      event.key === 'Tab' && document.documentElement.classList.add('tabbing')
-    });
-    window.addEventListener("mousedown", () => {
-      document.documentElement.classList.remove('tabbing')
-    })
-  }, [])
+    document.addEventListener('keydown', handleTabKey);
+    window.addEventListener('mousedown', handleMouseDown);
+    return () => {
+      document.removeEventListener('keydown', handleTabKey);
+      window.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
 
   return (
     <>

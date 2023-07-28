@@ -218,12 +218,13 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head = ({ data: { page: { seo } } }) => (
+export const Head = ({ data: { page: { seo, faqSection } } }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
     breadcrumbs={[
       { name: "Strona główna", item: '' }
     ]}
+    faqSchema={faqSection?.list}
   />
 )

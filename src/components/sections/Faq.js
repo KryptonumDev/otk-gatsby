@@ -5,12 +5,9 @@ import { Clamp } from "../../utils/functions";
 import Markdown from "../../utils/Markdown";
 import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
-import FaqSchema from "../../global/FaqSchema";
 
 const Faq = ({ data }) => {
   return (
-    <>
-    <FaqSchema data={data.list} />
     <Wrapper className="max-width">
       <div className="copy">
         <Heading type="h2">{data.heading}</Heading>
@@ -18,13 +15,13 @@ const Faq = ({ data }) => {
         <Markdown className="paragraph">{data.paragraph}</Markdown>
         <div className="wrapper">
           {data.list.map((item, i) => (
-          <details key={i}>
-            <summary>
-              <ChevronDown />
-              <Markdown>{item.question}</Markdown>
-            </summary>
-            <Markdown className="answer">{item.answer}</Markdown>
-          </details>
+            <details key={i}>
+              <summary>
+                <ChevronDown />
+                <Markdown>{item.question}</Markdown>
+              </summary>
+              <Markdown className="answer">{item.answer}</Markdown>
+            </details>
           ))}
         </div>
         <div className="cta-wrapper">
@@ -40,7 +37,6 @@ const Faq = ({ data }) => {
         objectFit="contain"
       />
     </Wrapper>
-    </>
   );
 }
 

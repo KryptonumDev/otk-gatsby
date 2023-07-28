@@ -74,7 +74,7 @@ export const query = graphql`
 
 export default FaqPage
 
-export const Head = ({ data: { page: { seo } }, location: { pathname } }) => (
+export const Head = ({ data: { page: { seo, faqSection } }, location: { pathname } }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
@@ -83,5 +83,6 @@ export const Head = ({ data: { page: { seo } }, location: { pathname } }) => (
       { name: "Strona główna", item: '' },
       { name: "Pytania", item: pathname }
     ]}
+    faqSchema={faqSection?.list}
   />
 )

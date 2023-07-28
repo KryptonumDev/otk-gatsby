@@ -114,7 +114,7 @@ export default WherePage
 
 export const Head = ({
   data: {
-    page: { seo },
+    page: { seo, faqSection },
   },
   location: { pathname }
 }) => (
@@ -126,5 +126,6 @@ export const Head = ({
       { name: "Strona główna", item: '' },
       { name: "Gdzie zrobić badania", item: pathname }
     ]}
+    faqSchema={faqSection?.list}
   />
 )
