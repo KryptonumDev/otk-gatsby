@@ -87,6 +87,8 @@ const Footer = () => {
               <GatsbyImage
                 image={logo.asset.gatsbyImageData}
                 alt={logo.asset.altText || ''}
+                className="img"
+                objectFit="contain"
               />
             </li>
           ))}
@@ -217,10 +219,14 @@ const LeaglInfoWrapper = styled.div`
     align-items: center;
     grid-template-columns: auto auto auto auto;
     @media (max-width: 699px){
+      width: 100%;
       grid-template-columns: 1fr 1fr;
     }
     gap: 24px ${Clamp(24, 48, 72, 'px')};
     list-style-type: none;
+    .img {
+      max-width: 160px;
+    }
   }
 `
 
