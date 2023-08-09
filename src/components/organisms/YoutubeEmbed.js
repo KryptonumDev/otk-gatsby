@@ -7,7 +7,7 @@ const YoutubeEmbed = ({ id, alt, ...props }) => {
       <iframe
         width="1280"
         height="720"
-        src={`https://www.youtube.com/embed/${id}?rel=0`}
+        src={`https://www.youtube.com/embed/${id}?rel=0&fs=1&disablekb=1`}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         title={alt || 'Film z serwisu YouTube z kanału Ośrodka Zdrowia w Turośni Kościelnej'}
