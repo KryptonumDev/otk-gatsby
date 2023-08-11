@@ -143,6 +143,9 @@ const Nav = () => {
           </ul>
         </div>
       </WrapperNav>
+      <WrapperWidget href="https://lekarzebezkolejki.pl/placowkaMedyczna/wizytowka/-36826" target='_blank' rel="noreferer" aria-label="Rejestracja on-line">
+        <Calendar />
+      </WrapperWidget>
     </>
   );
 }
@@ -417,6 +420,51 @@ const WrapperSkipToMainContent = styled.a`
   }
 `
 
+const WrapperWidget = styled.a`
+  position: fixed;
+  bottom: 13px;
+  right: 13px;
+  width: 55px;
+  height: 55px;
+  background-color: var(--primary-500);
+  color: var(--neutral-100);
+  z-index: 9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 13px 0px rgb(255 255 255 / 10%);
+  &::before {
+    content: attr(aria-label);
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 5px);
+    font-size: 13px;
+    border-radius: 20px;
+    background-color: inherit;
+    padding: 8px 13px;
+    width: fit-content;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: transform .4s, opacity .4s;
+    transition-timing-function: var(--easing);
+    transform-origin: right bottom;
+    opacity: 0;
+    transform: translateY(3px) scale(.95);
+  }
+  &:hover:not(:active),
+  &:focus {
+    &::before {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  transition: transform .4s var(--easing);
+  &:active {
+    transform: scale(.95);
+  }
+`
+
 const Tel = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
@@ -453,6 +501,18 @@ const Mail = () => (
       strokeLinecap='round'
       strokeLinejoin='round'
       d='M11.91 13.262A6.917 6.917 0 1115 7.498c0 1.593-.576 2.882-2.017 2.882-1.441 0-2.018-1.29-2.018-2.882V4.616'
+    ></path>
+  </svg>
+)
+
+const Calendar = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'>
+    <path
+      stroke='#EFF0F3'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      d='M3 10h18m-5-8v4M8 2v4M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z'
     ></path>
   </svg>
 )
