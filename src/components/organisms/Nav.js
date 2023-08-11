@@ -143,7 +143,7 @@ const Nav = () => {
           </ul>
         </div>
       </WrapperNav>
-      <WrapperWidget href="https://lekarzebezkolejki.pl/placowkaMedyczna/wizytowka/-36826" target='_blank' rel="noreferer" aria-label="Rejestracja on-line">
+      <WrapperWidget href="https://lekarzebezkolejki.pl/osrodektk" target='_blank' rel="noreferer" aria-label="Rejestracja on-line">
         <Calendar />
       </WrapperWidget>
     </>
