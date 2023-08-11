@@ -54,6 +54,10 @@ const Nav = () => {
         <div className="max-width">
           <p className="workingHours">{global.nav.workingHours}</p>
           <div className="contact">
+            <a href='https://lekarzebezkolejki.pl/osrodektk' target='_blank' rel="noreferrer">
+              <Calendar />
+              <span>Umów się do lekarza</span>
+            </a>
             <a href={`tel:${global.tel}`}>
               <Tel />
               <span>{global.tel}</span>
@@ -143,7 +147,7 @@ const Nav = () => {
           </ul>
         </div>
       </WrapperNav>
-      <WrapperWidget href="https://lekarzebezkolejki.pl/osrodektk" target='_blank' rel="noreferer" aria-label="Rejestracja on-line">
+      <WrapperWidget href="https://lekarzebezkolejki.pl/osrodektk" target='_blank' rel="noreferrer" aria-label="Rejestracja on-line">
         <Calendar />
       </WrapperWidget>
     </>
@@ -398,10 +402,14 @@ const WrapperTopBar = styled.div`
       &:hover span {
         opacity: .8;
       }
+      svg {
+        width: 16px;
+        height: 16px;
+      }
       display: grid;
       grid-template-columns: auto 1fr;
       align-items: center;
-      gap: ${Clamp(8, 8, 12, 'px')};
+      gap: 8px;
     }
   }
 `
@@ -433,7 +441,7 @@ const WrapperWidget = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 13px 0px rgba(15 227 175 / 30%);
+  box-shadow: 0px 3px 13px 0px rgba(255 255 255 / 25%);
   &::before {
     content: attr(aria-label);
     position: absolute;
@@ -510,7 +518,7 @@ const Mail = () => (
 )
 
 const Calendar = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'>
+  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox="0 0 24 24" fill='none'>
     <path
       stroke='#EFF0F3'
       strokeLinecap='round'

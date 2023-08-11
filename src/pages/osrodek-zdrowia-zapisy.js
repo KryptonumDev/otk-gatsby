@@ -15,6 +15,8 @@ const RegistrationPage = ({
       hero_Heading,
       hero_Subheading,
       hero_Img,
+      hero_Cta,
+      services_CtaOnTop,
       services_Heading,
       services_Paragraph,
       services_List,
@@ -41,9 +43,11 @@ const RegistrationPage = ({
           hero_Heading,
           hero_Subheading,
           hero_Img,
+          hero_Cta,
         }}
       />
       <BenefitsSection
+        ctaOnTop={services_CtaOnTop}
         heading={services_Heading}
         paragraph={services_Paragraph}
         list={services_List}
@@ -81,7 +85,17 @@ export const query = graphql`
           gatsbyImageData(placeholder: NONE)
         }
       }
+      hero_Cta {
+        theme
+        href
+        text
+      }
       # Services
+      services_CtaOnTop {
+        theme
+        href
+        text
+      }
       services_Heading
       services_Paragraph
       services_List {

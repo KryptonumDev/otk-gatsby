@@ -7,6 +7,7 @@ import Button from "../atoms/Button";
 import Heading from '../atoms/Heading';
 
 const BenefitsSection = ({
+  ctaOnTop,
   heading,
   paragraph,
   list,
@@ -14,6 +15,17 @@ const BenefitsSection = ({
 }) => {
   return (
     <Wrapper className="max-width">
+      {ctaOnTop && (
+        <div className="ctaOnTop">
+          {ctaOnTop.map((cta, i) => (
+            <Button
+              theme={cta.theme}
+              to={cta.href}
+              key={i}
+            >{cta.text}</Button>
+          ))}
+        </div>
+      )}
       <header>
         <Heading type="h2">{heading}</Heading>
         <hr />
@@ -45,6 +57,9 @@ const BenefitsSection = ({
 const Wrapper = styled.section`
   @media (min-width: 599px){
     text-align: center;
+  }
+  .ctaOnTop {
+    margin-bottom: ${Clamp(24, 24, 48, 'px')};
   }
   header {
     max-width: 1024px;

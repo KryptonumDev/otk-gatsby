@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
+import Button from "../atoms/Button";
 import Heading from "../atoms/Heading";
 import ImageDecorative from "../atoms/ImageDecorative";
 
@@ -9,6 +10,7 @@ const Hero = ({
     hero_Heading,
     hero_Subheading,
     hero_Img,
+    hero_Cta,
   },
   version="dark"
 }) => {
@@ -19,6 +21,16 @@ const Hero = ({
           <Heading className="heading">{hero_Heading}</Heading>
           <hr />
           <Heading className="subheading" type="h2">{hero_Subheading}</Heading>
+          {hero_Cta && (
+            hero_Cta.map((cta, i) => (
+              <Button
+                theme={cta.theme}
+                variant={version === 'dark' ? 'light' : 'dark'}
+                to={cta.href}
+                key={i}
+              >{cta.text}</Button>
+            ))
+          )}
         </header>
         <ImageDecorative data={hero_Img} loading="eager" />
       </div>
@@ -47,6 +59,7 @@ const Wrapper = styled.section`
     h2 {
       font-weight: 400;
       font-size: ${Clamp(24, 24, 32)};
+      margin-bottom: ${Clamp(24, 24, 48, 'px')};
     }
   }
 `
