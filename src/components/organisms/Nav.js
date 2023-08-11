@@ -433,7 +433,7 @@ const WrapperWidget = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 13px 0px rgb(255 255 255 / 10%);
+  box-shadow: 0px 3px 13px 0px rgba(15 227 175 / 30%);
   &::before {
     content: attr(aria-label);
     position: absolute;
@@ -449,6 +449,7 @@ const WrapperWidget = styled.a`
     transition: transform .4s, opacity .4s;
     transition-timing-function: var(--easing);
     transform-origin: right bottom;
+    border: 1px solid rgba(15 227 175 / 5%);
     opacity: 0;
     transform: translateY(3px) scale(.95);
   }
@@ -460,6 +461,9 @@ const WrapperWidget = styled.a`
     }
   }
   transition: transform .4s var(--easing);
+  @media (pointer: coarse) {
+    bottom: 34px;
+  }
   &:active {
     transform: scale(.95);
   }
