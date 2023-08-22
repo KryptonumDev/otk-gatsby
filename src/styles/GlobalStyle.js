@@ -50,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
   .tabbing :focus-visible {
-    outline: 3px solid var(--secondary-500);
+    outline: 3px solid #e31c3d;
     outline-offset: 5px;
   }
   .max-width {
@@ -168,6 +168,15 @@ const GlobalStyle = createGlobalStyle`
       width: 100%;
       text-align: center;
     }
+  }
+  .sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
   }
 `
 

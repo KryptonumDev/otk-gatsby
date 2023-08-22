@@ -5,6 +5,8 @@ import { Clamp } from "../../utils/functions";
 
 const Button = ({ theme='primary', variant='dark', children, to, className, ...props }) => {
   const isExternal = to && to.startsWith('https://');
+  const title = props.title !== undefined ? props.title : children;
+
   return (
     <>
       {to ? (
@@ -17,9 +19,11 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
             className={`cta ${className}`}
             data-theme={theme}
             data-variant={variant}
+            title={title}
             {...props}
           >
             {children}
+            <span className="sr-only"> (otwiera się w nowej karcie)</span>
           </StyledAnchor>
         ) : (
           <StyledAnchor
@@ -28,6 +32,7 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
             className={`cta ${className}`}
             data-theme={theme}
             data-variant={variant}
+            title={title}
             {...props}
           >
             {children}
@@ -40,8 +45,9 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
           className={`cta ${className}`}
           data-theme={theme}
           data-variant={variant}
+          title={title}
           {...props}
-        >
+          >
           {children}
         </StyledAnchor>
       )}

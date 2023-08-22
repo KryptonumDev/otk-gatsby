@@ -85,7 +85,7 @@ const NewsletterForm = ({ cta, variant }) => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button theme="primary" disabled={sentStatus.sent && sentStatus.success === undefined}>
+        <Button theme="primary" disabled={sentStatus.sent && sentStatus.success === undefined} title={cta}>
           {(sentStatus.sent && sentStatus.success === undefined) && (
             <Loader />
           )}

@@ -54,15 +54,15 @@ const Nav = () => {
         <div className="max-width">
           <p className="workingHours">{global.nav.workingHours}</p>
           <div className="contact">
-            <a href='https://lekarzebezkolejki.pl/osrodektk' target='_blank' rel="noreferrer">
+            <a href='https://lekarzebezkolejki.pl/osrodektk' target='_blank' rel="noreferrer" title='Umów się do lekarza'>
               <Calendar />
-              <span>Umów się do lekarza</span>
+              <span>Umów się do lekarza <span className="sr-only">(otwiera się w nowej karcie)</span></span>
             </a>
-            <a href={`tel:${global.tel}`}>
+            <a href={`tel:${global.tel}`} title='Zadzwoń'>
               <Tel />
               <span>{global.tel}</span>
             </a>
-            <a href={`mailto:${global.email}`}>
+            <a href={`mailto:${global.email}`} title='Wyślij maila'>
               <Mail />
               <span>{global.email}</span>
             </a>
@@ -76,6 +76,7 @@ const Nav = () => {
             aria-label="Strona główna"
             className="logo"
             onClick={() => handleLink()}
+            title='Strona główna'
           >
             <Logo />
           </Link>
@@ -83,6 +84,7 @@ const Nav = () => {
             id="nav-toggle"
             onClick={() => handleNavToggle()}
             aria-label="Nawigacja"
+            title='Nawigacja'
           >
             <span></span>
             <span></span>
@@ -90,10 +92,10 @@ const Nav = () => {
           </button>
           <ul className="list">
             <li>
-              <Link to='/' onClick={() => handleLink()}>Strona główna</Link>
+              <Link to='/' onClick={() => handleLink()} title='Strona główna'>Strona główna</Link>
             </li>
             <li>
-              <Link to='/poradnia-medycyny-rodzinnej' onClick={() => handleLink()}>Poradnia rodzinna</Link>
+              <Link to='/poradnia-medycyny-rodzinnej' onClick={() => handleLink()} title='Poradnia rodzinna'>Poradnia rodzinna</Link>
             </li>
             <li tabIndex='0'>
               <span>
@@ -102,38 +104,41 @@ const Nav = () => {
               </span>
               <ul className="dropdown">
                 <li>
-                  <Link to='/pytania' onClick={() => handleLink()}>Pytania i odpowiedzi</Link>
+                  <Link to='/pytania' onClick={() => handleLink()} title='Pytania i odpowiedzi'>Pytania i odpowiedzi</Link>
                 </li>
                 <li>
-                  <Link to='/pierwszy-rok-zycia-dziecka-ebook' onClick={() => handleLink()}>Darmowy ebook</Link>
+                  <Link to='/pierwszy-rok-zycia-dziecka-ebook' onClick={() => handleLink()} title='Darmowy ebook'>Darmowy ebook</Link>
                 </li>
                 <li>
-                  <Link to='/profilaktyka-i-diagnostyka' onClick={() => handleLink()}>Profilaktyka</Link>
+                  <Link to='/profilaktyka-i-diagnostyka' onClick={() => handleLink()} title='Profilaktyka'>Profilaktyka</Link>
                 </li>
                 <li>
-                  <Link to='/gdzie-zrobic-badania' onClick={() => handleLink()}>Gdzie zrobić badania?</Link>
+                  <Link to='/gdzie-zrobic-badania' onClick={() => handleLink()} title='Gdzie zrobić badania?'>Gdzie zrobić badania?</Link>
                 </li>
                 {global.nav.questionnaire && (
                   <li>
-                    <a href={global.nav.questionnaire} target="_blank" rel="noreferrer" onClick={() => handleLink()}>
-                      <span>Ankieta satysfakcji</span>
+                    <a href={global.nav.questionnaire} target="_blank" rel="noreferrer" onClick={() => handleLink()} title='Ankieta satysfakcji'>
+                      <span>Ankieta satysfakcji <span className="sr-only">(otwiera się w nowej karcie)</span></span>
                       <External />
                     </a>
                   </li>
                 )}
                 <li>
-                  <Link to='/osrodek-zdrowia-regulamin' onClick={() => handleLink()}>Regulamin</Link>
+                  <Link to='/osrodek-zdrowia-regulamin' onClick={() => handleLink()} title='Regulamin'>Regulamin</Link>
                 </li>
                 <li>
-                  <Link to='/cennik' onClick={() => handleLink()}>Cennik</Link>
+                  <Link to='/cennik' onClick={() => handleLink()} title='Cennik'>Cennik</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link to='/personel-osrodka-zdrowia' onClick={() => handleLink()}>Personel</Link>
+              <Link to='/personel-osrodka-zdrowia' onClick={() => handleLink()} title='Personel'>Personel</Link>
             </li>
             <li>
-              <Link to='/kontakt' onClick={() => handleLink()}>Kontakt</Link>
+              <Link to='/mapa-strony' onClick={() => handleLink()} title='Mapa strony'>Mapa strony</Link>
+            </li>
+            <li>
+              <Link to='/kontakt' onClick={() => handleLink()} title='Kontakt'>Kontakt</Link>
             </li>
             <Social as='li' />
             <li>
@@ -142,14 +147,12 @@ const Nav = () => {
                 to="/osrodek-zdrowia-zapisy"
                 className="nav-cta"
                 onClick={() => handleLink()}
+                title='Zapisz się'
               >Zapisz się</Button>
             </li>
           </ul>
         </div>
       </WrapperNav>
-      <WrapperWidget href="https://lekarzebezkolejki.pl/osrodektk" target='_blank' rel="noreferrer" aria-label="Rejestracja on-line">
-        <Calendar />
-      </WrapperWidget>
     </>
   );
 }
@@ -197,7 +200,7 @@ const WrapperNav = styled.nav`
           transition: transform .3s;
         }
       }
-      @media (min-width: 1200px){
+      @media (min-width: 1250px){
         &:hover,
         &:focus-within {
           > span svg {
@@ -261,7 +264,7 @@ const WrapperNav = styled.nav`
   }
 
   // ### MOBILE
-  @media (max-width: 1199px){
+  @media (max-width: 1249px){
     &[aria-expanded="true"] {
       .list {
         opacity: 1;
@@ -425,55 +428,6 @@ const WrapperSkipToMainContent = styled.a`
   &:focus-visible {
     opacity: 1;
     pointer-events: auto;
-  }
-`
-
-const WrapperWidget = styled.a`
-  position: fixed;
-  bottom: 13px;
-  right: 13px;
-  width: 55px;
-  height: 55px;
-  background-color: var(--primary-500);
-  color: var(--neutral-100);
-  z-index: 9;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 3px 13px 0px rgba(255 255 255 / 25%);
-  &::before {
-    content: attr(aria-label);
-    position: absolute;
-    right: 0;
-    bottom: calc(100% + 5px);
-    font-size: 13px;
-    border-radius: 20px;
-    background-color: inherit;
-    padding: 8px 13px;
-    width: fit-content;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: transform .4s, opacity .4s;
-    transition-timing-function: var(--easing);
-    transform-origin: right bottom;
-    border: 1px solid rgba(15 227 175 / 5%);
-    opacity: 0;
-    transform: translateY(3px) scale(.95);
-  }
-  &:hover:not(:active),
-  &:focus {
-    &::before {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  transition: transform .4s var(--easing);
-  @media (pointer: coarse) {
-    bottom: 34px;
-  }
-  &:active {
-    transform: scale(.95);
   }
 `
 

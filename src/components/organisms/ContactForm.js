@@ -110,7 +110,7 @@ const ContactForm = () => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button disabled={sentStatus.sent && sentStatus.success === undefined}>
+        <Button disabled={sentStatus.sent && sentStatus.success === undefined} title={'Wyślij'}>
           {(sentStatus.sent && sentStatus.success === undefined) && (
             <Loader />
           )}

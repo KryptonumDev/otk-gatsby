@@ -86,7 +86,7 @@ const EbookForm = ({ data, variant='light', isEbookPage }) => {
         errors={errors}
       />
       <div className="cta-wrapper">
-        <Button variant={variant} theme="primary" disabled={sentStatus.sent && sentStatus.success === undefined}>
+        <Button variant={variant} theme="primary" disabled={sentStatus.sent && sentStatus.success === undefined} title={data.formCta}>
           {(sentStatus.sent && sentStatus.success === undefined) && (
             <Loader />
           )}

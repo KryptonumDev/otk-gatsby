@@ -7,7 +7,7 @@ const LinkRenderer = ({ href, children }) => {
   return (
     isExternal ? (
       <a href={href} target="_blank" rel="noopener noreferrer" className="link">
-        {children}
+        {children} <span className="sr-only">(otwiera się w nowej karcie)</span>
       </a>
     ) : (
       <Link to={href} className="link">{children}</Link>

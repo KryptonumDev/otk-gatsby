@@ -19,7 +19,8 @@ const Social = ({ as }) => {
         href={global.facebook}
         target="_blank"
         rel="noreferrer"
-        aria-label="Facebook"
+        aria-label="Facebook (otwiera się w nowej karcie)"
+        title="Facebook"
       >
         <Facebook />
       </a>
@@ -27,7 +28,8 @@ const Social = ({ as }) => {
         href={global.youtube}
         target="_blank"
         rel="noreferrer"
-        aria-label="Youtube"
+        aria-label="Youtube (otwiera się w nowej karcie)"
+        title="YouTube"
       >
         <Youtube />
       </a>

@@ -11,7 +11,7 @@ const components = {
   marks: {
     link: ({value, children}) => {
       const { href } = value
-      return <a href={href} target="_blank" rel="noreferrer" className="link">{children}</a>
+      return <a href={href} target="_blank" rel="noreferrer" className="link">{children} <span className="sr-only">(otwiera się w nowej karcie)</span></a>
     }
   }
 }
