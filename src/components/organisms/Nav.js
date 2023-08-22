@@ -58,7 +58,7 @@ const Nav = () => {
               <Calendar />
               <span>Umów się do lekarza <span className="sr-only">(otwiera się w nowej karcie)</span></span>
             </a>
-            <a href={`tel:${global.tel}`} title='Zadzwoń'>
+            <a href={`tel:${global.tel.replace(/\s/g, '')}`} title='Zadzwoń'>
               <Tel />
               <span>{global.tel}</span>
             </a>

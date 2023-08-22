@@ -6,11 +6,11 @@ import FormError from "./FormError";
 const FormCheckbox = ({ text, register, errors, ...props }) => (
   <Wrapper className="formItem formItem-legal">
     <label>
-      <div className="tick">
+      <span className="tick">
         <input name={register.name} type="checkbox" aria-invalid={errors[register.name] ? true : false} {...props} {...register} />
         <Check />
-      </div>
-      <p>{text}</p>
+      </span>
+      <span className="text">{text}</span>
     </label>
     <FormError isError={errors[register.name]} />
   </Wrapper>
@@ -51,7 +51,7 @@ const Wrapper = styled.div`
         transition: transform .3s var(--easing);
       }
     }
-    p {
+    span.text {
       margin-top: .1em;
       font-size: ${Clamp(16, 16, 20)};
       a {

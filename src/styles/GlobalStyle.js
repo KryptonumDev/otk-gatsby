@@ -98,6 +98,7 @@ const GlobalStyle = createGlobalStyle`
     appearance: none;
   }
   iframe {
+    width: 100%;
     border: none;
     border-radius: 8px;
     display: block;

@@ -50,7 +50,7 @@ const Footer = () => {
               <Logo variant="light" />
             </Link>
             <div className="contact">
-              <a href={`tel:${global.tel}`}>
+              <a href={`tel:${global.tel.replace(/\s/g, '')}`}>
                 <div className="icon">
                   <Tel />
                 </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Clamp } from "../../../utils/functions";
-import Markdown from "../../../utils/Markdown";
 import Button from "../../atoms/Button";
+import Heading from "../../atoms/Heading";
 import ImageDecorative from "../../atoms/ImageDecorative";
 import UnorderedList from "../../organisms/UnorderedList";
 
@@ -17,7 +17,7 @@ const Learn = ({
   return (
     <Wrapper className="max-width">
       <div>
-        <Markdown className="paragraph">{learn_Paragraph}</Markdown>
+      <Heading type="h2" className="paragraph">{learn_Paragraph}</Heading>
        <UnorderedList data={learn_List} />
         <div className="cta-wrapper">
           {learn_Cta.map((cta, i) => (
@@ -39,6 +39,9 @@ const Wrapper = styled.section`
     margin: ${Clamp(24, 24, 32, 'px')} 0 ${Clamp(32, 32, 48, 'px')};
   }
   .paragraph {
+    h2 {
+      font-size: inherit;
+    }
     font-size: ${Clamp(24, 24, 32)};
     font-weight: 600;
   }

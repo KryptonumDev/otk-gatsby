@@ -33,7 +33,7 @@ const CompanyInfo = () => {
       </div>
       <iframe
         src={`https://maps.google.com/maps?q=${info.map.lat},${info.map.lng}&z=${info.map.alt}&ie=UTF8&iwloc=&output=embed&hl=pl`}
-        width='100%'
+        width='768'
         height='500'
         loading="lazy"
         title="Położenie Ośrodka Zdrowia w Turośni Kościelnej na mapie"

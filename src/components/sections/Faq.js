@@ -18,7 +18,7 @@ const Faq = ({ data }) => {
             <details key={i}>
               <summary>
                 <ChevronDown />
-                <Markdown>{item.question}</Markdown>
+                <Markdown components={{ p: 'span' }}>{item.question}</Markdown>
               </summary>
               <Markdown className="answer">{item.answer}</Markdown>
             </details>
