@@ -19,7 +19,7 @@ const Social = ({ as }) => {
         href={global.facebook}
         target="_blank"
         rel="noreferrer"
-        aria-label="Facebook (otwiera się w nowej karcie)"
+        aria-label="Facebook Ośrodka Zdrowia w Turośni Kościelnej (otwiera się w nowej karcie)"
         title="Facebook"
       >
         <Facebook />
@@ -28,7 +28,7 @@ const Social = ({ as }) => {
         href={global.youtube}
         target="_blank"
         rel="noreferrer"
-        aria-label="Youtube (otwiera się w nowej karcie)"
+        aria-label="Youtube Ośrodka Zdrowia w Turośni Kościelnej (otwiera się w nowej karcie)"
         title="YouTube"
       >
         <Youtube />
