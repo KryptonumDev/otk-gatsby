@@ -16,7 +16,7 @@ const LinkRenderer = ({ href, children }) => {
 };
 
 const ListRenderer = ({ children }) => (
-  <li><p>{children}</p></li>
+  <li><div>{children}</div></li>
 )
 
 const Markdown = ({ children, components, ...props }) => {
