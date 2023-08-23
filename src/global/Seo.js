@@ -59,7 +59,7 @@ export const Seo = ({ title, description, url, children, breadcrumbs, faqSchema 
       {faqSchema && (
         <FaqSchema data={faqSchema} />
       )}
-      <meta name="deklaracja-dostępności" content={`${domain}/deklaracja-dostepnosci`} />
+      <meta name="deklaracja-dostępności" content={`${domain}/deklaracja-dostepnosci.html`} />
       {children}
     </>
   )
