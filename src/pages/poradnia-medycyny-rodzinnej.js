@@ -116,6 +116,16 @@ export const query = graphql`
       staffSection {
         heading
         subheading
+        list {
+          name
+          position
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: NONE)
+            }
+          }
+        }
         cta {
           theme
           text

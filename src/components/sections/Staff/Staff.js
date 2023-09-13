@@ -22,7 +22,7 @@ const handleShowEmbed = (e) => {
 const Staff = ({ data, cta }) => {
   return (
     <Wrapper className="max-width">
-      {data.nodes.map((person, i) => (
+      {data.map((person, i) => (
         <div className="person" key={i}>
           <div className="copy">
             <Heading type="h2">{person.name}</Heading>

@@ -1,4 +1,3 @@
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
@@ -15,25 +14,6 @@ const OurStaff = ({
     list,
   }
 }) => {
-  let { staff } = useStaticQuery(graphql`
-    query {
-      staff: allSanityStaff {
-        nodes {
-          name
-          position
-          img {
-            asset {
-              altText
-              gatsbyImageData(placeholder: NONE)
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  staff = list ? list : staff.nodes;
-
   return (
     <Wrapper className="max-width">
       <Heading type="h2">{heading}</Heading>
@@ -41,15 +21,17 @@ const OurStaff = ({
       {subheading && (
         <Heading type="h3">{subheading}</Heading>
       )}
-      <div className="wrapper">
-        {staff.map((person, i) => (
-          <div className="item" key={i}>
-            <ImageDecorative data={person.img} />
-            <Heading type="h3">{person.name}</Heading>
-            <Markdown className="position">{person.position}</Markdown>
-          </div>
-        ))}
-      </div>
+      {list && (
+        <div className="wrapper">
+          {list.map((person, i) => (
+            <div className="item" key={i}>
+              <ImageDecorative data={person.img} />
+              <Heading type="h3">{person.name}</Heading>
+              <Markdown className="position">{person.position}</Markdown>
+            </div>
+          ))}
+        </div>
+      )}
       {cta && (
         <div className="cta-wrapper">
           <Button theme={cta.theme} to={cta.href}>{cta.text}</Button>

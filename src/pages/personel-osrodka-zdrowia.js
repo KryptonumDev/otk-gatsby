@@ -13,13 +13,13 @@ const StaffPage = ({
       hero_Heading,
       hero_Subheading,
       hero_Img,
+      staff_List,
       staff_Cta,
       services_Heading,
       services_Paragraph,
       services_List,
       services_Cta,
     },
-    staff,
   }
 }) => {
   return (
@@ -31,7 +31,7 @@ const StaffPage = ({
           hero_Img,
         }}
       />
-      <Staff data={staff} cta={staff_Cta} />
+      <Staff data={staff_List} cta={staff_Cta} />
       <BenefitsSection
         heading={services_Heading}
         paragraph={services_Paragraph}
@@ -57,6 +57,20 @@ export const query = graphql`
         }
       }
       # Staff
+      staff_List {
+        name
+        bio
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: NONE)
+          }
+        }
+        embed {
+          id
+          alt
+        }
+      }
       staff_Cta {
         theme
         href
@@ -82,22 +96,6 @@ export const query = graphql`
       seo {
         title
         description
-      }
-    }
-    staff: allSanityStaff {
-      nodes {
-        name
-        bio
-        img {
-          asset {
-            altText
-            gatsbyImageData(placeholder: NONE)
-          }
-        }
-        embed {
-          id
-          alt
-        }
       }
     }
   }
