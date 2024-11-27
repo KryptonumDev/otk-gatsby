@@ -38,7 +38,7 @@ const Footer = () => {
       }
     }
   `)
-  
+
   return (
     <>
       <FooterWrapper>
@@ -70,7 +70,7 @@ const Footer = () => {
             <p>{footer.paragraph}</p>
           </div>
           <Button variant="light" theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
-          <p className="copyright">Ośrodek Zdrowia w Turośni Kościelnej ©️ {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
+          <p className="copyright">Ośrodek Zdrowia w Turośni Kościelnej &copy; {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
           <p className="projectBy">
             <span>Projekt i realizacja:</span>
             <a href="https://kryptonum.eu/pl" aria-label="Agencja interaktywna Kryptonum">
@@ -274,5 +274,5 @@ const FooterKryptonumLogo = () => (
     ></path>
   </svg>
 )
- 
+
 export default Footer;
