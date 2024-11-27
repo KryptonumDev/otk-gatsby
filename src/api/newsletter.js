@@ -24,14 +24,14 @@ export default function handler(req, res) {
     headers,
     body: JSON.stringify(req.body),
   })
-  .then((response) => {
-    if (response.ok) {
-      res.status(200).json({ success: true });
-    } else {
+    .then((response) => {
+      if (response.ok) {
+        res.status(200).json({ success: true });
+      } else {
+        res.status(422).json({ success: false });
+      }
+    })
+    .catch(() => {
       res.status(422).json({ success: false });
-    }
-  })
-  .catch(() => {
-    res.status(422).json({ success: false });
-  });
+    });
 }

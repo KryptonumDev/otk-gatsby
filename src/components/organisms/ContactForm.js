@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { emailRegex, phoneRegex } from "../../constants/regex";
 import Button from "../atoms/Button";
 import FormCheckbox from "../moleculas/FormCheckbox";
 import FormInput from "../moleculas/FormInput";
+import Select from "../moleculas/Select";
 import { Clamp } from "../../utils/functions";
 import { Error } from "../atoms/Icons";
 import Loader from "../atoms/Loader";
@@ -20,30 +20,29 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm({ mode: 'onSubmit' })
 
-  const [ sentStatus, setSentStatus ] = useState({ sent: false })
+  const [sentStatus, setSentStatus] = useState({ sent: false })
 
   const onSubmit = (data) => {
     setSentStatus({ sent: true });
     fetch('/api/contact', {
-      method: 'POST', 
+      method: 'POST',
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(response => {
-      if(response.success){
-        setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
-      } else {
+      .then(response => response.json())
+      .then(response => {
+        if (response.success) {
+          setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
+          reset();
+        } else {
+          setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+        }
+      })
+      .catch(() => {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
-      }
-      reset();
-    })
-    .catch(() => {
-      setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
-      reset();
-    })
+      })
   }
 
   const handleSentAgain = (e) => {
@@ -98,6 +97,20 @@ const ContactForm = () => {
         register={register('email', { required: true, pattern: emailRegex })}
         errors={errors}
       />
+      <Select
+        label="Wybierz ośrodek"
+        register={register('center', { required: true })}
+        options={['Ośrodek Zdrowia w Turośni Kościelnej', 'Ośrodek Zdrowia Filia w Surażu']}
+        error="Ośrodek nie został wybrany"
+        errors={errors}
+      />
+      <Select
+        label="Wybierz temat"
+        register={register('subject', { required: true })}
+        options={['Chcę zapisać się do przychodni', 'Chcę umówić wizytę u lekarza rodzinnego (NFZ)', 'Chcę umówić wizytę prywatną', 'Chcę skorzystać z porady dietetyka', 'Potrzebuję przedłużenia recepty', 'Chcę skorzystać z Opieki Koordynowanej', 'Nie mogę znaleźć odpowiedzi na nurtujące mnie pytanie', 'Inny temat']}
+        error="Temat nie został wybrany"
+        errors={errors}
+      />
       <FormInput
         textarea={true}
         placeholder="Wiadomość"
@@ -105,7 +118,7 @@ const ContactForm = () => {
         errors={errors}
       />
       <FormCheckbox
-        text={<>Akceptuję{' '}<Link to="/polityka-prywatnosci">politykę prywatności</Link></>}
+        text={<>Akceptuję{' '}<a href="/polityka-prywatnosci" target="_blank" rel="noreferrer">politykę prywatności</a></>}
         register={register('legal', { required: true })}
         errors={errors}
       />

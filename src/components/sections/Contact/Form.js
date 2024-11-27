@@ -33,7 +33,7 @@ const Wrapper = styled.section`
     gap: 16px;
     @media (min-width: 549px){
       grid-template-columns: 1fr 1fr;
-      .formItem-legal, .formItem-textarea, .cta-wrapper {
+      .formItem-legal, .formItem-select, .formItem-textarea, .cta-wrapper {
         grid-column: 3/1;
       }
     }

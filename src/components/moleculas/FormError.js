@@ -4,7 +4,7 @@ import { Error } from "../atoms/Icons";
 
 const FormError = ({ isError, error }) => {
   return (
-    <Wrapper>
+    <Wrapper className="error">
       {isError && (
         <>
           <Error />
