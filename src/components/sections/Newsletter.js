@@ -26,6 +26,7 @@ const Newsletter = () => {
       }
     }
   `)
+
   return (
     <Wrapper className="max-width">
       <div className="copy">

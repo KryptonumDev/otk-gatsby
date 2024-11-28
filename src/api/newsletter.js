@@ -4,12 +4,9 @@ import { emailRegex } from '../constants/regex';
 export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://osrodektk.pl');
 
-  if (req.method !== 'POST') {
-    return res.status(404).send('');
-  }
+  if (req.method !== 'POST') return res.status(404).send('');
 
   const { id, email } = req.body;
-
   if (!email || !id || !emailRegex.test(email.toLowerCase())) {
     return res.status(422).json({ success: false });
   }
