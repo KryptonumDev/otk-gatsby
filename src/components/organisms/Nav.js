@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
-import { ChevronDown, External, Logo } from "../atoms/Icons";
-import { Clamp } from "../../utils/functions";
 import Button from "../atoms/Button";
 import Social from "../moleculas/Social";
-import { useEffect } from "react";
+import { ChevronDown, External, Logo, LogoSurazu } from "../atoms/Icons";
+import { Clamp } from "../../utils/functions";
 
-const Nav = () => {
+const Nav = ({ location }) => {
   const {
     global
   } = useStaticQuery(graphql`
@@ -23,8 +22,7 @@ const Nav = () => {
     }
   `)
 
-
-  const [ navOpened, setNavOpened ] = useState(false);
+  const [navOpened, setNavOpened] = useState(false);
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscapeKey);
@@ -32,20 +30,13 @@ const Nav = () => {
       document.removeEventListener("keydown", handleEscapeKey)
     }
   }, []);
-
   const handleEscapeKey = (e) => {
-    if (e.key === "Escape"){
+    if (e.key === "Escape") {
       setNavOpened(false);
     }
   }
-
-  const handleNavToggle = () => {
-    setNavOpened(!navOpened);
-  }
-
-  const handleLink = () => {
-    setNavOpened(false);
-  }
+  const handleNavToggle = () => setNavOpened(!navOpened);
+  const handleLink = () => setNavOpened(false);
 
   return (
     <>
@@ -78,7 +69,7 @@ const Nav = () => {
             onClick={() => handleLink()}
             title='Strona główna'
           >
-            <Logo />
+            {location.pathname === '/filia-w-surazu' ? <LogoSurazu /> : <Logo />}
           </Link>
           <button
             id="nav-toggle"
@@ -140,6 +131,9 @@ const Nav = () => {
             <li>
               <Link to='/kontakt' onClick={() => handleLink()} title='Kontakt'>Kontakt</Link>
             </li>
+            <li>
+              <Link to='/filia-w-surazu' onClick={() => handleLink()} title='Filia w Surażu'>Filia w Surażu</Link>
+            </li>
             <Social as='li' />
             <li>
               <Button
@@ -172,7 +166,7 @@ const WrapperNav = styled.nav`
   .list {
     display: flex;
     align-items: center;
-    gap: ${Clamp(16, 16, 48, 'px')};
+    gap: ${Clamp(16, 16, 32, 'px')};
     font-size: ${Clamp(16, 8, 18)};
     color: var(--primary-200);
     a:not(.nav-cta) {
@@ -194,13 +188,13 @@ const WrapperNav = styled.nav`
       > span {
         display: flex;
         align-items: center;
-        gap: 10px;  
+        gap: 10px;
         padding: 16px 0;
         svg {
           transition: transform .3s;
         }
       }
-      @media (min-width: 1250px){
+      @media (min-width: 1400px){
         &:hover,
         &:focus-within {
           > span svg {
@@ -264,7 +258,7 @@ const WrapperNav = styled.nav`
   }
 
   // ### MOBILE
-  @media (max-width: 1249px){
+  @media (max-width: 1399px){
     &[aria-expanded="true"] {
       .list {
         opacity: 1;
@@ -371,10 +365,7 @@ const WrapperNav = styled.nav`
   @media (max-width: 449px){
     .logo {
       svg {
-        width: 62px;
-        .text {
-          display: none;
-        }
+        width: clamp(208px, calc(278vw / 7.68), 278px);
       }
     }
   }
@@ -482,5 +473,5 @@ const Calendar = () => (
     ></path>
   </svg>
 )
- 
+
 export default Nav;

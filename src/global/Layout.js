@@ -3,14 +3,14 @@ import GlobalStyle from "../styles/GlobalStyle";
 import Nav from "../components/organisms/Nav";
 import Footer from "../components/organisms/Footer";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const handleTabKey = (e) => {
     (e.key === 'Tab') && document.documentElement.classList.add('tabbing')
   };
   const handleMouseDown = () => {
     document.documentElement.classList.remove('tabbing');
   };
-  
+
   useEffect(() => {
     document.addEventListener('keydown', handleTabKey);
     window.addEventListener('mousedown', handleMouseDown);
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Nav />
+      <Nav location={location} />
       <main id="main">
         {children}
       </main>
