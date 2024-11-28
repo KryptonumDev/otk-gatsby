@@ -41,7 +41,8 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     background-color: var(--neutral-100);
     color: var(--dark-500);
-    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.6;
     font-family: 'Manrope', sans-serif;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
@@ -122,6 +123,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${Clamp(24, 24, 32)};
   }
   h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
     font-weight: 600;
     strong {
       font-weight: 700;
@@ -171,12 +173,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   .sr-only:not(:focus):not(:active) {
-    clip: rect(0 0 0 0); 
+    clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
     overflow: hidden;
     position: absolute;
-    white-space: nowrap; 
+    white-space: nowrap;
     width: 1px;
   }
 `
