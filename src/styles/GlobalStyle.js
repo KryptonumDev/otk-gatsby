@@ -33,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
      --pageMargin: 16px;
     }
   }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 123px;
+  }
   body.scrollLock {
     overflow: hidden;
     touch-action: none;

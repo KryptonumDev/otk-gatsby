@@ -1,38 +1,20 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Heading from "../atoms/Heading";
 import UnorderedList from "../organisms/UnorderedList";
 import { Clamp } from "../../utils/functions";
 
-const CompanyInfo = () => {
-  const { global: { info } } = useStaticQuery(graphql`
-    query {
-      global: sanityGlobal {
-        info {
-          heading
-          subheading
-          list
-          map {
-            lat
-            lng
-            alt
-          }
-        }
-      }
-    }
-  `)
-
+const CompanyInfo = ({ heading, subheading, list, map }) => {
   return (
     <Wrapper className="max-width">
-      <Heading className="heading" type="h2">{info.heading}</Heading>
+      <Heading className="heading" type="h2">{heading}</Heading>
       <div className="copy">
-        <Heading className="subheading" type="h3">{info.subheading}</Heading>
+        <Heading className="subheading" type="h3">{subheading}</Heading>
         <hr />
-        <UnorderedList data={info.list} />
+        <UnorderedList data={list} />
       </div>
       <iframe
-        src={`https://maps.google.com/maps?q=${info.map.lat},${info.map.lng}&z=${info.map.alt}&ie=UTF8&iwloc=&output=embed&hl=pl`}
+        src={`https://maps.google.com/maps?q=${map.lat},${map.lng}&z=${map.alt}&ie=UTF8&iwloc=&output=embed&hl=pl`}
         width='768'
         height='500'
         loading="lazy"

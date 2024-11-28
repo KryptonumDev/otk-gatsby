@@ -7,34 +7,32 @@ import Faq from "../components/sections/Faq"
 import CtaSection from "../components/sections/CtaSection"
 import BenefitsSection from "../components/sections/BenefitsSection"
 import Newsletter from "../components/sections/Newsletter"
-import Registration from "../components/sections/Registration/Registration"
+import Registration from "../components/sections/Registration"
 
 const RegistrationPage = ({
-  data: {
-    page: {
-      hero_Heading,
-      hero_Subheading,
-      hero_Img,
-      hero_Cta,
-      services_CtaOnTop,
-      services_Heading,
-      services_Paragraph,
-      services_List,
-      services_Cta,
-      registration_Heading,
-      registration_Paragraph,
-      registration_Has_Title,
-      registration_Has_Paragraph,
-      registration_Has_Cta,
-      registration_HasNot_Title,
-      registration_HasNot_Heading,
-      registration_HasNot_Subheading,
-      registration_HasNot_Paragraph,
-      registration_HasNot_List,
-      ctaSection,
-      faqSection,
-    },
-  }
+  data: { page: {
+    hero_Heading,
+    hero_Subheading,
+    hero_Img,
+    hero_Cta,
+    services_CtaOnTop,
+    services_Heading,
+    services_Paragraph,
+    services_List,
+    services_Cta,
+    registration_Heading,
+    registration_Paragraph,
+    registration_Has_Title,
+    registration_Has_Paragraph,
+    registration_Has_Cta,
+    registration_HasNot_Title,
+    registration_HasNot_Heading,
+    registration_HasNot_Subheading,
+    registration_HasNot_Paragraph,
+    registration_HasNot_List,
+    ctaSection,
+    faqSection,
+  } }
 }) => {
   return (
     <>
@@ -111,7 +109,7 @@ export const query = graphql`
         href
         text
       }
-      # Registration 
+      # Registration
       registration_Heading
       registration_Paragraph
       registration_Has_Title

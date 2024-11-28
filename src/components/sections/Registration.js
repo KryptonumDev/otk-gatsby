@@ -1,10 +1,10 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
-import { Clamp } from "../../../utils/functions";
-import Markdown from "../../../utils/Markdown";
-import Button from "../../atoms/Button";
-import Heading from "../../atoms/Heading";
+import { Clamp } from "../../utils/functions";
+import Markdown from "../../utils/Markdown";
+import Button from "../atoms/Button";
+import Heading from "../atoms/Heading";
 
 const Registration = ({
   data: {
@@ -18,10 +18,11 @@ const Registration = ({
     registration_HasNot_Subheading,
     registration_HasNot_Paragraph,
     registration_HasNot_List,
-  }
+  },
+  ...props
 }) => {
   return (
-    <Wrapper className="max-width">
+    <Wrapper className="max-width" {...props}>
       <header>
         <Heading type="h2">{registration_Heading}</Heading>
         <Markdown className="paragraph">{registration_Paragraph}</Markdown>
@@ -36,7 +37,7 @@ const Registration = ({
         <div className="cta-wrapper">
           {registration_Has_Cta.map((cta, i) => (
             <Button theme={cta.theme} to={cta.href} key={i}>{cta.text}</Button>
-            ))}
+          ))}
         </div>
       </div>
       <div className="option">

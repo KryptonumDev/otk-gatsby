@@ -5,8 +5,7 @@ import Hero from "../components/sections/Hero"
 import Faq from "../components/sections/Faq"
 import Newsletter from "../components/sections/Newsletter"
 import Ebook from "../components/sections/Ebook"
-import Examination from "../components/sections/Where/Examination"
-import Facility from "../components/sections/Where/Facility"
+import CtaTiles from "../components/sections/CtaTiles"
 
 const WherePage = ({
   data: {
@@ -14,10 +13,7 @@ const WherePage = ({
       hero_Heading,
       hero_Subheading,
       hero_Img,
-      examination_Heading,
-      examination_Paragraph,
-      examination_Img,
-      facility_List,
+      CtaTiles: CtaTilesData,
       faqSection,
     },
   }
@@ -31,12 +27,7 @@ const WherePage = ({
           hero_Img,
         }}
       />
-      <Examination data={{
-        examination_Heading,
-        examination_Paragraph,
-        examination_Img,
-      }} />
-      <Facility data={facility_List} />
+      <CtaTiles {...CtaTilesData} />
       <Faq data={faqSection} />
       <Ebook />
       <Newsletter />
@@ -56,29 +47,30 @@ export const query = graphql`
           gatsbyImageData(placeholder: NONE)
         }
       }
-      # Examination
-      examination_Heading
-      examination_Paragraph
-      examination_Img {
-        asset {
-          altText
-          gatsbyImageData(placeholder: NONE)
-        }
-      }
-      # Facility
-      facility_List {
+      # Cta Tiles
+      CtaTiles {
+        heading
+        paragraph
         img {
           asset {
             altText
             gatsbyImageData(placeholder: NONE)
           }
         }
-        title
-        description
-        cta {
-          theme
-          text
-          href
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: NONE)
+            }
+          }
+          title
+          description
+          cta {
+            theme
+            text
+            href
+          }
         }
       }
       # FAQ Section

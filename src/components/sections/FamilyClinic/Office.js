@@ -1,4 +1,3 @@
-import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
@@ -11,28 +10,16 @@ const Office = ({
     office_Heading,
     office_Cta,
     office_Icon,
+    office_Map,
   }
 }) => {
-  const { global: { info } } = useStaticQuery(graphql`
-    query {
-      global: sanityGlobal {
-        info {
-          map {
-            lat
-            lng
-            alt
-          }
-        }
-      }
-    }
-  `)
   return (
     <Wrapper>
       <div className="max-width">
         <Heading type="h2">{office_Heading}</Heading>
         <hr />
         <iframe
-          src={`https://maps.google.com/maps?q=${info.map.lat},${info.map.lng}&z=${info.map.alt}&ie=UTF8&iwloc=&output=embed&hl=pl`}
+          src={`https://maps.google.com/maps?q=${office_Map.lat},${office_Map.lng}&z=${office_Map.alt}&ie=UTF8&iwloc=&output=embed&hl=pl`}
           width='768'
           height='500'
           loading="lazy"

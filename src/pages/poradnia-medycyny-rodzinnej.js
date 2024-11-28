@@ -24,13 +24,14 @@ const FamilyClinicPage = ({
     office_Heading,
     office_Cta,
     office_Icon,
+    office_Map,
     staffSection,
     appointment_Heading,
     appointment_Subheading,
     appointment_Cta,
     appointment_Img,
     faqSection,
-  }}
+  } }
 }) => {
   return (
     <>
@@ -41,7 +42,7 @@ const FamilyClinicPage = ({
           hero_Img,
         }}
         version="light"
-      /> 
+      />
       <Benefits data={benefits} />
       <Mission data={{
         mission_Heading,
@@ -53,6 +54,7 @@ const FamilyClinicPage = ({
         office_Heading,
         office_Cta,
         office_Icon,
+        office_Map,
       }} />
       <OurStaff data={staffSection} />
       <Appointment data={{
@@ -111,6 +113,11 @@ export const query = graphql`
           altText
           gatsbyImageData(placeholder: BLURRED)
         }
+      }
+      office_Map {
+        lat
+        lng
+        alt
       }
       # Staff
       staffSection {

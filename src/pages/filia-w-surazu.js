@@ -1,17 +1,19 @@
 import { graphql } from "gatsby"
 import * as React from "react"
-import BenefitsSection from "../components/sections/BenefitsSection"
-import CompanyInfo from "../components/sections/CompanyInfo"
-import CtaSection from "../components/sections/CtaSection"
-import Ebook from "../components/sections/Ebook"
-import Faq from "../components/sections/Faq"
-import Feautures from "../components/sections/Homepage/Feautures"
 import Hero from "../components/sections/Homepage/Hero"
+import BenefitsSection from "../components/sections/BenefitsSection"
 import Learn from "../components/sections/Homepage/Learn"
+import Feautures from "../components/sections/Homepage/Feautures"
+import CompanyInfo from "../components/sections/CompanyInfo"
+import Registration from "../components/sections/Registration"
+import Faq from "../components/sections/Faq"
+import CtaSection from "../components/sections/CtaSection"
+import OurStaff from "../components/sections/OurStaff"
 import Prevention from "../components/sections/Homepage/Prevention"
+import CtaTiles from "../components/sections/CtaTiles"
 import { Seo } from "../global/Seo"
 
-const IndexPage = ({
+const SurazClinicPage = ({
   data: { page: {
     hero_Heading,
     hero_Subheading,
@@ -25,18 +27,29 @@ const IndexPage = ({
     learn_Paragraph,
     learn_Cta,
     learn_Img,
-    ctaSection,
     features_Heading,
     features_List,
-    ctaSection2,
+    CompanyInfo: CompanyInfoData,
+    registration_Heading,
+    registration_Paragraph,
+    registration_Has_Title,
+    registration_Has_Paragraph,
+    registration_Has_Cta,
+    registration_HasNot_Title,
+    registration_HasNot_Heading,
+    registration_HasNot_Subheading,
+    registration_HasNot_Paragraph,
+    registration_HasNot_List,
+    faqSection,
+    ctaSection,
+    staffSection,
     prevention_Heading,
     prevention_Paragraph,
     prevention_ListTitle,
     prevention_List,
     prevention_CtaTitle,
     prevention_Cta,
-    faqSection,
-    CompanyInfo: CompanyInfoData,
+    CtaTiles: CtaTilesData,
   } }
 }) => {
   return (
@@ -59,12 +72,26 @@ const IndexPage = ({
         learn_Cta,
         learn_Img,
       }} />
-      <CtaSection data={ctaSection} firstIconOnRight={true} />
       <Feautures data={{
         features_Heading,
         features_List
       }} />
-      <CtaSection data={ctaSection2} />
+      <CompanyInfo {...CompanyInfoData} />
+      <Registration id="zapisz-sie" data={{
+        registration_Heading,
+        registration_Paragraph,
+        registration_Has_Title,
+        registration_Has_Paragraph,
+        registration_Has_Cta,
+        registration_HasNot_Title,
+        registration_HasNot_Heading,
+        registration_HasNot_Subheading,
+        registration_HasNot_Paragraph,
+        registration_HasNot_List,
+      }} />
+      <Faq data={faqSection} />
+      <CtaSection data={ctaSection} />
+      <OurStaff data={staffSection} />
       <Prevention data={{
         prevention_Heading,
         prevention_Paragraph,
@@ -73,16 +100,14 @@ const IndexPage = ({
         prevention_CtaTitle,
         prevention_Cta,
       }} />
-      <Ebook />
-      <Faq data={faqSection} />
-      <CompanyInfo {...CompanyInfoData} />
+      <CtaTiles {...CtaTilesData} />
     </>
   )
 }
 
 export const query = graphql`
   query {
-    page: sanityHomepage {
+    page: sanitySurazClinic {
       # Hero
       hero_Heading
       hero_Subheading
@@ -123,24 +148,6 @@ export const query = graphql`
           gatsbyImageData(placeholder: NONE)
         }
       }
-      # CTA Section
-      ctaSection {
-        heading
-        subheading
-        paragraph
-        claim
-        cta {
-          theme
-          text
-          href
-        }
-        icons {
-          asset {
-            altText
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
-      }
       # Feautures
       features_Heading
       features_List {
@@ -152,41 +159,40 @@ export const query = graphql`
         title
         description
       }
-      # CTA Section 2
-      ctaSection2 {
+      # Company Info
+      CompanyInfo {
         heading
         subheading
-        paragraph
-        claim
-        cta {
-          theme
-          text
-          href
+        list
+        map {
+          lat
+          lng
+          alt
         }
-        icons {
+      }
+      # Registration
+      registration_Heading
+      registration_Paragraph
+      registration_Has_Title
+      registration_Has_Paragraph
+      registration_Has_Cta {
+        theme
+        text
+        href
+      }
+      registration_HasNot_Title
+      registration_HasNot_Heading
+      registration_HasNot_Subheading
+      registration_HasNot_Paragraph
+      registration_HasNot_List {
+        img {
           asset {
             altText
             gatsbyImageData(placeholder: BLURRED)
           }
         }
-      }
-      # Prevention Section
-      prevention_Heading
-      prevention_Paragraph
-      prevention_ListTitle
-      prevention_List {
-        img {
-          asset {
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
         title
-      }
-      prevention_CtaTitle
-      prevention_Cta {
-        theme
-        text
-        href
+        description
       }
       # FAQ Section
       faqSection {
@@ -208,15 +214,86 @@ export const query = graphql`
           }
         }
       }
-      # Company Info
-      CompanyInfo {
+      # CTA Section
+      ctaSection {
         heading
         subheading
-        list
-        map {
-          lat
-          lng
-          alt
+        paragraph
+        claim
+        cta {
+          theme
+          text
+          href
+        }
+        icons {
+          asset {
+            altText
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+      }
+      # Staff
+      staffSection {
+        heading
+        subheading
+        list {
+          name
+          position
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: NONE)
+            }
+          }
+        }
+        cta {
+          theme
+          text
+          href
+        }
+      }
+      # Prevention Section
+      prevention_Heading
+      prevention_Paragraph
+      prevention_ListTitle
+      prevention_List {
+        img {
+          asset {
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+        title
+      }
+      prevention_CtaTitle
+      prevention_Cta {
+        theme
+        text
+        href
+      }
+      # Cta Tiles
+      CtaTiles {
+        heading
+        paragraph
+        img {
+          asset {
+            altText
+            gatsbyImageData(placeholder: NONE)
+          }
+        }
+        list {
+          img {
+            asset {
+              altText
+              gatsbyImageData(placeholder: NONE)
+            }
+          }
+          title
+          description
+          cta {
+            theme
+            text
+            href
+          }
         }
       }
       # SEO
@@ -228,14 +305,15 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default SurazClinicPage
 
-export const Head = ({ data: { page: { seo, faqSection } } }) => (
+export const Head = ({ data: { page: { seo, faqSection } }, location: { pathname } }) => (
   <Seo
     title={seo?.title}
     description={seo?.description}
     breadcrumbs={[
-      { name: "Strona główna", item: '' }
+      { name: "Strona główna", item: '' },
+      { name: "Filia w Surażu", item: pathname }
     ]}
     faqSchema={faqSection?.list}
   />
