@@ -84,7 +84,7 @@ const Footer = () => {
         </div>
       </FooterWrapper>
       <LeaglInfoWrapper className="max-width">
-        <Markdown>{footer.legal_Text}</Markdown>
+        <Markdown className="legal-text">{footer.legal_Text}</Markdown>
         <ul>
           {footer.legal_Images.map((logo, i) => (
             <li key={i}>
@@ -218,6 +218,9 @@ const FooterWrapper = styled.footer`
 const LeaglInfoWrapper = styled.div`
   color: var(--primary-500);
   padding: 55px 0;
+  .legal-text {
+    max-width: 78rem;
+  }
   p {
     &:not(:last-child){
       margin-bottom: 12px;
