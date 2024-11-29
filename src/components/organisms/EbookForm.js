@@ -13,7 +13,7 @@ import FormInput from "../moleculas/FormInput";
 
 const statusAnimationDuration = 300;
 
-const EbookForm = ({ data, variant='light', isEbookPage }) => {
+const EbookForm = ({ data, variant = 'light', isEbookPage }) => {
   const {
     register,
     handleSubmit,
@@ -21,31 +21,29 @@ const EbookForm = ({ data, variant='light', isEbookPage }) => {
     formState: { errors },
   } = useForm({ mode: 'onSubmit' })
 
-  const [ sentStatus, setSentStatus ] = useState({ sent: false })
+  const [sentStatus, setSentStatus] = useState({ sent: false })
 
   const onSubmit = (data) => {
     setSentStatus({ sent: true });
     fetch('/api/newsletter', {
-      method: 'POST', 
+      method: 'POST',
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({id: EBOOK_GROUPID, ...data})
+      body: JSON.stringify({ groupId: EBOOK_GROUPID, ...data })
     })
-    .then(response => response.json())
-    .then(response => {
-      if(response.success){
-        setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
-        reset()
-      } else {
+      .then(response => response.json())
+      .then(response => {
+        if (response.success) {
+          setSentStatus(prevStatus => ({ ...prevStatus, success: true }));
+          reset()
+        } else {
+          setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
+        }
+      })
+      .catch(() => {
         setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
-        reset()
-      }
-    })
-    .catch(() => {
-      setSentStatus(prevStatus => ({ ...prevStatus, success: false }));
-      reset()
-    })
+      })
   }
 
   const handleSentAgain = (e) => {

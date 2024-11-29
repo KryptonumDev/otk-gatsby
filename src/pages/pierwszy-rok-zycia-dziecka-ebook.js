@@ -21,7 +21,7 @@ const EbookPage = ({
     contents_Icon,
     authors_Heading,
     authors_List,
-  }}
+  } }
 }) => {
   return (
     <>
