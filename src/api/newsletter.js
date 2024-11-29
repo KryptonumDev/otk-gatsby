@@ -25,8 +25,6 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify(subscriber),
     });
-
-    console.log(await response.json());
     if (!response.ok) {
       return res.status(response.status).json({
         message: 'Failed to subscribe',

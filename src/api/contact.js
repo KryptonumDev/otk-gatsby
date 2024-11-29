@@ -45,8 +45,6 @@ export default async function handler(req, res) {
         text: removeHtmlTags(messageBody),
       }),
     });
-
-    console.log(await response.json());
     if (response.status !== 200) {
       return res.status(400).json({ success: false });
     }
