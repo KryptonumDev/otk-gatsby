@@ -37,6 +37,7 @@ const BenefitsSection = ({
             <GatsbyImage
               image={item.img.asset.gatsbyImageData}
               alt={item.img.asset.altText || ''}
+              objectFit="contain"
               className="img"
             />
             <Markdown>{item.title}</Markdown>
@@ -90,9 +91,10 @@ const Wrapper = styled.section`
     li {
       max-width: 230px;
       .img {
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
+        img {
+          width: 120px;
+          height: 120px;
+        }
       }
       p {
         font-weight: 600;
