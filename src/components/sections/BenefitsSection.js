@@ -90,7 +90,9 @@ const Wrapper = styled.section`
     li {
       max-width: 230px;
       .img {
+        width: 120px;
         height: 120px;
+        object-fit: contain;
       }
       p {
         font-weight: 600;
