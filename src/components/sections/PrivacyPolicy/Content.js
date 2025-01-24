@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import PortableContent from "../../organisms/PortableContent";
 
-const Content = ({ data, icon}) => {
+const Content = ({ data, icon }) => {
   return (
     <Wrapper className="max-width">
       <PortableContent data={data} />

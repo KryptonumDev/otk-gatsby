@@ -13,7 +13,7 @@ const PrivacyPolicyPage = ({
     _rawContent,
     content_Img,
     ctaSection,
-  }}
+  } }
 }) => {
   return (
     <>

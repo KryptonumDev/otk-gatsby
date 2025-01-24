@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { PortableText } from "@portabletext/react";
-import { Clamp } from "../../utils/functions";
 import { ListBullet } from "../atoms/Icons";
 
 const components = {
-  listItem : {
+  listItem: {
     bullet: ({ children }) => <li><ListBullet /><span>{children}</span></li>,
+    number: ({ children }) => <li><span>{children}</span></li>,
   },
   marks: {
-    link: ({value, children}) => {
+    link: ({ value, children }) => {
       const { href } = value
-      return <a href={href} target="_blank" rel="noreferrer" className="link">{children} <span className="sr-only">(otwiera się w nowej karcie)</span></a>
+      return <a href={href} target="_blank" rel="noreferrer" className="link">{children}<span className="sr-only">(otwiera się w nowej karcie)</span></a>
     }
   }
 }
@@ -28,37 +28,40 @@ const PortableContent = ({ data }) => {
 }
 
 const Wrapper = styled.div`
-  p + p {
-    margin-top: ${Clamp(16, 24, 32, 'px')};
+  font-size: clamp(1rem, calc(1.125vw / 0.48), 1.25rem);
+  a {
+    word-break: break-all;
   }
-  font-size: ${Clamp(16, 18, 20)};
+  p + p {
+    margin-top: clamp(1rem, calc(1.5vw / 0.48), 2rem);
+  }
   p {
-    line-height: 150%;
+    line-height: 1.5;
   }
   > h2 {
     &:not(:first-child) {
-      margin-top: ${Clamp(48, 72, 96, 'px')};
+      margin-top: clamp(3rem, calc(4.5vw / 0.48), 6rem);
     }
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
   > h3 {
     &:not(:first-child) {
-      margin-top: ${Clamp(48, 72, 96, 'px')};
+      margin-top: clamp(2rem, calc(2.5vw / 0.48), 3rem);
     }
-    margin-bottom: 32px;
+    margin-bottom: 1rem;
   }
   ul, ol {
     list-style-type: none;
-    margin: 24px 0;
+    margin: 1.5rem 0;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 16px;
+    row-gap: 0.75rem;
   }
   ul {
     li {
       display: grid;
-      column-gap: 8px;
-      grid-template-columns: 24px 1fr;
+      column-gap: 0.5rem;
+      grid-template-columns: 1.5rem 1fr;
       svg {
         margin-top: .1em;
       }
@@ -66,10 +69,10 @@ const Wrapper = styled.div`
   }
   ol {
     counter-reset: counter;
-    li {
+    > li {
       display: grid;
-      column-gap: 16px;
-      grid-template-columns: 32px 1fr;
+      column-gap: 0.5rem;
+      grid-template-columns: 2rem 1fr;
       counter-increment: counter;
       &::before {
         content: counter(counter) ".";
@@ -77,6 +80,9 @@ const Wrapper = styled.div`
       }
       &:nth-child(-n+9)::before {
         content: "0" counter(counter) ".";
+      }
+      ol {
+        margin: 1rem 0;
       }
     }
   }
