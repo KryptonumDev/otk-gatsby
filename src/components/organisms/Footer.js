@@ -71,6 +71,9 @@ const Footer = () => {
           </div>
           <Button variant="light" theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
           <p className="copyright">Ośrodek Zdrowia w Turośni Kościelnej &copy; {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
+          <p className="privacyPolicy">
+            <a href="/polityka-prywatnosci" className="link">Polityka prywatności</a>
+          </p>
           <p className="projectBy">
             <span>Projekt i realizacja:</span>
             <a href="https://bartnikstudio.pl/" aria-label="Bartnik" target="_blank" rel="noreferrer noopener">
@@ -182,7 +185,7 @@ const FooterWrapper = styled.footer`
     }
   }
   .copyright {
-    margin: ${Clamp(48, 48, 62, 'px')} 0 12px 0;
+    margin-top: ${Clamp(48, 48, 62, 'px')};
   }
   .projectBy {
     display: flex;
@@ -194,6 +197,13 @@ const FooterWrapper = styled.footer`
     }
     svg {
       display: block;
+    }
+  }
+  .privacyPolicy {
+    margin: 0.75rem 0 2.5rem;
+    a {
+      font-size: 0.875rem;
+      color: inherit;
     }
   }
   @media (max-width: 999px){
