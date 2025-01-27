@@ -72,7 +72,7 @@ const Footer = () => {
           <Button variant="light" theme={footer.cta.theme} to={footer.cta.href}>{footer.cta.text}</Button>
           <p className="copyright">Ośrodek Zdrowia w Turośni Kościelnej &copy; {new Date().getFullYear()}. Wszelkie prawa zastrzeżone.</p>
           <p className="privacyPolicy">
-            <a href="/polityka-prywatnosci" className="link">Polityka prywatności</a>
+            <Link to="/polityka-prywatnosci" className="link">Polityka prywatności</Link>
           </p>
           <p className="projectBy">
             <span>Projekt i realizacja:</span>

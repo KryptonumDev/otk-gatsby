@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Script } from "gatsby";
+import { Script, Link } from "gatsby";
 import styled from "styled-components";
 import Button from "../atoms/Button";
 import Switch from "../atoms/Switch";
@@ -134,20 +134,17 @@ export default function CookieConsent() {
 
   return (
     <>
-      <Script id="gtm">{`
-        window.dataLayer=window.dataLayer||[];
-        function gtag(){window.dataLayer.push(arguments)}
-      `}</Script>
+      <Script id="gtm">{`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}`}</Script>
       <CookieConsentWrapper ref={wrapper} aria-hidden={!showBanner} className="cookie-consent">
         <section className="content">
           <header className="header">
             <div data-header-initial>
               <h2 className="heading">Korzystając ze strony zgadzasz się na użycie ciasteczek</h2>
-              <p>Korzystając ze strony zgadzasz się na użycie ciasteczek. <a href="/polityka-prywatnosci" className="link">Dowiedz się więcej</a>.</p>
+              <p>Korzystając ze strony zgadzasz się na użycie ciasteczek. <Link to="/polityka-prywatnosci" className="link">Dowiedz się więcej</Link>.</p>
             </div>
             <div data-header-settings style={{ display: 'none' }}>
               <h3 className="heading">Ustawienia cookies</h3>
-              <p>Korzystając ze strony zgadzasz się na użycie ciasteczek. <a href="/polityka-prywatnosci" className="link">Dowiedz się więcej</a>.</p>
+              <p>Korzystając ze strony zgadzasz się na użycie ciasteczek. <Link to="/polityka-prywatnosci" className="link">Dowiedz się więcej</Link>.</p>
             </div>
           </header>
           <div className="settings" style={{ display: 'none' }} data-lenis-prevent>
