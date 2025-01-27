@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { Clamp } from "../../utils/functions";
 
-const Button = ({ theme='primary', variant='dark', children, to, className, ...props }) => {
+const Button = ({ theme = 'primary', variant = 'dark', children, to, className, ...props }) => {
   const isExternal = to && to.startsWith('https://');
   const title = props.title !== undefined ? props.title : children;
 
@@ -47,7 +47,7 @@ const Button = ({ theme='primary', variant='dark', children, to, className, ...p
           data-variant={variant}
           title={title}
           {...props}
-          >
+        >
           {children}
         </StyledAnchor>
       )}
@@ -110,5 +110,5 @@ const StyledAnchor = styled.a`
     pointer-events: none;
   }
 `
- 
+
 export default Button;

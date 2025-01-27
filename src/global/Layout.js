@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import GlobalStyle from "../styles/GlobalStyle";
+import CookieConsent from "../components/organisms/CookieConsent";
 import Nav from "../components/organisms/Nav";
 import Footer from "../components/organisms/Footer";
 
@@ -23,6 +24,7 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <GlobalStyle />
+      <CookieConsent />
       <Nav location={location} />
       <main id="main">
         {children}
