@@ -4,12 +4,16 @@
   "private": true,
   "description": "Ośrodek Zdrowia w Turośni Kościelnej — monorepo (web + studio)",
   "scripts": {
-    "dev": "concurrently \"bun run dev:web\" \"bun run dev:studio\"",
-    "dev:web": "cd web && gatsby develop",
-    "dev:studio": "cd studio && sanity dev",
-    "build": "cd web && gatsby build",
-    "deploy:studio": "cd studio && sanity deploy",
-    "deploy:graphql": "cd studio && sanity graphql deploy"
+    "dev": "concurrently --names \"web,studio\" --prefix-colors \"blue,magenta\" \"npm run dev:web\" \"npm run dev:studio\"",
+    "dev:web": "cd web && npm run develop",
+    "dev:studio": "cd studio && npm run dev",
+    "build": "npm run build:web",
+    "build:web": "cd web && npm run build",
+    "build:studio": "cd studio && npm run build",
+    "clean": "cd web && npm run clean",
+    "install:all": "cd web && npm install && cd ../studio && npm install",
+    "deploy:studio": "cd studio && npm run deploy",
+    "deploy:graphql": "cd studio && npm run deploy-graphql"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

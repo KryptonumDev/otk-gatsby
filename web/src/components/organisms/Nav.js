@@ -160,9 +160,6 @@ const Nav = ({ location }) => {
           </button>
           <ul className="list">
             <li>
-              <Link to='/' onClick={() => handleLink()} title='Strona główna'>Strona główna</Link>
-            </li>
-            <li>
               <Link to='/poradnia-medycyny-rodzinnej' onClick={() => handleLink()} title='Poradnia rodzinna'>Poradnia rodzinna</Link>
             </li>
             <li tabIndex='0'>
