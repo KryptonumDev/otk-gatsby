@@ -14,8 +14,9 @@ studio/.sanity/
 web/.env
 studio/.env
 
-# Lockfiles (use bun.lockb)
-package-lock.json
+# Lockfiles
+# bun.lockb is local-only (bun for local dev, npm for Netlify builds)
+bun.lockb
 
 # OS
 .DS_Store

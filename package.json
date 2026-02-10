@@ -4,7 +4,7 @@
   "private": true,
   "description": "Ośrodek Zdrowia w Turośni Kościelnej — monorepo (web + studio)",
   "scripts": {
-    "dev": "concurrently \"npm run dev:web\" \"npm run dev:studio\"",
+    "dev": "concurrently \"bun run dev:web\" \"bun run dev:studio\"",
     "dev:web": "cd web && gatsby develop",
     "dev:studio": "cd studio && sanity dev",
     "build": "cd web && gatsby build",
