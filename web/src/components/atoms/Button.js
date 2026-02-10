@@ -5,6 +5,7 @@ import { Clamp } from "../../utils/functions";
 
 const Button = ({ theme = 'primary', variant = 'dark', children, to, className, ...props }) => {
   const isExternal = to && to.startsWith('https://');
+  const isAnchorOrMailto = to && (to.startsWith('#') || to.startsWith('mailto:'));
   const title = props.title !== undefined ? props.title : children;
 
   return (
@@ -24,6 +25,18 @@ const Button = ({ theme = 'primary', variant = 'dark', children, to, className, 
           >
             {children}
             <span className="sr-only"> (otwiera się w nowej karcie)</span>
+          </StyledAnchor>
+        ) : isAnchorOrMailto ? (
+          <StyledAnchor
+            as='a'
+            href={to}
+            className={`cta ${className}`}
+            data-theme={theme}
+            data-variant={variant}
+            title={title}
+            {...props}
+          >
+            {children}
           </StyledAnchor>
         ) : (
           <StyledAnchor

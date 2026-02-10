@@ -15,12 +15,14 @@ import privacyPolicy from './singleTypes/privacyPolicy'
 import sitemap from './singleTypes/sitemap'
 import notFound from './singleTypes/notFound'
 import surazClinic from './singleTypes/surazClinic'
+import cooperation from './singleTypes/cooperation'
 
 export const singleTypes = [
   homepage,
   familyClinic,
   staffPage,
   contact,
+  cooperation,
   registration,
   faqPage,
   ebook,
@@ -56,6 +58,7 @@ import YoutubeEmbed from './components/YoutubeEmbed'
 import CompanyInfo from './components/CompanyInfo'
 import CtaTiles, { CtaTiles_Item } from './components/CtaTiles'
 import networkClinic from './components/networkClinic'
+import cooperationGroup from './components/cooperationGroup'
 
 export const schemaTypes = [
   // Single Types
@@ -87,4 +90,5 @@ export const schemaTypes = [
   CtaTiles,
   CtaTiles_Item,
   networkClinic,
+  cooperationGroup,
 ]

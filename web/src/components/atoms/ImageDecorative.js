@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ImageDecorative = ({ data, loading="lazy" }) => {
+  if (!data?.asset?.gatsbyImageData) return null;
   return (
     <Wrapper className="imageDecorative">
       <Shape />

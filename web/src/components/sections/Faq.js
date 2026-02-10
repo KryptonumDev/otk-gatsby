@@ -30,12 +30,14 @@ const Faq = ({ data }) => {
           ))}
         </div>
       </div>
-      <GatsbyImage
-        image={data.icon.asset.gatsbyImageData}
-        alt={data.icon.asset.altText || ''}
-        className="icon"
-        objectFit="contain"
-      />
+      {data.icon?.asset?.gatsbyImageData && (
+        <GatsbyImage
+          image={data.icon.asset.gatsbyImageData}
+          alt={data.icon.asset.altText || ''}
+          className="icon"
+          objectFit="contain"
+        />
+      )}
     </Wrapper>
   );
 }

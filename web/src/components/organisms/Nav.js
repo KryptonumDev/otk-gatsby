@@ -206,6 +206,9 @@ const Nav = ({ location }) => {
               <Link to='/mapa-strony' onClick={() => handleLink()} title='Mapa strony'>Mapa strony</Link>
             </li>
             <li>
+              <Link to='/wspolpraca' onClick={() => handleLink()} title='Współpraca'>Współpraca</Link>
+            </li>
+            <li>
               <Link to='/kontakt' onClick={() => handleLink()} title='Kontakt'>Kontakt</Link>
             </li>
             <li>

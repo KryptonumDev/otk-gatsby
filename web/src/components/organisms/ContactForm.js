@@ -12,7 +12,18 @@ import Loader from "../atoms/Loader";
 
 const statusAnimationDuration = 300;
 
-const ContactForm = () => {
+const defaultSubjects = [
+  'Chcę zapisać się do przychodni',
+  'Chcę umówić wizytę u lekarza rodzinnego (NFZ)',
+  'Chcę umówić wizytę prywatną',
+  'Chcę skorzystać z porady dietetyka',
+  'Potrzebuję przedłużenia recepty',
+  'Chcę skorzystać z Opieki Koordynowanej',
+  'Nie mogę znaleźć odpowiedzi na nurtujące mnie pytanie',
+  'Inny temat',
+];
+
+const ContactForm = ({ endpoint = '/api/contact', subjects, targetEmail } = {}) => {
   const {
     register,
     handleSubmit,
@@ -24,7 +35,7 @@ const ContactForm = () => {
 
   const onSubmit = (data) => {
     setSentStatus({ sent: true });
-    fetch('/api/contact', {
+    fetch(endpoint, {
       method: 'POST',
       headers: {
         "content-type": "application/json",
@@ -104,10 +115,13 @@ const ContactForm = () => {
         error="Ośrodek nie został wybrany"
         errors={errors}
       />
+      {targetEmail && (
+        <input type="hidden" {...register('targetEmail')} defaultValue={targetEmail} />
+      )}
       <Select
         label="Wybierz temat"
         register={register('subject', { required: true })}
-        options={['Chcę zapisać się do przychodni', 'Chcę umówić wizytę u lekarza rodzinnego (NFZ)', 'Chcę umówić wizytę prywatną', 'Chcę skorzystać z porady dietetyka', 'Potrzebuję przedłużenia recepty', 'Chcę skorzystać z Opieki Koordynowanej', 'Nie mogę znaleźć odpowiedzi na nurtujące mnie pytanie', 'Inny temat']}
+        options={subjects || defaultSubjects}
         error="Temat nie został wybrany"
         errors={errors}
       />

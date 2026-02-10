@@ -27,10 +27,10 @@ export default {
       title: 'Link',
       name: 'href',
       type: 'string',
-      description: 'Link relatywny lub absolutny (z https://)',
+      description: 'Link relatywny, absolutny (z https://), anchor (#) lub mailto:',
       validation: Rule =>
         Rule.custom(value => {
-          if (value && !value.startsWith('/') && !value.startsWith('https://')) {
+          if (value && !value.startsWith('/') && !value.startsWith('https://') && !value.startsWith('#') && !value.startsWith('mailto:')) {
             return 'Nieprawidłowy adres URL.';
           }
           return true;

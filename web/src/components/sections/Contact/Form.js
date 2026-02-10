@@ -5,19 +5,21 @@ import { Clamp } from "../../../utils/functions";
 import Heading from "../../atoms/Heading";
 import ContactForm from "../../organisms/ContactForm";
 
-const Form = ({ heading, icon }) => {
+const Form = ({ heading, icon, formProps }) => {
   return (
     <Wrapper className="max-width">
       <div className="copy">
         <Heading type="h2">{heading}</Heading>
-        <ContactForm />
+        <ContactForm {...formProps} />
       </div>
-      <GatsbyImage
-        image={icon.asset.gatsbyImageData}
-        alt={icon.asset.altText || ''}
-        className="icon"
-        objectFit="contain"
-      />
+      {icon?.asset?.gatsbyImageData && (
+        <GatsbyImage
+          image={icon.asset.gatsbyImageData}
+          alt={icon.asset.altText || ''}
+          className="icon"
+          objectFit="contain"
+        />
+      )}
     </Wrapper>
   );
 }
