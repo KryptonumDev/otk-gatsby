@@ -1,36 +1,17 @@
 {
-  "name": "osrodek-tk",
+  "name": "osrodek-tk-monorepo",
   "version": "1.0.0",
   "private": true,
-  "description": "osrodek-tk",
-  "author": "Bogumił",
-  "keywords": [
-    "gatsby"
-  ],
+  "description": "Ośrodek Zdrowia w Turośni Kościelnej — monorepo (web + studio)",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:studio\"",
+    "dev:web": "cd web && gatsby develop",
+    "dev:studio": "cd studio && sanity dev",
+    "build": "cd web && gatsby build",
+    "deploy:studio": "cd studio && sanity deploy",
+    "deploy:graphql": "cd studio && sanity graphql deploy"
   },
-  "dependencies": {
-    "@portabletext/react": "^3.0.4",
-    "babel-plugin-styled-components": "^2.1.4",
-    "gatsby": "^5.11.0",
-    "gatsby-plugin-image": "^3.11.0",
-    "gatsby-plugin-manifest": "^5.11.0",
-    "gatsby-plugin-robots-txt": "^1.8.0",
-    "gatsby-plugin-sharp": "^5.11.0",
-    "gatsby-plugin-sitemap": "^6.11.0",
-    "gatsby-plugin-styled-components": "^6.11.0",
-    "gatsby-source-sanity": "^7.6.3",
-    "gatsby-transformer-sharp": "^5.11.0",
-    "node-fetch": "^2.6.12",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.45.1",
-    "react-markdown": "^8.0.7",
-    "styled-components": "^6.0.3"
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
