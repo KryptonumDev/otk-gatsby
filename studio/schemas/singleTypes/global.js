@@ -58,6 +58,15 @@ export default {
       title: 'Globalne SEO',
       group: 'seo',
     },
+    {
+      name: 'networkClinics',
+      type: 'array',
+      title: 'Nasze Placówki (Sieć)',
+      description: 'Lista wszystkich placówek w sieci (Ośrodek TK, Medicus, Alma-Med) - używana w nawigacji i stopce',
+      of: [{ type: 'networkClinic' }],
+      validation: Rule => Rule.max(5),
+      group: 'general',
+    },
   ],
   groups: [
     {

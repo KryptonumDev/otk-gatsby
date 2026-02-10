@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 import Button from "../atoms/Button";
@@ -17,6 +17,12 @@ const Nav = ({ location }) => {
         nav {
           workingHours
           questionnaire
+        }
+        networkClinics {
+          name
+          city
+          url
+          isActive
         }
       }
     }
@@ -38,25 +44,96 @@ const Nav = ({ location }) => {
   const handleNavToggle = () => setNavOpened(!navOpened);
   const handleLink = () => setNavOpened(false);
 
+  // Transform Sanity data to match expected format
+  const networkLinks = useMemo(() => {
+    if (!global.networkClinics) return [];
+    
+    return global.networkClinics
+      .filter(clinic => clinic.isActive)
+      .map((clinic) => {
+        let hostMatch = [];
+        try {
+          const url = new URL(clinic.url);
+          hostMatch = [url.hostname];
+          
+          // Add localhost for the current site (OTK)
+          if (clinic.url === '/' || clinic.url.includes('osrodektk')) {
+            hostMatch.push('osrodektk.pl', 'osrodektk.netlify.app', 'localhost');
+          }
+        } catch {
+          if (clinic.url === '/') {
+            hostMatch = ['osrodektk.pl', 'osrodektk.netlify.app', 'localhost'];
+          }
+        }
+        
+        return {
+          id: clinic.name.toLowerCase().replace(/\s+/g, '-'),
+          label: `${clinic.city} (${clinic.name})`,
+          shortLabel: clinic.name,
+          href: clinic.url,
+          title: `${clinic.name} - ${clinic.city}`,
+          hostMatch,
+        };
+      });
+  }, [global.networkClinics]);
+
+  const getActiveNetworkId = () => {
+    if (typeof window === 'undefined') {
+      return networkLinks.length > 0 ? networkLinks[0].id : '';
+    }
+    const hostname = window.location.hostname;
+    const active = networkLinks.find((link) =>
+      link.hostMatch.some((host) => hostname.includes(host))
+    );
+    return active ? active.id : (networkLinks.length > 0 ? networkLinks[0].id : '');
+  };
+
+  const activeNetworkId = getActiveNetworkId();
+
   return (
     <>
       <WrapperSkipToMainContent href="#main">Przejdź do głównej treści</WrapperSkipToMainContent>
       <WrapperTopBar>
         <div className="max-width">
-          <p className="workingHours">{global.nav.workingHours}</p>
-          <div className="contact">
-            <a href='https://lekarzebezkolejki.pl/osrodektk' target='_blank' rel="noreferrer" title='Umów się do lekarza'>
-              <Calendar />
-              <span>Umów się do lekarza <span className="sr-only">(otwiera się w nowej karcie)</span></span>
-            </a>
-            <a href={`tel:${global.tel.replace(/\s/g, '')}`} title='Zadzwoń'>
-              <Tel />
-              <span>{global.tel}</span>
-            </a>
-            <a href={`mailto:${global.email}`} title='Wyślij maila'>
-              <Mail />
-              <span>{global.email}</span>
-            </a>
+          {networkLinks.length > 0 && (
+            <div className="network-bar">
+              <span className="network-label">Nasze placówki:</span>
+              <ul className="network-list" aria-label="Nasze placówki">
+                {networkLinks.map((link, index) => (
+                  <li key={link.id} className={activeNetworkId === link.id ? 'active' : ''}>
+                    {activeNetworkId === link.id ? (
+                      <Link to="/" title={link.title} aria-current="page">
+                        <span className="full">{link.label}</span>
+                        <span className="short">{link.shortLabel}</span>
+                      </Link>
+                    ) : (
+                      <a href={link.href} title={link.title} target="_blank" rel="noreferrer">
+                        <span className="full">{link.label}</span>
+                        <span className="short">{link.shortLabel}</span>
+                      </a>
+                    )}
+                    {index < networkLinks.length - 1 && <span className="sep">|</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <div className="utility-bar">
+            <p className="workingHours">{global.nav.workingHours}</p>
+            <div className="contact">
+              <a href='https://lekarzebezkolejki.pl/osrodektk' target='_blank' rel="noreferrer" title='Umów się do lekarza'>
+                <Calendar />
+                <span>Umów się do lekarza <span className="sr-only">(otwiera się w nowej karcie)</span></span>
+              </a>
+              <a href={`tel:${global.tel.replace(/\s/g, '')}`} title='Zadzwoń'>
+                <Tel />
+                <span>{global.tel}</span>
+              </a>
+              <a href={`mailto:${global.email}`} title='Wyślij maila'>
+                <Mail />
+                <span>{global.email}</span>
+              </a>
+            </div>
           </div>
         </div>
       </WrapperTopBar>
@@ -374,13 +451,66 @@ const WrapperNav = styled.nav`
 const WrapperTopBar = styled.div`
   background-color: var(--primary-500);
   color: #fff;
-  padding: 16px 0;
-  font-size: ${Clamp(14, 16, 16)};
+  padding: 12px 0;
+  font-size: ${Clamp(13, 14, 14)};
   > .max-width {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .network-bar {
+    display: flex;
+    align-items: center;
+    gap: 0px 10px;
+    flex-wrap: wrap;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .network-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 0.92em;
+  }
+  .network-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      a {
+        color: #fff;
+        transition: opacity 0.3s;
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+      &.active a {
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 2px;
+      }
+    }
+    .sep {
+      opacity: 0.6;
+      font-weight: 300;
+    }
+    .short {
+      display: none;
+    }
+  }
+  .utility-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 12px 48px;
     justify-content: space-between;
+    align-items: center;
   }
   .workingHours {
     text-transform: uppercase;
@@ -404,6 +534,37 @@ const WrapperTopBar = styled.div`
       grid-template-columns: auto 1fr;
       align-items: center;
       gap: 8px;
+    }
+  }
+  @media (max-width: 768px) {
+    padding: 10px 0;
+    > .max-width {
+      gap: 10px;
+    }
+    .network-bar {
+      padding-bottom: 10px;
+    }
+    .network-label {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .utility-bar {
+      gap: 8px 24px;
+    }
+  }
+  @media (max-width: 520px) {
+    font-size: ${Clamp(12, 13, 13)};
+
+    .network-list {
+      .full {
+        display: none;
+      }
+      .short {
+        display: inline;
+      }
+      li {
+        gap: 4px;
+      }
     }
   }
 `
