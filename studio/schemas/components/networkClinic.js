@@ -11,29 +11,11 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'city',
-      type: 'string',
-      title: 'Miasto',
-      description: 'Np. "Turośń Kościelna", "Białystok", "Bielsk Podlaski"',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'address',
-      type: 'string',
-      title: 'Adres',
-      description: 'Pełny adres, np. "ul. Białostocka 7, 18-106 Turośń Kościelna"',
-    },
-    {
-      name: 'phone',
-      type: 'string',
-      title: 'Telefon',
-      description: 'Np. "85 650 52 79"',
-    },
-    {
-      name: 'email',
-      type: 'string',
-      title: 'Email',
-      description: 'Adres email placówki',
+      name: 'locations',
+      type: 'array',
+      title: 'Lokalizacje',
+      description: 'Dla jednej marki/strony możesz podać wiele lokalizacji (np. Turośń Kościelna i Suraż).',
+      of: [{ type: 'networkLocation' }],
     },
     {
       name: 'logo',
@@ -62,8 +44,19 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'city',
+      locations: 'locations',
       media: 'logo',
+    },
+    prepare({ title, locations, media }) {
+      const cities = (locations || [])
+        .map(location => location?.city)
+        .filter(Boolean)
+      const uniqueCities = Array.from(new Set(cities))
+      return {
+        title,
+        subtitle: uniqueCities.join(', '),
+        media,
+      }
     },
   },
 }

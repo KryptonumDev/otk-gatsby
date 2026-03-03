@@ -37,6 +37,10 @@ const Network = ({ heading, paragraph, clinics }) => {
             {activeClinics.map((clinic, i) => {
               const isCurrent = isCurrentSite(clinic.url);
               const Tag = isCurrent ? 'div' : 'a';
+              const locations = clinic.locations || [];
+              const cityLabel = Array.from(
+                new Set(locations.map(l => l.city).filter(Boolean))
+              ).join(', ');
               return (
                 <Tag
                   key={i}
@@ -54,10 +58,17 @@ const Network = ({ heading, paragraph, clinics }) => {
                   )}
                   <div className="clinic-info">
                     <h3 className="clinic-name">{clinic.name}</h3>
-                    <p className="clinic-city">{clinic.city}</p>
-                    {clinic.address && <p className="clinic-address">{clinic.address}</p>}
-                    {clinic.phone && <p className="clinic-phone">{clinic.phone}</p>}
-                    {clinic.email && <p className="clinic-email">{clinic.email}</p>}
+                    {cityLabel && <p className="clinic-city">{cityLabel}</p>}
+                    {locations.map((location, locIndex) => (
+                      <div key={`${clinic.name}-${location.city || 'loc'}-${locIndex}`} className="clinic-location">
+                        {locations.length > 1 && location.city && (
+                          <p className="clinic-location-name">{location.city}</p>
+                        )}
+                        {location.address && <p className="clinic-address">{location.address}</p>}
+                        {location.phone && <p className="clinic-phone">{location.phone}</p>}
+                        {location.email && <p className="clinic-email">{location.email}</p>}
+                      </div>
+                    ))}
                   </div>
                   {isCurrent && <span className="current-badge">Aktualnie przeglądasz</span>}
                 </Tag>
@@ -131,6 +142,18 @@ const Wrapper = styled.section`
   .clinic-city {
     font-size: ${Clamp(14, 15, 16)};
     opacity: 0.85;
+  }
+  .clinic-location {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .clinic-location-name {
+    font-size: ${Clamp(11, 12, 13)};
+    font-weight: 700;
+    opacity: 0.85;
+    margin-top: 2px;
   }
   .clinic-address,
   .clinic-phone,

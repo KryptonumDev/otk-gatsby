@@ -58,6 +58,7 @@ import YoutubeEmbed from './components/YoutubeEmbed'
 import CompanyInfo from './components/CompanyInfo'
 import CtaTiles, { CtaTiles_Item } from './components/CtaTiles'
 import networkClinic from './components/networkClinic'
+import networkLocation from './components/networkLocation'
 import cooperationGroup from './components/cooperationGroup'
 
 export const schemaTypes = [
@@ -90,5 +91,6 @@ export const schemaTypes = [
   CtaTiles,
   CtaTiles_Item,
   networkClinic,
+  networkLocation,
   cooperationGroup,
 ]

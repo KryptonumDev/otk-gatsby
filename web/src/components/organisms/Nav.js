@@ -20,7 +20,9 @@ const Nav = ({ location }) => {
         }
         networkClinics {
           name
-          city
+          locations {
+            city
+          }
           url
           isActive
         }
@@ -51,6 +53,10 @@ const Nav = ({ location }) => {
     return global.networkClinics
       .filter(clinic => clinic.isActive)
       .map((clinic) => {
+        const cityLabel = Array.from(
+          new Set((clinic.locations || []).map(l => l.city).filter(Boolean))
+        ).join(', ');
+
         let hostMatch = [];
         try {
           const url = new URL(clinic.url);
@@ -68,10 +74,10 @@ const Nav = ({ location }) => {
         
         return {
           id: clinic.name.toLowerCase().replace(/\s+/g, '-'),
-          label: `${clinic.city} (${clinic.name})`,
+          label: cityLabel ? `${clinic.name} (${cityLabel})` : clinic.name,
           shortLabel: clinic.name,
           href: clinic.url,
-          title: `${clinic.name} - ${clinic.city}`,
+          title: cityLabel ? `${clinic.name} - ${cityLabel}` : clinic.name,
           hostMatch,
         };
       });
