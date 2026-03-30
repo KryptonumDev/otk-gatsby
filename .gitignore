@@ -1,9 +1,32 @@
+# Dependencies
 node_modules/
-.cache/
-public
+
+# Gatsby
+web/.cache/
+web/public/
+
+# Sanity Studio
+studio/dist/
+studio/.sanity/
+
+# Environment variables
+.env
+web/.env
+studio/.env
+
+# Lockfiles
+# bun.lockb is local-only (bun for local dev, npm for Netlify builds)
+bun.lockb
+
+# OS
 .DS_Store
 Thumbs.db
-.env
-package-lock.json
-# Local Netlify folder
-.netlify
+
+# Netlify
+.netlify/
+
+# Logs
+*.log
+
+# TypeScript
+*.tsbuildinfo
