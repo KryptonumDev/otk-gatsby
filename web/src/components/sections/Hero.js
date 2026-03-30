@@ -10,12 +10,14 @@ const Hero = ({
     hero_Heading,
     hero_Subheading,
     hero_Img,
+    hero_DisableShape,
+    hero_ShouldRenderImage = true,
     hero_Cta,
   },
   version="dark"
 }) => {
   return (
-    <Wrapper className={version}>
+    <Wrapper className={version} $disableShape={hero_DisableShape}>
       <div className="max-width">
         <header>
           <Heading className="heading">{hero_Heading}</Heading>
@@ -32,7 +34,14 @@ const Hero = ({
             ))
           )}
         </header>
-        <ImageDecorative data={hero_Img} loading="eager" />
+        {hero_ShouldRenderImage && (
+          <ImageDecorative
+            data={hero_Img}
+            loading="eager"
+            disableShape={hero_DisableShape}
+            centerOnMobile={hero_DisableShape}
+          />
+        )}
       </div>
     </Wrapper>
   );
@@ -49,7 +58,7 @@ const Wrapper = styled.section`
     @media (min-width: 1099px){
       grid-template-columns: 1fr 1fr;
     }
-    gap: ${Clamp(32, 32, 48, 'px')} 32px;
+    gap: ${Clamp(32, 32, 48, 'px')} ${({ $disableShape }) => ($disableShape ? '43px' : '32px')};
     align-items: center;
   }
   position: relative;

@@ -24,6 +24,13 @@ export default {
       group: 'hero',
     },
     {
+      name: 'hero_DisableShape',
+      type: 'boolean',
+      title: 'Hero bez dekoracyjnego kształtu',
+      description: 'Po włączeniu zdjęcie hero będzie prostokątne, bez dekoracyjnego tła.',
+      group: 'hero',
+    },
+    {
       name: 'hero_Cta',
       type: 'array',
       of: [{ type: 'cta' }],

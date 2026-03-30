@@ -1,12 +1,21 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const ImageDecorative = ({ data, loading="lazy" }) => {
+const ImageDecorative = ({
+  data,
+  loading="lazy",
+  disableShape=false,
+  centerOnMobile=false,
+}) => {
   if (!data?.asset?.gatsbyImageData) return null;
   return (
-    <Wrapper className="imageDecorative">
-      <Shape />
+    <Wrapper
+      className={`imageDecorative${disableShape ? " is-plain" : ""}`}
+      $disableShape={disableShape}
+      $centerOnMobile={centerOnMobile}
+    >
+      {!disableShape && <Shape />}
       <GatsbyImage
         image={data.asset.gatsbyImageData}
         alt={data.asset.altText || ''}
@@ -19,11 +28,21 @@ const ImageDecorative = ({ data, loading="lazy" }) => {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-left: 10%;
-  margin-bottom: 5%;
   width: fit-content;
+  margin-left: ${({ $disableShape }) => ($disableShape ? "0" : "10%")};
+  margin-bottom: ${({ $disableShape }) => ($disableShape ? "0" : "5%")};
+  ${({ $centerOnMobile }) => $centerOnMobile && css`
+    @media (max-width: 1098px){
+      justify-self: center;
+    }
+  `}
   .imageDecorativeImg {
     filter: drop-shadow(8px -3px 8px rgb(14 36 40 / 3%));
+    border-radius: ${({ $disableShape }) => ($disableShape ? "16px" : "0")};
+    overflow: hidden;
+    img {
+      border-radius: inherit;
+    }
   }
   .shape {
     position: absolute;

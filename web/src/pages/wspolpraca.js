@@ -16,7 +16,55 @@ const cooperationSubjects = [
   'Inny temat',
 ];
 
+const fetchHeroDisableShape = async () => {
+  const response = await fetch('/api/cooperation-hero');
+
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+
+  const payload = await response.json();
+  return Boolean(payload?.hero_DisableShape);
+};
+
 const CooperationPage = ({ data: { page, global } }) => {
+  const [heroDisableShape, setHeroDisableShape] = React.useState(
+    typeof page?.hero_DisableShape === 'boolean' ? page.hero_DisableShape : undefined
+  );
+  const [heroShapeResolved, setHeroShapeResolved] = React.useState(
+    !page?.hero_Img || typeof page?.hero_DisableShape === 'boolean'
+  );
+
+  React.useEffect(() => {
+    if (!page?.hero_Img || heroShapeResolved) {
+      return undefined;
+    }
+
+    let isCancelled = false;
+
+    fetchHeroDisableShape()
+      .then((value) => {
+        if (!isCancelled) {
+          setHeroDisableShape(value);
+        }
+      })
+      .catch((error) => {
+        console.error('[cooperation] Failed to resolve hero shape mode:', error);
+        if (!isCancelled) {
+          setHeroDisableShape(false);
+        }
+      })
+      .finally(() => {
+        if (!isCancelled) {
+          setHeroShapeResolved(true);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [heroShapeResolved, page?.hero_Img]);
+
   if (!page) {
     return (
       <div className="max-width" style={{ padding: '120px 0', textAlign: 'center' }}>
@@ -52,6 +100,8 @@ const CooperationPage = ({ data: { page, global } }) => {
             hero_Heading,
             hero_Subheading,
             hero_Img,
+            hero_DisableShape: heroDisableShape,
+            hero_ShouldRenderImage: heroShapeResolved,
             hero_Cta,
           }}
         />
