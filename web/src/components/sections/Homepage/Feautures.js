@@ -15,17 +15,24 @@ const Feautures = ({
     <Wrapper className="max-width">
       <Heading className="heading" type="h2">{features_Heading}</Heading>
       <div className="wrapper">
-        {features_List.map((item, i) => (
-          <div className="item" key={i}>
-            <GatsbyImage
-              image={item.img.asset.gatsbyImageData}
-              alt={item.img.asset.altText || ''}
-              className="img"
-            />
+        {(features_List || []).map((item, i) => {
+          const imageData = item?.img?.asset?.gatsbyImageData;
+          const imageAlt = item?.img?.asset?.altText || '';
+
+          return (
+          <div className={`item ${imageData ? '' : 'no-image'}`.trim()} key={i}>
+            {imageData && (
+              <GatsbyImage
+                image={imageData}
+                alt={imageAlt}
+                className="img"
+              />
+            )}
             <Markdown className="title">{item.title}</Markdown>
             <Markdown className="description">{item.description}</Markdown>
           </div>
-        ))}
+          );
+        })}
       </div>
     </Wrapper>
   );
@@ -46,6 +53,9 @@ const Wrapper = styled.section`
       grid-template-columns: auto 1fr;
       column-gap: ${Clamp(24, 32, 48, 'px')};
       grid-template-rows: auto 1fr;
+      &.no-image {
+        grid-template-columns: 1fr;
+      }
       .title {
         margin-bottom: 12px;
         font-size: ${Clamp(24, 24, 32)};
