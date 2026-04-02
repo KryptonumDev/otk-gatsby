@@ -6,6 +6,19 @@ import Social from "../moleculas/Social";
 import { ChevronDown, External, Logo, LogoSurazu } from "../atoms/Icons";
 import { Clamp } from "../../utils/functions";
 
+const normalizeHostname = (hostname = '') => hostname.replace(/^www\./, '').toLowerCase();
+
+const hostnameMatches = (currentHostname, targetHostname) => {
+  if (!currentHostname || !targetHostname) {
+    return false;
+  }
+
+  const current = normalizeHostname(currentHostname);
+  const target = normalizeHostname(targetHostname);
+
+  return current === target || current.endsWith(`.${target}`) || target.endsWith(`.${current}`);
+};
+
 const Nav = ({ location }) => {
   const {
     global
@@ -31,6 +44,7 @@ const Nav = ({ location }) => {
   `)
 
   const [navOpened, setNavOpened] = useState(false);
+  const [activeNetworkId, setActiveNetworkId] = useState('');
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscapeKey);
@@ -83,18 +97,18 @@ const Nav = ({ location }) => {
       });
   }, [global.networkClinics]);
 
-  const getActiveNetworkId = () => {
+  useEffect(() => {
     if (typeof window === 'undefined') {
-      return networkLinks.length > 0 ? networkLinks[0].id : '';
+      return;
     }
+
     const hostname = window.location.hostname;
     const active = networkLinks.find((link) =>
-      link.hostMatch.some((host) => hostname.includes(host))
+      link.hostMatch.some((host) => hostnameMatches(hostname, host))
     );
-    return active ? active.id : (networkLinks.length > 0 ? networkLinks[0].id : '');
-  };
 
-  const activeNetworkId = getActiveNetworkId();
+    setActiveNetworkId(active ? active.id : '');
+  }, [networkLinks]);
 
   return (
     <>

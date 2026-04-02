@@ -8,6 +8,19 @@ import Social from "../moleculas/Social";
 import Markdown from "../../utils/Markdown";
 import { GatsbyImage } from "gatsby-plugin-image";
 
+const normalizeHostname = (hostname = '') => hostname.replace(/^www\./, '').toLowerCase();
+
+const hostnameMatches = (currentHostname, targetHostname) => {
+  if (!currentHostname || !targetHostname) {
+    return false;
+  }
+
+  const current = normalizeHostname(currentHostname);
+  const target = normalizeHostname(targetHostname);
+
+  return current === target || current.endsWith(`.${target}`) || target.endsWith(`.${current}`);
+};
+
 const Footer = () => {
   const {
     global,
@@ -63,9 +76,13 @@ const Footer = () => {
   }, [])
 
   const isCurrentSite = (clinicUrl) => {
+    if (!currentHostname) {
+      return false
+    }
+
     try {
       const url = new URL(clinicUrl)
-      return currentHostname.includes(url.hostname) || url.hostname.includes(currentHostname)
+      return hostnameMatches(currentHostname, url.hostname)
     } catch {
       return false
     }

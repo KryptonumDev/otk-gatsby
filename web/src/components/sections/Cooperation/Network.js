@@ -4,6 +4,19 @@ import { Clamp } from "../../../utils/functions";
 import Markdown from "../../../utils/Markdown";
 import Heading from "../../atoms/Heading";
 
+const normalizeHostname = (hostname = '') => hostname.replace(/^www\./, '').toLowerCase();
+
+const hostnameMatches = (currentHostname, targetHostname) => {
+  if (!currentHostname || !targetHostname) {
+    return false;
+  }
+
+  const current = normalizeHostname(currentHostname);
+  const target = normalizeHostname(targetHostname);
+
+  return current === target || current.endsWith(`.${target}`) || target.endsWith(`.${current}`);
+};
+
 const Network = ({ heading, paragraph, clinics }) => {
   const [currentHostname, setCurrentHostname] = React.useState('');
 
@@ -12,9 +25,13 @@ const Network = ({ heading, paragraph, clinics }) => {
   }, []);
 
   const isCurrentSite = (clinicUrl) => {
+    if (!currentHostname) {
+      return false;
+    }
+
     try {
       const url = new URL(clinicUrl);
-      return currentHostname.includes(url.hostname) || url.hostname.includes(currentHostname);
+      return hostnameMatches(currentHostname, url.hostname);
     } catch {
       return false;
     }
